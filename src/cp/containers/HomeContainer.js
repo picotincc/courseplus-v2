@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class HomeContainer extends Component {
+
+class HomeContainer extends Component {
 
     constructor (props) {
         super(props);
@@ -25,6 +27,7 @@ export default class HomeContainer extends Component {
 
     render()
     {
+        console.log(this.props.goodCourses);
         return (
             <div className="cp-home-container">
                 course+首页
@@ -32,3 +35,12 @@ export default class HomeContainer extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+  return {
+      goodCourses: state.goodCourses
+  };
+}
+
+// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
+export default connect(mapStateToProps)(HomeContainer);

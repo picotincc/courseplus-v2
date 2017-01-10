@@ -2,6 +2,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from '../containers/App';
 
+const home = (location, callback) => {
+	require.ensure([], require => {
+		callback(null, require('../containers/HomeContainer.js').default);
+	}, 'home');
+};
 
 const search = (location, callback) => {
 	require.ensure([], require => {
@@ -9,11 +14,30 @@ const search = (location, callback) => {
 	}, 'search');
 };
 
-const home = (location, callback) => {
+const course = (location, callback) => {
 	require.ensure([], require => {
-		callback(null, require('../containers/HomeContainer.js').default);
-	}, 'home');
+		callback(null, require('../containers/CourseContainer.js').default);
+	}, 'course');
 };
+
+const user = (location, callback) => {
+	require.ensure([], require => {
+		callback(null, require('../containers/UserContainer.js').default);
+	}, 'user');
+};
+
+const order = (location, callback) => {
+	require.ensure([], require => {
+		callback(null, require('../containers/OrderContainer.js').default);
+	}, 'order');
+};
+
+const myCourse = (location, callback) => {
+	require.ensure([], require => {
+		callback(null, require('../containers/MyCourseContainer.js').default);
+	}, 'mycourse');
+};
+
 
 const routes = (
     <div>
@@ -21,6 +45,10 @@ const routes = (
 			<IndexRoute getComponent={home} />
             <Route path='home' getComponent={home} />
 			<Route path='search' getComponent={search} />
+			<Route path='course' getComponent={course} />
+			<Route path='user' getComponent={user} />
+			<Route path='order' getComponent={order} />
+			<Route path='mycourse' getComponent={myCourse} />
 		</Route>
     </div>
 );

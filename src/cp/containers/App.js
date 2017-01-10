@@ -26,7 +26,7 @@ class App extends Component {
     componentDidMount()
     {
         const { dispatch } = this.props;
-        dispatch(login("appdidmount"));
+        // dispatch(login("appdidmount"));
     }
 
     render()

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { getHomeGoodCourses } from '../actions/HomeAction';
+
 
 class HomeContainer extends Component {
 
@@ -22,12 +24,12 @@ class HomeContainer extends Component {
 
     componentDidMount()
     {
-
+        const dispatch = this.props.dispatch;
+        dispatch(getHomeGoodCourses());
     }
 
     render()
     {
-        console.log(this.props.goodCourses);
         return (
             <div className="cp-home-container">
                 course+首页

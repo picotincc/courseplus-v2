@@ -15,7 +15,7 @@ function login(state= "cc", action)
     }
 }
 
-function getGoodCourses(state = ["1","2"], action)
+function getGoodCourses(state = [], action)
 {
     switch (action.type)
     {

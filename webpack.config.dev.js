@@ -9,7 +9,7 @@ module.exports = {
     context: path.resolve("./src"),
 
     entry: {
-        vendor: [ "babel-polyfill"],
+        vendor: [ "babel-polyfill", "whatwg-fetch"],
         cp: [ "./cp/index.js", "./cp/resource/index.less" ]
     },
 

@@ -1,3 +1,5 @@
+import HomeService from '../service/HomeService';
+
 
 const REQUEST_GOOD_COURSES = "REQUEST_GOOD_COURSES";
 const RECEIVE_GOOD_COURSES = "RECEIVE_GOOD_COURSES";
@@ -34,7 +36,7 @@ export function getHomeGoodCourses()
 {
     const getDatas = () => (dispatch) => {
         dispatch(requestData(REQUEST_GOOD_COURSES, {}));
-        return ServiceClient.getInstance().getUserPlayLists(uid)
+        return HomeService.getInstance().getGoodCourses()
         .then(res => {
             dispatch(receiveData(RECEIVE_GOOD_COURSES, {}, res));
         });

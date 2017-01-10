@@ -10,7 +10,7 @@ module.exports = {
 
     entry: {
         vendor: [ "babel-polyfill", "whatwg-fetch"],
-        cp: [ "./cp/index.js", "./cp/resource/index.less" ]
+        cp: [ "./base/index.js" ]
     },
 
     output: {
@@ -22,7 +22,17 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [ "", ".js", ".less" ]
+        extensions: [ "", ".js", ".less" ],
+
+        alias: {
+            base: path.resolve(__dirname, 'src/base/'),
+            home: path.resolve(__dirname, 'src/home/'),
+            search: path.resolve(__dirname, 'src/search/'),
+            course: path.resolve(__dirname, 'src/course/'),
+            user: path.resolve(__dirname, 'src/user/'),
+            order: path.resolve(__dirname, 'src/order/'),
+            mycourse: path.resolve(__dirname, 'src/mycourse/')
+        }
     },
 
     devtool: "source-map",
@@ -70,7 +80,7 @@ module.exports = {
             minChunks: Infinity
         }),
 
-        new ExtractTextPlugin("./[name]/resource/bundle.css")
+        new ExtractTextPlugin("[name]/resource/bundle.css")
     ],
 
     devServer: {

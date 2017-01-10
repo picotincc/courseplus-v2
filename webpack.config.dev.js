@@ -10,7 +10,7 @@ module.exports = {
 
     entry: {
         vendor: [ "babel-polyfill"],
-        cp: [ "./cp/index.js"]
+        cp: [ "./cp/index.js", "./cp/resource/index.less" ]
     },
 
     output: {
@@ -61,7 +61,7 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
 
         new webpack.ProvidePlugin({
-            
+
         }),
 
         new webpack.optimize.CommonsChunkPlugin({

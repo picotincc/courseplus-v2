@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import "base/resource/index.less";
 
 import Header from 'base/components/Header';
+import Footer from 'base/components/footer';
 import { login } from 'base/actions/HomeAction';
 
 class App extends Component {
@@ -39,7 +40,7 @@ class App extends Component {
                     {this.props.children}
                 </div>
 
-                <footer></footer>
+                <footer><Footer /></footer>
             </div>
         );
     }

@@ -11,7 +11,11 @@ gulp.task("clean", cb => {
     rimraf("./public/assets", cb);
 });
 
-gulp.task("dist", [ "clean" ], cb => {
+gulp.task("dist-clean", cb => {
+    rimraf("./output/", cb);
+});
+
+gulp.task("dist", [ "dist-clean" ], cb => {
     webpack(require("./webpack.config.pro.js"), (err, stats) => {
         if (err) {
             throw new gutil.PluginError("webpack", err);

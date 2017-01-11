@@ -34,13 +34,13 @@ class App extends Component {
     {
         return (
             <div className="cp-app">
-                <header><Header userId={this.props.userId} /></header>
+                <header className="flex-center"><Header userId={this.props.userId} /></header>
 
                 <div className="cp-container">
                     {this.props.children}
                 </div>
 
-                <footer><Footer /></footer>
+                <footer className="flex-center"><Footer /></footer>
             </div>
         );
     }

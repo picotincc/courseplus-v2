@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import "home/resource/index.less";
 
+import Slogan from '../components/Slogan';
+
 import { getHomeGoodCourses } from 'base/actions/HomeAction';
 
 import DaShen from 'home/components/DaShen.js'
@@ -35,10 +37,21 @@ class HomeContainer extends Component {
     render()
     {
         return (
-          <DaShen />
-            // <div className="cp-home-container">
-            //     course+首页
-            // </div>
+            <div className="cp-home-container">
+                <div className="slogan">
+                    <Slogan />
+                </div>
+                <div className="carousel">
+
+                </div>
+                <div className="good-courses">
+                </div>
+                <div className="comments">
+                </div>
+                <div className="contributors">
+                  <DaShen />
+                </div>
+            </div>
         );
     }
 }

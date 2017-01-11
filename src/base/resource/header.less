@@ -1,0 +1,48 @@
+.cp-header
+{
+    width: 1080px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    color: @brownish-grey;
+    font-size: 16px;
+
+    > .logo
+    {
+        flex: 1 1 auto;
+
+        > img
+        {
+            width: 175px;
+            height: 30px;
+        }
+    }
+
+    > .login-btn
+    {
+        flex: 0 0 68px;
+        height: 28px;
+        margin-right: 20px;
+        line-height: 28px;
+        text-align: center;
+
+        &:hover
+        {
+            color: @cool-blue;
+        }
+    }
+
+    > .register-btn
+    {
+        flex: 0 0 68px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+
+        &:hover
+        {
+            color: @cool-blue;
+        }
+    }
+}

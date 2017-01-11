@@ -1,20 +1,32 @@
 .cp-app
 {
     width: 100%;
-    height: 100%;
+    height: 2375px;
+
+    display: flex;
+    flex-direction: column;
+
+    .flex-center
+    {
+        display: flex;
+        justify-content: center;
+    }
 
     > header
     {
-
+        flex: 0 0 56px;
+        background-color: #ffffff;
     }
 
     > .cp-container
     {
-
+        height: 100%;
+        background-color: #f8f8f8;
     }
 
     > footer
     {
-        
+        flex: 0 0 200px;
+        background-color: #4a4a4a;
     }
 }

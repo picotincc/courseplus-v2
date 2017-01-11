@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import "home/resource/index.less";
 
+import Slogan from '../components/Slogan';
+
 import { getHomeGoodCourses } from 'base/actions/HomeAction';
 
 
@@ -34,7 +36,18 @@ class HomeContainer extends Component {
     {
         return (
             <div className="cp-home-container">
-                course+首页
+                <div className="slogan">
+                    <Slogan />
+                </div>
+                <div className="carousel">
+                    
+                </div>
+                <div className="good-courses">
+                </div>
+                <div className="comments">
+                </div>
+                <div className="contributors">
+                </div>
             </div>
         );
     }

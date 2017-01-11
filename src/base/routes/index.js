@@ -3,37 +3,37 @@ import { Route, IndexRoute } from 'react-router';
 import App from 'base/containers/App.js';
 
 const home = (location, callback) => {
-	require.ensure([], require => {
+	require.ensure(['home/containers/HomeContainer.js'], require => {
 		callback(null, require('home/containers/HomeContainer.js').default);
 	}, 'home');
 };
 
 const search = (location, callback) => {
-	require.ensure([], require => {
+	require.ensure(['search/containers/SearchContainer.js'], require => {
 		callback(null, require('search/containers/SearchContainer.js').default);
 	}, 'search');
 };
 
 const course = (location, callback) => {
-	require.ensure([], require => {
+	require.ensure(['course/containers/CourseContainer.js'], require => {
 		callback(null, require('course/containers/CourseContainer.js').default);
 	}, 'course');
 };
 
 const user = (location, callback) => {
-	require.ensure([], require => {
+	require.ensure(['user/containers/UserContainer.js'], require => {
 		callback(null, require('user/containers/UserContainer.js').default);
 	}, 'user');
 };
 
 const order = (location, callback) => {
-	require.ensure([], require => {
+	require.ensure(['order/containers/OrderContainer.js'], require => {
 		callback(null, require('order/containers/OrderContainer.js').default);
 	}, 'order');
 };
 
 const myCourse = (location, callback) => {
-	require.ensure([], require => {
+	require.ensure(['mycourse/containers/MyCourseContainer.js'], require => {
 		callback(null, require('mycourse/containers/MyCourseContainer.js').default);
 	}, 'mycourse');
 };

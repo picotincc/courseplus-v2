@@ -5,6 +5,8 @@ import "home/resource/index.less";
 
 import { getHomeGoodCourses } from 'base/actions/HomeAction';
 
+import DaShen from 'home/components/DaShen.js'
+
 
 class HomeContainer extends Component {
 
@@ -33,9 +35,10 @@ class HomeContainer extends Component {
     render()
     {
         return (
-            <div className="cp-home-container">
-                course+首页
-            </div>
+          <DaShen />
+            // <div className="cp-home-container">
+            //     course+首页
+            // </div>
         );
     }
 }

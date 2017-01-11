@@ -1,4 +1,29 @@
 html, body
 {
     width: 100%;
+    line-height: normal;
+    user-select: auto;
+    -webkit-user-select:auto;
+    -moz-user-select:auto;
+    -o-user-select:auto;
+}
+
+ul
+{
+    list-style: none;
+}
+
+#root
+{
+    width: 100%;
+    height: 100%;
+    font-family: @font-family;
+
+
+    &, *
+    {
+        box-sizing: border-box;
+        outline: none;
+    }
+
 }

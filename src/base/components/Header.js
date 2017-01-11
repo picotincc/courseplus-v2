@@ -27,7 +27,15 @@ export default class Header extends Component {
     {
         return (
             <div className="cp-header">
-                {this.props.userId}
+                <div className="logo">
+                    <img src="/imgs/logo.png" />
+                </div>
+                <div className="login-btn">
+                    <span>登录</span>
+                </div>
+                <div className="register-btn">
+                    <span>注册</span>
+                </div>
             </div>
         );
     }

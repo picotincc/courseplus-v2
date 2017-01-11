@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-
-export default class MyClass extends Component {
+export default class Slogan extends Component {
 
     constructor (props) {
         super(props);
     }
 
     static defaultProps = {
-
+        
     }
 
     static propTypes = {
@@ -26,6 +25,10 @@ export default class MyClass extends Component {
 
     render()
     {
-
+        return (
+            <div className="cp-home-slogan">
+                Home Slogan
+            </div>
+        );
     }
 }

@@ -45,20 +45,24 @@ module.exports = {
                 include: path.join(__dirname, 'src/')
             },
             {
+                test: /\.css$/,
+                loader: 'style!css?sourceMap'
+            },
+            {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader")
             },
             {
-                test: /\.(png|jpg)$/,
-                loader: 'url?limit=10000&name=images/[name].[ext]'
+                test: /\.(png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader?limit=100000'
             },
             {
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&minetype=application/font-woff"
+                test: /\.(eot|com|json|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
             },
             {
-                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "file-loader"
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
             }
         ]
     },

@@ -36,7 +36,7 @@ class App extends Component {
             <div className="cp-app">
                 <header className="flex-center"><Header userId={this.props.userId} /></header>
 
-                <div className="cp-container flex-center">
+                <div className="cp-container">
                     {this.props.children}
                 </div>
 

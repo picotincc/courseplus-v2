@@ -35,7 +35,11 @@ class App extends Component {
             <div className="cp-app">
                 <header><Header userId={this.props.userId} /></header>
 
-                {this.props.children}
+                <div className="cp-container">
+                    {this.props.children}
+                </div>
+
+                <footer></footer>
             </div>
         );
     }

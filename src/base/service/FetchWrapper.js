@@ -16,7 +16,7 @@ export default function(...args) {
     // 处理Url
     var urlComps = UrlUtil.parse(url);
     if(!urlComps.host) {
-        args[0] = HOST_URL + '/' + urlComps.path || '';
+        args[0] = HOST_URL + '/' + urlComps.pathname || '';
     } else {
         args[0] = UrlUtil.stringify(urlComps).split('?')[0];
     }

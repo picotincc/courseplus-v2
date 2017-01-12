@@ -92,8 +92,26 @@ export default class FormatUtil
         return true;
     }
 
-    static getWindowOpenTemp()
-    {
+    // static getWindowOpenTemp()
+    // {
+    //     var Sys = {};
+    //     var ua = navigator.userAgent.toLowerCase();
+    //     var s;
+    //     (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    //     (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    //     (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    //     (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    //     (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+    //     var temp=null;
+    //     if(Sys.ie){//ie浏览器
+    //         temp='about:newTab';
+    //     }else{
+    //         temp='_blank';
+    //     }
+    //     return temp;
+    // }
+
+    static openNewTab(url){
         var Sys = {};
         var ua = navigator.userAgent.toLowerCase();
         var s;
@@ -108,7 +126,8 @@ export default class FormatUtil
         }else{
             temp='_blank';
         }
-        return temp;
+        var winTemp = window.open("", temp);
+        winTemp.location.href = url;
     }
 
     static isPC() {

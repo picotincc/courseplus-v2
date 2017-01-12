@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Rate } from 'antd';
+import { browserHistory } from 'react-router';
+import FormatUtil from '../util/FormatUtil';
 
 export default class GoodCourses extends Component {
 
@@ -16,17 +18,19 @@ export default class GoodCourses extends Component {
 
     }
 
+
     state = {
 
     }
 
     handleListItemClick(id){
-        console.log("item" + id);
-
+        //console.log("course" + id);
+        FormatUtil.openNewTab("/course");
     }
 
-    handleCourseClick(id, event){
-        console.log("course" + id);
+    handleTagClick(school, discipline, event){
+        //console.log("search " + school + " " + discipline);
+        FormatUtil.openNewTab("/search");
         event.stopPropagation();
     }
 
@@ -45,7 +49,7 @@ export default class GoodCourses extends Component {
                         <li key={item.id} className="course-item" onClick = {() => this.handleListItemClick(item.id)}>
                             <div className="course-info" style={{background:"url("+ item.coursebg +") no-repeat"}}>
                                 <div className="title">{item.course}</div>
-                                <div className="name" onClick = {this.handleCourseClick.bind(this,item.id)}><span>{item.school} {item.discipline}</span></div>
+                                <div className="name" onClick = {this.handleTagClick.bind(this,item.school,item.discipline)}><span>{item.school} {item.discipline}</span></div>
                                 <Rate disabled allowHalf defaultValue={item.star} />
                             </div>
                             <div className="author-info">

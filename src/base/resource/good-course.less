@@ -1,37 +1,21 @@
-.cp-good-courses{
-    position: relative;
-    margin: 0 auto;
-    width: @course-list-width;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-line-pack: start;
-    align-content: flex-start;
-    list-style: none;
-    padding: 0;
-
-    >li{
-        &.course-item{
-            overflow: hidden;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-flex: 0;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-            width: @course-list-item-width;
-            height: @course-list-item-height;
-            position: relative;
-            flex-direction: column;
-            margin-right: 20px;
-            margin-bottom: 20px;
-            background: #fff;
-            cursor: pointer;
-            border: 1px solid #bbb;
-            border-radius: @course-list-border-radius;
-        }
+.course-item{
+        overflow: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 255px;
+        height: 220px;
+        position: relative;
+        flex-direction: column;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        background: #fff;
+        cursor: pointer;
+        border: 1px solid #bbb;
+        border-radius: 4px;
 
         &:hover{
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -47,14 +31,14 @@
 
         >.course-info{
             overflow: hidden;
-            width: @course-list-item-width;
-            height: @course-list-top-height;
+            width: 255px;
+            height: 160px;
             flex-shrink: 0;
             color: #fff;
             text-align: center;
 
             >.title{
-                max-width: @course-list-item-width*90%;
+                max-width: 230px;
                 height: 28px;
                 line-height: 28px;
                 margin-top: 40px;
@@ -95,19 +79,19 @@
 
         >.author-info{
             position: absolute;
-            top: @course-list-top-height;
+            top: 160px;
             left: 0;
             overflow: hidden;
             padding-left: 20px;
             padding-right: 20px;
-            width: @course-list-item-width;
-            height: @course-list-bottom-height;
+            width: 255px;
+            height: 150px;
             flex-shrink: 0;
             background: #fff;
             z-index: 99;
 
             &:hover{
-                top: @course-list-top-height-hover;
+                top: 70px;
                 -moz-transition: .3s;
                 -webkit-transition: .3s;
                 -o-transition: .3s;
@@ -166,4 +150,3 @@
             }
         }
     }
-}

@@ -2,4 +2,50 @@
 {
     width: 1080px;
     height: 100%;
+    display: flex;
+    align-items: center;
+
+    > .left
+    {
+        flex: 1 1 auto;
+        color: @warm-grey;
+        font-size: 14px;
+
+        > img
+        {
+            width: 254px;
+            height: 41px;
+            margin-bottom: 20px;
+        }
+    }
+
+    > .right
+    {
+
+        > .about
+        {
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 28px;
+
+            > span
+            {
+                margin-right: 50px;
+                cursor: pointer;
+
+                &:last-child
+                {
+                    margin-right: 0px;
+                }
+            }
+        }
+
+        > .weixin
+        {
+            float: right;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+    }
 }

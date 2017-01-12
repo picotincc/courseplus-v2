@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 
-export default class Slogan extends Component {
+export default class Sidebar extends Component {
 
     constructor (props) {
         super(props);
@@ -15,6 +14,10 @@ export default class Slogan extends Component {
 
     }
 
+    state = {
+
+    }
+
     componentDidMount()
     {
 
@@ -22,10 +25,6 @@ export default class Slogan extends Component {
 
     render()
     {
-        return (
-            <div className="cp-home-slogan">
-                Home Slogan
-            </div>
-        );
+
     }
 }

@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import "home/resource/index.less";
 
 import Slogan from '../components/Slogan';
-
-import { getHomeGoodCourses } from 'base/actions/HomeAction';
+import GoodCourses from '../components/GoodCourses';
 
 import DaShen from 'home/components/DaShen'
 
@@ -30,9 +29,10 @@ class HomeContainer extends Component {
 
     componentDidMount()
     {
-        const dispatch = this.props.dispatch;
-        // dispatch(getHomeGoodCourses());
+
+
     }
+
 
     render()
     {
@@ -45,6 +45,7 @@ class HomeContainer extends Component {
 
                 </div>
                 <div className="good-courses">
+                    <GoodCourses />
                 </div>
                 <div className="comments">
                 </div>

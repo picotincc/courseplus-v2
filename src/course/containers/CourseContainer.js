@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import "course/resource/index.less";
 
+import Sidebar from "../components/Sidebar";
+
 
 class CourseContainer extends Component {
 
@@ -31,7 +33,12 @@ class CourseContainer extends Component {
     {
         return (
             <div className="cp-course-container">
-                课程详情
+                <div className="center-container">
+                    <div className="sidebar">
+                    </div>
+                    <div className="detail">
+                    </div>
+                </div>
             </div>
         );
     }

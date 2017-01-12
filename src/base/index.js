@@ -12,6 +12,19 @@ import routes from './routes';
 
 const rootElement = document.getElementById('root');
 
+function testFetch()
+{
+    const url = "/v1/carousel";
+    fetch(url, {
+        method: "GET"
+    }).then(function(response) {
+        return response.json();
+    }).then(res => {
+        console.log(res);
+    });
+}
+// testFetch();
+
 render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes}>

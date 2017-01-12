@@ -30,8 +30,16 @@ export default class SearchBar extends Component {
                 <div className="title">
                     <span>考研目标</span>
                 </div>
-                <div className="title">
-                    <span>考研目标</span>
+                <div className="school">
+
+                </div>
+                <div className="speciality">
+
+                </div>
+                <div className="search-btn">
+                    <div className="btn">
+                        <span>搜索</span>
+                    </div>
                 </div>
             </div>
         );

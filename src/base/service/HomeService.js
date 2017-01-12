@@ -13,7 +13,7 @@ export default class HomeService
 
     getGoodCourses()
     {
-        const url = "http://127.0.0.1:8888/comments";
+        const url = "http://127.0.0.1:8888/courselist";
         return new Promise((resolve, reject) => {
             fetch(url, {
               method: "GET"

@@ -6,7 +6,7 @@ import "home/resource/index.less";
 import Slogan from '../components/Slogan';
 import GoodCoursesContainer from './GoodCoursesContainer';
 import CarouselContainer from './CarouselContainer';
-import ScholarContainers from './ScholarContainers';
+import ContributorsContainer from './ContributorsContainer';
 
 
 class HomeContainer extends Component {
@@ -50,7 +50,7 @@ class HomeContainer extends Component {
                 <div className="comments">
                 </div>
                 <div className="contributors">
-                    <ScholarContainers />
+                    <ContributorsContainer />
                 </div>
             </div>
         );

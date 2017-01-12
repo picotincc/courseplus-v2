@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
-import ScholarItem from '../components/ScholarItem';
-import ScholarService from '../../base/service/ScholarService';
+import ContributorsItem from '../components/ContributorsItem';
+import ContributorsService from '../../base/service/ContributorsService';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import CarouselService from '../../base/service/CarouselService';
 
-class ScholarContainers extends Component {
+class ContributorsContainer extends Component {
 
     constructor (props) {
         super(props);
@@ -30,7 +30,7 @@ class ScholarContainers extends Component {
 
     componentDidMount()
     {
-        // ScholarService.getList().then((data) => {
+        // ContributorsService.getList().then((data) => {
         //   console.log(data);
         //   (data && data.length) && (this.setState({ item: data}));
         // }).catch((err) => {
@@ -50,7 +50,7 @@ class ScholarContainers extends Component {
       var settings = {
           autoplay: true,
           autoplaySpeed: 4000,
-          dots: true,
+          dots: false,
           infinite: true,
           speed: 500,
           slidesToShow: 1,
@@ -64,7 +64,7 @@ class ScholarContainers extends Component {
             ) : (
                 <Slider {...settings}>
                     {this.state.items.map((item) => (
-                        <div key={item.id}><ScholarItem item={item}/></div>
+                        <div key={item.id}><ContributorsItem item={item}/></div>
                     ))}
                 </Slider>
             )
@@ -75,10 +75,10 @@ class ScholarContainers extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//   };
-// }
+function mapStateToProps(state) {
+  return {
+  };
+}
 
-// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-// export default connect(mapStateToProps)(ScholarContainers);
+//包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
+export default connect(mapStateToProps)(ContributorsContainer);

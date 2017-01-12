@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import "home/resource/index.less";
 
 import Slogan from '../components/Slogan';
+import GoodCourses from './GoodCourses';
 import CarouselContainer from './CarouselContainer';
 import GoodCourses from '../components/GoodCourses';
 

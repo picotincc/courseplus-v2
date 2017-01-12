@@ -50,7 +50,7 @@ class HomeContainer extends Component {
                 <div className="comments">
                 </div>
                 <div className="contributors">
-                  <DaShen />
+                    <DaShen />
                 </div>
             </div>
         );

@@ -7,7 +7,7 @@ import Slogan from '../components/Slogan';
 
 import { getHomeGoodCourses } from 'base/actions/HomeAction';
 
-import DaShen from 'home/components/DaShen.js'
+import DaShen from 'home/components/DaShen'
 
 
 class HomeContainer extends Component {

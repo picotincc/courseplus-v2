@@ -6,7 +6,7 @@ import HomeService from 'base/service/HomeService';
 import GoodCourse from 'base/components/GoodCourse';
 
 
-export default class GoodCourses extends Component {
+export default class GoodCoursesContainer extends Component {
 
     constructor (props) {
         super(props);

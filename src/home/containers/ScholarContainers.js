@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import CarouselService from '../../base/service/CarouselService';
 
-export default class ScholarContainers extends Component {
+class ScholarContainers extends Component {
 
     constructor (props) {
         super(props);
@@ -81,4 +81,4 @@ function mapStateToProps(state) {
 }
 
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-export default connect(mapStateToProps)(ScholarContainers);
+// export default connect(mapStateToProps)(ScholarContainers);

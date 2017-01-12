@@ -6,7 +6,7 @@ export default class GoodCourse extends Component {
 
     constructor (props) {
         super(props);
-        this.handleListdataClick = this.handleListdataClick.bind(this);
+        this.handleTagClick = this.handleTagClick.bind(this);
     }
 
     static defaultProps = {
@@ -22,27 +22,27 @@ export default class GoodCourse extends Component {
 
     }
 
-    handleListdataClick(id){
-        FormatUtil.openNewTab("/course");
-    }
-
-    handleTagClick(school, discipline, event){
-        FormatUtil.openNewTab("/search");
-        event.stopPropagation();
-    }
-
     componentDidMount(){
 
     }
 
+    handleTagClick(event){
+        event.stopPropagation();
+        const data = this.props.data;
+        this.props.tagClick(data.school, data.discipline);
+    }
+
     render(){
-        const { data } = this.props;
+        const { data, listItemClick } = this.props;
 
         return(
-            <li key={data.id} className="course-item" onClick = {() => this.handleListdataClick(data.id)}>
+            <li key={data.id} className="course-item" onClick = {() => listItemClick(data.id)}>
                 <div className="course-info" style={{background:"url("+ data.coursebg +") no-repeat"}}>
                     <div className="title">{data.course}</div>
-                    <div className="name" onClick = {this.handleTagClick.bind(this,data.school,data.discipline)}><span>{data.school} {data.discipline}</span></div>
+                    <div className="name"
+                         onClick = {this.handleTagClick}>
+                         <span>{data.school} {data.discipline}</span>
+                     </div>
                     <Rate disabled allowHalf defaultValue={data.star} />
                 </div>
                 <div className="author-info">

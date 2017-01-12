@@ -23,7 +23,7 @@ function testFetch()
         console.log(res);
     });
 }
-testFetch();
+// testFetch();
 
 render(
     <Provider store={store}>

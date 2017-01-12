@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 
-class CarouselContainer extends Component {
+export default class CarouselContainer extends Component {
 
     constructor (props) {
         super(props);

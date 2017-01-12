@@ -8,6 +8,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import CarouselService from '../../base/service/CarouselService';
+
 export default class ScholarContainers extends Component {
 
     constructor (props) {
@@ -28,11 +30,18 @@ export default class ScholarContainers extends Component {
 
     componentDidMount()
     {
-        ScholarService.getList().then((data) => {
-          console.log(data);
-          (data && data.length) && (this.setState({ item: data}));
+        // ScholarService.getList().then((data) => {
+        //   console.log(data);
+        //   (data && data.length) && (this.setState({ item: data}));
+        // }).catch((err) => {
+        //   console.log(err);
+        // });
+
+        CarouselService.getList().then((data) => {
+            console.log(data);
+            (data && data.length) && (this.setState({ items: data }));
         }).catch((err) => {
-          console.log(err);
+            console.log(err);
         });
     }
 
@@ -55,7 +64,7 @@ export default class ScholarContainers extends Component {
             ) : (
                 <Slider {...settings}>
                     {this.state.items.map((item) => (
-                        <div key={item.id}><ScholarItem item={item}/></div>
+                        <div key={item.id}><CarouselItem item={item}/></div>
                     ))}
                 </Slider>
             )
@@ -63,7 +72,13 @@ export default class ScholarContainers extends Component {
         </div>
       )
 
-
-
     }
 }
+
+function mapStateToProps(state) {
+  return {
+  };
+}
+
+// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
+export default connect(mapStateToProps)(ScholarContainers);

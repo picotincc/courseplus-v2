@@ -7,7 +7,7 @@ import Slogan from '../components/Slogan';
 import GoodCoursesContainer from './GoodCoursesContainer';
 import CarouselContainer from './CarouselContainer';
 
-import DaShen from 'home/components/DaShen'
+import ScholarContainers from './ScholarContainers';
 
 
 class HomeContainer extends Component {
@@ -51,7 +51,7 @@ class HomeContainer extends Component {
                 <div className="comments">
                 </div>
                 <div className="contributors">
-                    <DaShen />
+                    <ScholarContainers />
                 </div>
             </div>
         );

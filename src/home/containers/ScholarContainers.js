@@ -64,7 +64,7 @@ class ScholarContainers extends Component {
             ) : (
                 <Slider {...settings}>
                     {this.state.items.map((item) => (
-                        <div key={item.id}><CarouselItem item={item}/></div>
+                        <div key={item.id}><ScholarItem item={item}/></div>
                     ))}
                 </Slider>
             )
@@ -75,10 +75,10 @@ class ScholarContainers extends Component {
     }
 }
 
-function mapStateToProps(state) {
-  return {
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//   };
+// }
 
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
 // export default connect(mapStateToProps)(ScholarContainers);

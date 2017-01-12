@@ -14,7 +14,7 @@ function login(state= "cc", action)
             return state;
     }
 }
-
+//demo
 function getGoodCourses(state = [], action)
 {
     switch (action.type)
@@ -29,7 +29,9 @@ function getGoodCourses(state = [], action)
     }
 }
 
+
+
 export const HomeReducer = {
     userId: login,
-    goodCourses: getGoodCourses
+    goodCourses: getGoodCourses,
 };

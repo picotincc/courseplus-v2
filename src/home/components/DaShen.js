@@ -33,7 +33,7 @@ export default class DaShen extends Component {
          console.log(a, b, c);
        };
 
-      return (
+    return (
              <div className="cp-home-dashen">
                <p className="title">大神入驻</p>
                <Carousel afterChange={onChange} dots={false}>

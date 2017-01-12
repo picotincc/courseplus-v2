@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import "home/resource/index.less";
 
 import Slogan from '../components/Slogan';
+import Comments from './CommentContainer';
 import GoodCourses from '../components/GoodCourses';
 
 
@@ -46,6 +47,7 @@ class HomeContainer extends Component {
                     <GoodCourses />
                 </div>
                 <div className="comments">
+                    <Comments />
                 </div>
                 <div className="contributors">
                 </div>

@@ -31,7 +31,7 @@ gulp.task("dev", [ "clean" ], cb => {
     new WebpackDevServer(complier, {
         publicPath: config.output.publicPath,
         hot: true,
-        // proxy: ""
+        proxy: config.devServer.proxy,
         historyApiFallback: true,
         stats: { colors: true },
         contentBase: "./public"

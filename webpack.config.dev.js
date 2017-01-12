@@ -89,7 +89,16 @@ module.exports = {
 
     devServer: {
         proxy: {
-
+            "/v1/*": {
+                "target": {
+                  "host": "120.26.65.167",
+                  "protocol": 'http:',
+                  "port": 8080
+                },
+                ignorePath: false,
+                changeOrigin: true,
+                secure: false,
+            }
         }
     }
 };

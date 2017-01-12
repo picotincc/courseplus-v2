@@ -28,7 +28,6 @@ class HomeContainer extends Component {
 
     componentDidMount()
     {
-        const dispatch = this.props.dispatch;
         // dispatch(getHomeGoodCourses());
     }
 
@@ -40,7 +39,7 @@ class HomeContainer extends Component {
                     <Slogan />
                 </div>
                 <div className="carousel">
-                    
+
                 </div>
                 <div className="good-courses">
                 </div>

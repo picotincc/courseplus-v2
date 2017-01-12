@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import "home/resource/index.less";
 
 import Slogan from '../components/Slogan';
-import GoodCourses from '../components/GoodCourses';
+import GoodCourses from './GoodCourses';
 
 
 class HomeContainer extends Component {

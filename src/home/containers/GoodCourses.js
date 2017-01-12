@@ -10,8 +10,9 @@ export default class GoodCourses extends Component {
 
     constructor (props) {
         super(props);
-        this._loadGoodCourses();
-        this.handleClick = this.handleClick.bind(this);
+        //this._loadGoodCourses();
+        this.handleMoreClick = this.handleMoreClick.bind(this);
+        this.handleListItemClick = this.handleListItemClick.bind(this);
     }
 
     static defaultProps = {
@@ -32,8 +33,16 @@ export default class GoodCourses extends Component {
 
     }
 
-    handleClick(){
+    handleMoreClick(){
         FormatUtil.openNewTab('/search');
+    }
+
+    handleListItemClick(id){
+        FormatUtil.openNewTab("/course");
+    }
+
+    handleTagClick(school, discipline){
+        FormatUtil.openNewTab("/search");
     }
 
     _loadGoodCourses()
@@ -54,12 +63,12 @@ export default class GoodCourses extends Component {
             <div className="cp-home-good-courses">
                 <div className="title">
                     <span className="name">精品课程</span>
-                    <span className="more" onClick={() => this.handleClick()}>更多 ></span>
+                    <span className="more" onClick={() => this.handleMoreClick()}>更多 ></span>
                 </div>
                 <ul className="courses-list">
                     {goodCourses.map((item,index) => {
                         return (
-                            <GoodCourse key={item.id} data={item} />
+                            <GoodCourse key={item.id} data={item} listItemClick={this.handleListItemClick} tagClick={this.handleTagClick}/>
                         );
                     })}
                 </ul>

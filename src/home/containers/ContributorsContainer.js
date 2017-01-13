@@ -8,7 +8,6 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FormatUtil from 'base/util/FormatUtil';
-import CarouselService from '../../base/service/CarouselService';
 
 class ContributorsContainer extends Component {
 
@@ -25,57 +24,56 @@ class ContributorsContainer extends Component {
     }
 
     state = {
-        items:[]
+        contributors:[]
     }
 
-    handleItemClick(linkUrl){
-      FormatUtil.openNewTab(linkUrl);
+    contributorsItemClick(id){
+      FormatUtil.openNewTab(id);
     }
 
     componentDidMount()
     {
         ContributorsService.getList().then((data) => {
           console.log(data);
-          (data && data.length) && (this.setState({ items: data}));
+          (data && data.length) && (this.setState({ contributors: data}));
         }).catch((err) => {
           console.log(err);
         });
-
-        // CarouselService.getList().then((data) => {
-        //     console.log(data);
-        //     (data && data.length) && (this.setState({ items: data }));
-        // }).catch((err) => {
-        //     console.log(err);
-        // });
     }
 
-    render()
-    {
-      var settings = {
+    render(){
+      const {contributors} = this.state;
+      var groupedContributors = []
+      while (contributors.length > 0) {
+        groupedContributors.push(contributors.splice(0,Math.min(4,contributors.length)))
+      }
+      let settings = {
           autoplay: false,
           dots: false,
           infinite: false,
           slidesToShow: 1,
           slidesToScroll: 1,
       };
-      return (
-        <div className="ContributorsCarousel">
-          {
-            (!this.state.items.length) ? (
-                <Icon type="loading" />
-            ) : (
+      return (groupedContributors.length) ?
+             (
+              <div className="cp-home-contributors">
+                <div className="title">大神入驻</div>
                 <Slider {...settings}>
-                    {this.state.items.map((item) => (
-                        <div key={item.id}><ContributorsItem item={item} handleClick={this.handleItemClick}/></div>
+                    {groupedContributors.map((items, index) => (
+                        <div key={items[0].id}><ContributorsItem contributors={items} contributorsItemClick={this.contributorsItemClick}/></div>
                     ))}
                 </Slider>
+              </div>
+            ):
+            (
+              <div className="cp-home-contributors">
+                  <div className="title">大神入驻</div>
+                  <Icon type="loading" />
+              </div>
             )
-          }
-        </div>
-      )
-
     }
 }
+
 
 function mapStateToProps(state) {
   return {

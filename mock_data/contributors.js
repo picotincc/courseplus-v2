@@ -1,100 +1,72 @@
 const data = {
     "/v1/contributors": {
         GET: {
-
               "data":[
-                    {
-                      "offset": 0,
-                      "limit": 0,
-                      "count": 0,
-                      "list": [
-                                {
-                                  "id": 1,
-                                  "name": "李更生",
-                                  "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-                                  "account": "阿萨德看了就爱上考",
-                                  "gender": 0,
-                                  "introduction": "阿克苏豆角啊看牢圣诞节快乐啊看牢神盾局阿萨德",
-                                  "description": "阿萨德阿萨德阿萨德阿萨德阿萨德阿达 请问额请问请问请问饿 阿萨德爱迪生",
-                                  "education": "南京大学"
-                                },{
-                                  "id": 2,
-                                  "name": "教科文",
-                                  "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-                                  "account": "爱是看得见",
-                                  "gender": 0,
-                                  "introduction": "而快去问了破千万饿哦平去哦排位",
-                                  "description": "我我欧赔温柔iew肉皮 轻微哦请问",
-                                  "education": "东南大学"
-                                }
-                              ]
-                    }
+                      {
+                        "id": 1,
+                        "name": "Jessie",
+                        "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                        "account": "南京大学企业管理专业研一 专业课119",
+                        "gender": 0,
+                        "introduction": "曾任教多家考研机构VIP一对一辅导",
+                        "description": "熟悉研究多年专业考研真题，结合自身考研实战经验，对管理学框架进行更适应考试的搭建及运用",
+                        "education": "南京大学"
+                      },{
+                        "id": 2,
+                        "name": "李港生",
+                        "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                        "account": "南京大学法律硕士（非法学）专业研一 专业基础课 127 专业综合课 130",
+                        "gender": 0,
+                        "introduction": "考研经验分享曾被法硕联盟论坛精选推送",
+                        "description": "研究历年真题、南大老师讲课音频，准确把握命题风格及重点",
+                        "education": "东南大学"
+                        },{
+                          "id": 3,
+                          "name": "李港生",
+                          "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                          "account": "南京大学法律硕士（非法学）专业研一 专业基础课 127 专业综合课 130",
+                          "gender": 0,
+                          "introduction": "考研经验分享曾被法硕联盟论坛精选推送",
+                          "description": "研究历年真题、南大老师讲课音频，准确把握命题风格及重点",
+                          "education": "东南大学"
+                        },{
+                          "id": 4,
+                          "name": "李港生",
+                          "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                          "account": "南京大学法律硕士（非法学）专业研一 专业基础课 127 专业综合课 130",
+                          "gender": 0,
+                          "introduction": "考研经验分享曾被法硕联盟论坛精选推送",
+                          "description": "研究历年真题、南大老师讲课音频，准确把握命题风格及重点",
+                          "education": "东南大学"
+                        },{
+                          "id": 5,
+                          "name": "李港生",
+                          "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                          "account": "南京大学法律硕士（非法学）专业研一 专业基础课 127 专业综合课 130",
+                          "gender": 0,
+                          "introduction": "考研经验分享曾被法硕联盟论坛精选推送",
+                          "description": "研究历年真题、南大老师讲课音频，准确把握命题风格及重点",
+                          "education": "东南大学"
+                        },{
+                          "id": 6,
+                          "name": "李港生",
+                          "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                          "account": "南京大学法律硕士（非法学）专业研一 专业基础课 127 专业综合课 130",
+                          "gender": 0,
+                          "introduction": "考研经验分享曾被法硕联盟论坛精选推送",
+                          "description": "研究历年真题、南大老师讲课音频，准确把握命题风格及重点",
+                          "education": "东南大学"
+                        },{
+                          "id": 7,
+                          "name": "李港生",
+                          "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
+                          "account": "南京大学法律硕士（非法学）专业研一 专业基础课 127 专业综合课 130",
+                          "gender": 0,
+                          "introduction": "考研经验分享曾被法硕联盟论坛精选推送",
+                          "description": "研究历年真题、南大老师讲课音频，准确把握命题风格及重点",
+                          "education": "东南大学"
+                        }
                   ]
-
-
-            // "data": [
-            //           [
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             },
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             },
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             },
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             }
-            //           ],
-            //           [
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             },
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             },
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             },
-            //             {
-            //                 "id": 1,
-            //                 "img_url": "http://ojnq0puar.bkt.clouddn.com/banner.png",
-            //                 "link_url": "http://www.baidu.com",
-            //                 "priority": 0,
-            //                 "state": "UNACTIVE"
-            //             }
-            //           ]
-            //
-            // ]
         }
     }
 }

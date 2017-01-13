@@ -49,13 +49,10 @@ class ContributorsContainer extends Component {
     {
       var settings = {
           autoplay: false,
-          autoplaySpeed: 4000,
           dots: false,
           infinite: false,
-          speed: 500,
           slidesToShow: 1,
           slidesToScroll: 1,
-          touchMove:false,
       };
       return (
         <div className="ContributorsCarousel">

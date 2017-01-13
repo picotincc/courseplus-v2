@@ -29,24 +29,24 @@ class ContributorsContainer extends Component {
     }
 
     handleItemClick(linkUrl){
-      FormatUtil.openNewTab("http://www.baidu.com");
+      FormatUtil.openNewTab(linkUrl);
     }
 
     componentDidMount()
     {
-        // ContributorsService.getList().then((data) => {
-        //   console.log(data);
-        //   (data && data.length) && (this.setState({ item: data}));
-        // }).catch((err) => {
-        //   console.log(err);
-        // });
-
-        CarouselService.getList().then((data) => {
-            console.log(data);
-            (data && data.length) && (this.setState({ items: data }));
+        ContributorsService.getList().then((data) => {
+          console.log(data);
+          (data && data.length) && (this.setState({ items: data}));
         }).catch((err) => {
-            console.log(err);
+          console.log(err);
         });
+
+        // CarouselService.getList().then((data) => {
+        //     console.log(data);
+        //     (data && data.length) && (this.setState({ items: data }));
+        // }).catch((err) => {
+        //     console.log(err);
+        // });
     }
 
     render()

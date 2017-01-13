@@ -1,0 +1,118 @@
+.cp-major-search
+{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &.focus
+    {
+        background-color: #ffffff;
+    }
+
+    > input
+    {
+        border: 0;
+        background: transparent;
+
+
+        &::placeholder
+        {
+            color: @brownish-grey;
+        }
+    }
+
+    > .icon
+    {
+        margin-left: 40px;
+        transition: All 0.7s ease-in-out;
+
+        &.dropdown
+        {
+            transform: rotate(180deg);
+        }
+    }
+
+    > .suggestion
+    {
+        display: none;
+        z-index: 999;
+        position: absolute;
+        top: 108%;
+        right: 0;
+        width: 200%;
+        background: #ffffff;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        &.show
+        {
+            display: block;
+        }
+
+        > .triangle
+        {
+            top: -13px;
+            left: 420px;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-width: 7px;
+            border-style: solid dashed dashed dashed;
+            border-color: transparent transparent @white transparent;
+        }
+
+        > .major-list
+        {
+            > li
+            {
+                display: flex;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: @brownish-grey;
+                margin-bottom: 16px;
+
+                > .category
+                {
+                    flex: 0 0 auto;
+                    width: 124px;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+
+                > .major-box
+                {
+                    display: flex;
+                    flex-wrap: wrap;
+                    font-size: 14px;
+                    margin-top: 4px;
+
+                    align-content: space-between;
+
+                    > .major
+                    {
+                        > .name
+                        {
+                            cursor: pointer;
+                            &:hover
+                            {
+                                color: @cool-blue;
+                            }
+                        }
+
+                        > .icon
+                        {
+                            font-size: 12px;
+                            margin-left: 12px;
+                            margin-right: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

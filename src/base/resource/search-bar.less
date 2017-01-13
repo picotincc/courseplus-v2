@@ -27,9 +27,20 @@
         flex: 0 0 auto;
         width: 360px;
         border-right: solid 1px @warm-grey;
+
+        &.warning
+        {
+            border: 1px solid @light-red;
+            color: @light-red;
+
+            *::placeholder
+            {
+                color: @light-red;
+            }
+        }
     }
 
-    > .speciality
+    > .major
     {
         flex: 0 0 auto;
         width: 360px;
@@ -51,7 +62,13 @@
             display: flex;
             justify-content: center;
             padding-top: 3px;
-            
+            cursor: pointer;
+
+            &:hover
+            {
+                background-color: @light-red;
+            }
+
             > span
             {
                 color: @white;

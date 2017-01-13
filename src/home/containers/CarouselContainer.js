@@ -29,12 +29,12 @@ class CarouselContainer extends Component {
     }
 
     componentDidMount() {
-        CarouselService.getList().then((data) => {
-            console.log(data);
-            (data && data.length) && (this.setState({ items: data }));
-        }).catch((err) => {
-            console.log(err);
-        });
+        // CarouselService.getList().then((data) => {
+        //     console.log(data);
+        //     (data && data.length) && (this.setState({ items: data }));
+        // }).catch((err) => {
+        //     console.log(err);
+        // });
     }
 
 

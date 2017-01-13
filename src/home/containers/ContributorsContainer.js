@@ -55,9 +55,10 @@ class ContributorsContainer extends Component {
           speed: 500,
           slidesToShow: 1,
           slidesToScroll: 1,
+          touchMove:false,
       };
       return (
-        <div className="carousel">
+        <div className="ContributorsCarousel">
           {
             (!this.state.items.length) ? (
                 <Icon type="loading" />

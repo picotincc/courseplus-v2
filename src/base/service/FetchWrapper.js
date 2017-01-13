@@ -7,19 +7,15 @@
 import QueryUtil from '../util/QueryUtil';
 import UrlUtil from '../util/UrlUtil';
 
-// TODO 上线时可配置，不需要以"/"结尾
-const HOST_URL = "";
+// 后台api地址，不需要以"/"结尾
+const HOST_URL = "http://127.0.0.1:8080";
 
 export default function(...args) {
     let [ url, config ] = args;
 
     // 处理Url
     var urlComps = UrlUtil.parse(url);
-    if(!urlComps.host) {
-        args[0] = HOST_URL + '/' + urlComps.pathname || '';
-    } else {
-        args[0] = UrlUtil.stringify(urlComps).split('?')[0];
-    }
+    args[0] = HOST_URL + urlComps.pathname || '';
 
     // 处理其他config
     if(config) {

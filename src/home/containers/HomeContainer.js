@@ -5,7 +5,6 @@ import "home/resource/index.less";
 
 import Slogan from '../components/Slogan';
 import Comments from './CommentContainer';
-import GoodCourses from '../components/GoodCourses';
 import GoodCoursesContainer from './GoodCoursesContainer';
 import CarouselContainer from './CarouselContainer';
 

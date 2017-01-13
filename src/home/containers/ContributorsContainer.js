@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
 import ContributorsItem from '../components/ContributorsItem';
-import ContributorsService from '../../base/service/ContributorsService';
+import ContributorsService from 'base/service/ContributorsService';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import FormatUtil from 'base/util/FormatUtil';
 import CarouselService from '../../base/service/CarouselService';
 
 class ContributorsContainer extends Component {
@@ -26,6 +26,10 @@ class ContributorsContainer extends Component {
 
     state = {
         items:[]
+    }
+
+    handleItemClick(linkUrl){
+      FormatUtil.openNewTab("http://www.baidu.com");
     }
 
     componentDidMount()
@@ -62,7 +66,7 @@ class ContributorsContainer extends Component {
             ) : (
                 <Slider {...settings}>
                     {this.state.items.map((item) => (
-                        <div key={item.id}><ContributorsItem item={item}/></div>
+                        <div key={item.id}><ContributorsItem item={item} handleClick={this.handleItemClick}/></div>
                     ))}
                 </Slider>
             )

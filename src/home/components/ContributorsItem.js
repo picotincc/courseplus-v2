@@ -8,6 +8,19 @@ class ContributorsItem extends Component {
 
     }
 
+    mouseDownX = null;
+
+    handleMouseDown(e){
+      this.mouseDownX = e.clientX;
+    }
+
+    handleMouseUp(linkUrl,e){
+      if(Math.abs(e.clientX - this.mouseDownX) < 5) {
+          this.props.handleClick && this.props.handleClick(linkUrl, e);
+      }
+      this.mouseDownX = null;
+    }
+
     render () {
         let { item } = this.props;
 
@@ -20,7 +33,9 @@ class ContributorsItem extends Component {
             <div>
                   {daLists.map(item => {
                    return (
-                     <div className="item" key={item}>
+                     <div className="item" key={item}
+                       onMouseDown={this.handleMouseDown.bind(this)}
+                       onMouseUp={this.handleMouseUp.bind(this,item.linkUrl)}>
                        <p><img className="item-img" src={imgSrc}/></p>
                        <p className="item-name">李刚生</p>
                        <p className="item-title">南京大学企业管理专业一专业课18</p>

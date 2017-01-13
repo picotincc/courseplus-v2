@@ -6,6 +6,7 @@ const open = require("gulp-open");
 const rimraf = require("rimraf");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
+const MockServer = require("./server");
 
 gulp.task("clean", cb => {
     rimraf("./public/assets", cb);
@@ -42,5 +43,10 @@ gulp.task("dev", [ "clean" ], cb => {
         const uri = "http://127.0.0.1:3000/";
         gutil.log("[webpack-dev-server]", uri);
         gulp.src("").pipe(open({ uri }));
+    });
+
+    const mockServerPort = 8080;
+    MockServer.listen(mockServerPort, () => {
+        console.log(`Mock server is now running at port ${mockServerPort}...`);
     });
 });

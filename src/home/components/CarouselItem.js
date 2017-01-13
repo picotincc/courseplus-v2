@@ -7,10 +7,26 @@ class CarouselItem extends Component {
 
     }
 
+    mouseDownX = null;
+
+    handleMouseDown(e) {
+        this.mouseDownX = e.clientX;
+    }
+
+    handleMouseUp(linkUrl, e) {
+        if(Math.abs(e.clientX - this.mouseDownX) < 5) {
+            this.props.handleClick && this.props.handleClick(linkUrl, e);
+        }
+        this.mouseDownX = null;
+    }
+
     render () {
         let { item } = this.props;
         return (
-            <a href={item.link_url} ><img src={item.img_url} className="slider-image" /></a>
+            <img src={item.img_url} className="slider-image"
+              onMouseDown={this.handleMouseDown.bind(this)}
+              onMouseUp={this.handleMouseUp.bind(this, item.link_url)}
+            />
         )
     }
 }

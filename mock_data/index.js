@@ -1,5 +1,6 @@
 const mockData = Object.assign({}, 
-    requireModule('./carousel')
+    requireModule('./carousel'),
+    requireModule('./homeComment')
 );
 
 module.exports = mockData;

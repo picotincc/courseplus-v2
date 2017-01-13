@@ -12,6 +12,31 @@
         color:@armadillo;
         margin-bottom: 20px;
     }
+    .slick-arrow {
+        &.slick-prev, &.slick-next {
+            &:before {
+                font-family: "anticon" !important;
+                color: @cool-blue;
+                opacity: 1;
+                transition: color .3s ease;
+            }
+            &:hover:before {
+                color: @seafoam-blue;
+            }
+        }
+        &.slick-prev {
+            left: -30px;
+            &:before {
+                content: "\E60D";
+            }
+        }
+        &.slick-next {
+            right: -30px;
+            &:before {
+                content: "\E60C";
+            }
+        }
+    }
 }
 
 

@@ -3,8 +3,17 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    > .titleBar{
+        width: 100%;
+        height: 172px;
+        background-image: linear-gradient(286deg, #60cdc9, #41a3b5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     > .center-container{
         width: 1080px;
@@ -13,15 +22,15 @@
         justify-content: space-between;
 
         > .sidebar{
+            overflow: hidden;
+            position: relative;
             width: 180px;
-            height: 300px;
-            border: 1px solid #ddd;
         }
 
         > .detail{
+            overflow: hidden;
             width: 810px;
-            height: 300px;
-            border: 1px solid #ddd;
+
         }
     }
 

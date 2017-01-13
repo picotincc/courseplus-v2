@@ -10,7 +10,7 @@ export default class GoodCoursesContainer extends Component {
 
     constructor (props) {
         super(props);
-        //this._loadGoodCourses();
+        this._loadGoodCourses();
         this.handleMoreClick = this.handleMoreClick.bind(this);
         this.handleListItemClick = this.handleListItemClick.bind(this);
     }

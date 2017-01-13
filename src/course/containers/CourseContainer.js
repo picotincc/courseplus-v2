@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import "course/resource/index.less";
 
+import TitleBar from "../components/TitleBar";
 import Sidebar from "../components/Sidebar";
+import TopTabs from "../components/TopTabs";
 
 
 class CourseContainer extends Component {
@@ -33,10 +35,15 @@ class CourseContainer extends Component {
     {
         return (
             <div className="cp-course-container">
+                <div className="titleBar">
+                    <TitleBar />
+                </div>
                 <div className="center-container">
                     <div className="sidebar">
+                        <Sidebar />
                     </div>
                     <div className="detail">
+                        <TopTabs />
                     </div>
                 </div>
             </div>

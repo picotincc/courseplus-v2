@@ -35,7 +35,7 @@ export default class GoodCourse extends Component {
                 <div className="course-info" style={{background:"url("+ data.coursebg +") no-repeat"}}>
                     <div className="title">{data.course}</div>
                     <div className="tag-wrapper">
-                        <Tag school={data.school} discipline={data.discipline} tagClick={this.props.tagClick} />
+                        <Tag school={data.school} discipline={data.discipline} />
                     </div>
                     <Rate disabled allowHalf defaultValue={data.star} />
                 </div>

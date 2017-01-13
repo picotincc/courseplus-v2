@@ -41,10 +41,6 @@ export default class GoodCoursesContainer extends Component {
         FormatUtil.openNewTab("/course");
     }
 
-    handleTagClick(school, discipline){
-        FormatUtil.openNewTab("/search");
-    }
-
     _loadGoodCourses()
     {
         HomeService.getInstance().getGoodCourses()
@@ -68,7 +64,7 @@ export default class GoodCoursesContainer extends Component {
                 <ul className="courses-list">
                     {goodCourses.map((item,index) => {
                         return (
-                            <GoodCourse key={item.id} data={item} listItemClick={this.handleListItemClick} tagClick={this.handleTagClick}/>
+                            <GoodCourse key={item.id} data={item} listItemClick={this.handleListItemClick} />
                         );
                     })}
                 </ul>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FormatUtil from '../util/FormatUtil';
 
 export default class Tag extends Component {
 
@@ -27,7 +28,7 @@ export default class Tag extends Component {
         event.stopPropagation();
         const school = this.props.school;
         const discipline = this.props.discipline;
-        this.props.tagClick(school, discipline);
+        FormatUtil.openNewTab("/search");
     }
 
     render(){

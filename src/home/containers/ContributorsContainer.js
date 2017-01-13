@@ -48,10 +48,10 @@ class ContributorsContainer extends Component {
     render()
     {
       var settings = {
-          autoplay: true,
+          autoplay: false,
           autoplaySpeed: 4000,
           dots: false,
-          infinite: true,
+          infinite: false,
           speed: 500,
           slidesToShow: 1,
           slidesToScroll: 1,

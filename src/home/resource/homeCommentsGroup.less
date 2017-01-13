@@ -1,0 +1,98 @@
+.comment-list {
+    display: flex;    
+    flex-grow: 1;
+    > .home-comment {
+        cursor:pointer;
+        background: white;
+        flex-grow: 1;
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid @pinkish-grey;
+        border-radius: 4px;
+        > .top-part {
+            height:110px;
+            display: flex;
+            flex-direction: row;
+
+            > .userInfo {
+                width: 40px;
+                margin: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img {
+                    width:40px;
+                    height:40px;
+                    border-radius: 50%;
+                    margin-bottom: 10px;
+                }
+                
+                .teacherName {
+                        font-size: 12px;
+                        color: @brownish-grey;
+                }
+            
+            }
+
+            > .courseInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                flex-grow: 1;
+                align-items: flex-start;
+                > .title {
+                    font-size: 18px;
+                    color: @seafoam-blue;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                }
+
+                > .tag {
+                    font-size: 12px;
+                    color: @brownish-grey;
+                    margin-top: 5px;
+                    padding: 5px 10px 5px 10px;
+                    border:0.5px solid @brownish-grey;
+                    border-radius: 4px;
+                }
+
+                > .tag:hover {
+                    background: @cool-blue;
+                    border:0.5px solid @cool-blue;
+                    color: white;
+
+                }
+            }
+        }
+
+        > .divider {
+            height:0.5px;
+            background: @pinkish-grey;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        > .bottom-part {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            font-size: 12px;
+            color: @brownish-grey;
+            .owner {
+                align-self: flex-end;
+            }
+        }
+    }
+
+    > .home-comment:last-child {
+        margin-right: 0;
+    }
+
+    > .home-comment:hover {
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3)
+    }
+        
+}

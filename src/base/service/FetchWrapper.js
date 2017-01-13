@@ -25,16 +25,16 @@ export default function(...args) {
     if(config) {
         if (config.query) {
             const query = config.query;
-            const queryString = QueryUtil.stringify(query);
-            args[0] = `${args[0]}?${queryString}`;
+            const queryString = QueryUtil.stringify(query, '?');
+            args[0] = `${args[0]}${queryString}`;
             delete config.query;
         }
-        if (config.body && typeof(body) === 'object') {
+        if (config.body && typeof(config.body) === 'object') {
             config.body = JSON.stringify(config.body);
         }
     }
     
-    args[1] = Object.assign({}, { 'credentials': 'include', 'content-type': 'application/json'}, args[1] || {});
+args[1] = Object.assign({}, { 'credentials': 'include', 'headers': {'Content-Type': 'application/json'}}, args[1] || {});
     return new Promise((resolve, reject) => {
         self.fetch.apply(self, args).then((res) => {
             return res.json();

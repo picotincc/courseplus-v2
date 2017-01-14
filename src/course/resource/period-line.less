@@ -6,14 +6,23 @@
 @period-line-info-size: 12px;
 @period-line-info-size-active: 14px;
 
+.period-line-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
 .period-line {
     padding: 18px 10px 0 10px;
     background-color: white;
     max-width: 810px;
-    height: 200px;
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+
+    .period-line-wrapper & {
+        height: 230px;
+    }
+
     .locator {
         width: 132px;
         padding: 0 12px;

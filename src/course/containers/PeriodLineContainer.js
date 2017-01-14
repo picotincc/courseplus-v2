@@ -34,7 +34,9 @@ class PeriodLineContainer extends Component {
 
     render() {
         return (
-            <PeriodLine periods={this.props.coursePeriods} handleSelectPeriod={this.handleSelectPeriod.bind(this)}/>
+            <div className="period-line-wrapper">
+                <PeriodLine periods={this.props.coursePeriods} handleSelectPeriod={this.handleSelectPeriod.bind(this)}/>
+            </div>
         );
     }
 }

@@ -29,7 +29,7 @@ export default class TopTabs extends Component {
         const TabPane = Tabs.TabPane;
 
         return(
-            <Affix>        
+            <Affix>
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="课程大纲" key="1">
                         <PeriodLineContainer />

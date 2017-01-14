@@ -32,8 +32,8 @@ export default class GoodCourse extends Component {
 
         return(
             <li key={data.id} className="course-item" onClick = {() => listItemClick(data.id)}>
-                <div className="course-info" style={{background:"url("+ data.bg_url +") no-repeat"}}>
-                    <div className="title">{data.name}</div>
+                <div className="course-info" style={{background:"url("+ data.subject.img_url +") no-repeat"}}>
+                    <div className="title">{data.subject.code+data.subject.name}</div>
                     <div className="tag-wrapper">
                         <Tag school={data.major.school.name} discipline={data.major.code + data.major.name} tagClick={tagClick}/>
                     </div>
@@ -43,7 +43,7 @@ export default class GoodCourse extends Component {
                     <div className="author">
                         <i className="icon" style = {{"background": "url(" + data.teacher.img_url + ") no-repeat" }}></i>
                         <span className="name">{data.teacher.name}</span>
-                        <span className="purchase">{data.purchase}人最近购买</span>
+                        <span className="purchase">{data.buyer_num}人最近购买</span>
                     </div>
                     <div className="honour">{data.teacher.introduction}</div>
                     <div className="lable-group">

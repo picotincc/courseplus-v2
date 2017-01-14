@@ -48,6 +48,8 @@ class CourseContainer extends Component {
                 });
             }
         }
+        thisContainer.refs['sidebar'].style.height = thisContainer.refs['detail'].offsetHeight + 'px';
+
     }
 
     render()
@@ -58,7 +60,7 @@ class CourseContainer extends Component {
                     <TitleBar />
                 </div>
                 <div className="center-container" >
-                    <div className="sidebar">
+                    <div ref="sidebar" className="sidebar">
                         <Sidebar curClass={this.state.curClass}/>
                     </div>
                     <div ref="detail" className="detail">

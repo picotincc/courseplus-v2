@@ -1,0 +1,101 @@
+.cp-home-contributorsItem{
+  height: 260px;
+  display: flex;
+  font: @font-family;
+
+  > .item{
+    cursor:pointer;
+    background: white;
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid @pinkish-grey;
+    border-radius: 4px;
+    max-width: 24%;
+
+    > .item-img{
+        width: 60px;
+        height: 60px;
+        align-self: center;
+        border-radius: 50%;
+        margin-top: 20px;
+        }
+    > .item-name{
+        margin-top: 12px;
+        color: @cool-blue;
+        font-size: 18px;
+        height: 25px;
+        text-align: center;
+        }
+     > .item-account{
+        font-size: 12px;
+        color: @brownish-grey;
+        margin: 10px 15px 0 15px;
+        text-align: left;
+        }
+      > .item-introduction{
+        font-size: 12px;
+        color: @brownish-grey;
+        margin: 15px 15px 0 15px;
+        text-align: left;
+        word-break: break-all;
+        }
+      > .item-description{
+        font-size: 12px;
+        color: @brownish-grey;
+        margin: 0 15px 0 15px;
+        text-align: left;
+        word-break: break-all;
+        }
+    }
+    > .item:hover{
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      -moz-transition: .3s;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      }
+    > .item:last-child {
+        margin-right: 0;
+      }
+}
+
+.cp-home-contributors {
+    width: 1080px;
+    height: 308px;
+
+    > .title{
+      font-size:20px;
+      color:@armadillo;
+      margin-bottom: 20px;
+      text-align: left;
+      }
+
+    .anticon-loading {
+        font-size: 50px;
+        line-height: 308px;
+    }
+
+    .slick-arrow {
+        &.slick-prev {
+            left: -30px;
+            &:before {
+                font-family: "anticon" !important;
+                content: "\E60D";
+                color: @cool-blue;
+            }
+        }
+        &.slick-next {
+            right: -30px;
+            &:before {
+                font-family: "anticon" !important;
+                content: "\E60C";
+                color: @cool-blue;
+            }
+        }
+        &.slick-disabled {
+          display: none !important;
+        }
+    }
+}

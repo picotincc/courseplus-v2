@@ -7,6 +7,7 @@ import Slogan from '../components/Slogan';
 import HomeComments from './HomeCommentContainer';
 import GoodCoursesContainer from './GoodCoursesContainer';
 import CarouselContainer from './CarouselContainer';
+import ContributorsContainer from './ContributorsContainer';
 
 
 class HomeContainer extends Component {
@@ -51,6 +52,7 @@ class HomeContainer extends Component {
                     <HomeComments />
                 </div>
                 <div className="contributors">
+                    <ContributorsContainer />
                 </div>
             </div>
         );

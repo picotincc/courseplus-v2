@@ -1,0 +1,88 @@
+.cp-school-search
+{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &.focus
+    {
+        background-color: #ffffff;
+    }
+
+    > input
+    {
+        border: 0;
+        background: transparent;
+
+
+        &::placeholder
+        {
+            color: @brownish-grey;
+        }
+    }
+
+    > .icon
+    {
+        margin-left: 40px;
+        transition: All 0.7s ease-in-out;
+
+        &.dropdown
+        {
+            transform: rotate(180deg);
+        }
+    }
+
+    > .suggestion
+    {
+        display: none;
+        z-index: 999;
+        position: absolute;
+        top: 108%;
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        &.show
+        {
+            display: block;
+        }
+
+        > .triangle
+        {
+            top: -13px;
+            left: 16px;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-width: 7px;
+            border-style: solid dashed dashed dashed;
+            border-color: transparent transparent @white transparent;
+        }
+
+        > .school-list
+        {
+            > li
+            {
+                text-align: center;
+                cursor: pointer;
+
+                > img
+                {
+                    width: 230px;
+                    margin: 10px 20px;
+                }
+
+                &:hover
+                {
+                    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+    }
+}

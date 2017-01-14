@@ -22,7 +22,7 @@ export default class SearchContainer extends Component {
 
     componentDidMount()
     {
-
+        console.log(this.props.params);
     }
 
     render()

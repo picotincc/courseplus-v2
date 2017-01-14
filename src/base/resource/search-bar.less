@@ -1,0 +1,79 @@
+.cp-search-bar
+{
+    width: 1080px;
+    height: 80px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: solid 1px @warm-grey;
+
+    font-size: 20px;
+    font-weight: 500;
+    color: @brownish-grey;
+
+    display: flex;
+
+    > .title
+    {
+        flex: 0 0 auto;
+        width: 180px;
+        border-right: solid 1px @warm-grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    > .school
+    {
+        flex: 0 0 auto;
+        width: 360px;
+        border-right: solid 1px @warm-grey;
+
+        &.warning
+        {
+            border: 1px solid @light-red;
+            color: @light-red;
+
+            *::placeholder
+            {
+                color: @light-red;
+            }
+        }
+    }
+
+    > .major
+    {
+        flex: 0 0 auto;
+        width: 360px;
+        border-right: solid 1px @warm-grey;
+    }
+
+    > .search-btn
+    {
+        flex: 0 0 auto;
+        width: 180px;
+
+        > .btn
+        {
+            margin: 20px 45px;
+            width: 88px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: @coral-pink;
+            display: flex;
+            justify-content: center;
+            padding-top: 3px;
+            cursor: pointer;
+
+            &:hover
+            {
+                background-color: @light-red;
+            }
+
+            > span
+            {
+                color: @white;
+                font-size: 20px;
+            }
+        }
+    }
+}

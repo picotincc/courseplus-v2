@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
 import CarouselItem from '../components/CarouselItem';
-import CarouselService from '../../base/service/CarouselService';
+import CarouselService from 'base/service/CarouselService';
+import FormatUtil from 'base/util/FormatUtil';
+
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -37,6 +39,10 @@ class CarouselContainer extends Component {
         // });
     }
 
+    handleItemClick(linkUrl, e) {
+        FormatUtil.openNewTab(linkUrl);
+    }
+
 
     render() {
         var settings = {
@@ -47,6 +53,7 @@ class CarouselContainer extends Component {
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
+            pauseOnHover: true
         };
         return (
             <div className="carousel">
@@ -56,7 +63,7 @@ class CarouselContainer extends Component {
                 ) : (
                     <Slider {...settings}>
                         {this.state.items.map((item) => (
-                            <div key={item.id}><CarouselItem item={item}/></div>
+                            <div key={item.id}><CarouselItem item={item} handleClick={this.handleItemClick}/></div>
                         ))}
                     </Slider>
                 )

@@ -1,3 +1,37 @@
+/**
+ * Query工具类
+ */
+
+const QueryUtil = {
+    /**
+     * 转换query字符串到对象
+     * 
+     * @param {String} str Query字符串，例如: "?a=1", "a=1"
+     * 
+     * @return {Object} 解析得到的对象
+     */
+    parse: function(str) {
+        if (null == str || '' == str) return {};
+        var options = {};
+        options.separator = options.separator || '&';
+        if(str.indexOf('?') === 0) {
+            str = str.substring(1);
+        }
+        return 'object' == typeof str ? parseObject(str) : parseString(str, options);
+    },
+    /**
+     * 转换对象到query字符串
+     * 
+     * @param {Object} obj Query对象
+     * @param {String} prefix 前缀，一般使用 "?" 得到 "?a=1&b=1" , 也有可能使用 "&" 得到 "&a=1&b=1"
+     * 
+     * @return {String} Query字符串
+     */
+    stringify: function(obj, prefix) {
+        return (prefix || '') + stringify(obj, undefined);
+    }
+}
+
 var toString = Object.prototype.toString;
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -174,6 +208,18 @@ function parseString(str, options) {
     return compact(ret);
 }
 
+function stringify(obj, prefix) {
+    if (isArray(obj)) {
+        return stringifyArray(obj, prefix);
+    } else if ('[object Object]' == toString.call(obj)) {
+        return stringifyObject(obj, prefix);
+    } else if ('string' == typeof obj) {
+        return stringifyString(obj, prefix);
+    } else {
+        return prefix + '=' + encodeURIComponent(String(obj));
+    }
+}
+
 function stringifyString(str, prefix) {
     if (!prefix) throw new TypeError('stringify expects an object');
     return prefix + '=' + encodeURIComponent(str);
@@ -238,22 +284,4 @@ function decode(str) {
     }
 }
 
-export default {
-    stringify: function(obj, prefix) {
-        if (isArray(obj)) {
-            return stringifyArray(obj, prefix);
-        } else if ('[object Object]' == toString.call(obj)) {
-            return stringifyObject(obj, prefix);
-        } else if ('string' == typeof obj) {
-            return stringifyString(obj, prefix);
-        } else {
-            return prefix + '=' + encodeURIComponent(String(obj));
-        }
-    },
-    parse: function(str, options) {
-        if (null == str || '' == str) return {};
-        options = options || {};
-        options.separator = options.separator || '&';
-        return 'object' == typeof str ? parseObject(str) : parseString(str, options);
-    }
-}
+export default QueryUtil

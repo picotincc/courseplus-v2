@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
 import FormatUtil from 'base/util/FormatUtil';
-import HomeGoodCoursesService from 'base/service/HomeGoodCoursesService';
+import CourseService from 'base/service/CourseService';
 import GoodCourse from 'base/components/GoodCourse';
 
 
@@ -26,7 +26,7 @@ export default class GoodCoursesContainer extends Component {
     }
 
     componentDidMount(){
-        HomeGoodCoursesService.getList().then((data) => {
+        CourseService.getGoodCourses().then((data) => {
             console.log(data);
             (data) && (this.setState({ goodCourses: data }));
         }).catch((err) => {

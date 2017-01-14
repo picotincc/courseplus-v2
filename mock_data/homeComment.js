@@ -15,7 +15,7 @@ const data = {
                     name: "环境化学",
                     school: {
                         name: "南京大学",
-                    },    
+                    },
                 },
                 code: "083001",
             },
@@ -35,7 +35,7 @@ const data = {
                     name: "环境化学",
                     school: {
                         name: "南京大学",
-                    },    
+                    },
                 },
                 code: "083001",
             },
@@ -55,7 +55,7 @@ const data = {
                     name: "环境化学",
                     school: {
                         name: "南京大学",
-                    },    
+                    },
                 },
                 code: "083001",
             },
@@ -75,7 +75,7 @@ const data = {
                     name: "环境化学",
                     school: {
                         name: "南京大学",
-                    },    
+                    },
                 },
                 code: "083001",
                 },

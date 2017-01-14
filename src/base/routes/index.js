@@ -38,6 +38,12 @@ const myCourse = (location, callback) => {
 	}, 'mycourse');
 };
 
+const live = (location, callback) => {
+	require.ensure(['live/containers/LiveContainer.js'], require => {
+		callback(null, require('live/containers/LiveContainer.js').default);
+	}, 'live');
+};
+
 
 const routes = (
     <div>
@@ -49,6 +55,7 @@ const routes = (
 			<Route path='user' getComponent={user} />
 			<Route path='order' getComponent={order} />
 			<Route path='mycourse' getComponent={myCourse} />
+			<Route path='live' getComponent={live} />
 		</Route>
     </div>
 );

@@ -1,6 +1,10 @@
-const mockData = Object.assign({}, 
+
+const mockData = Object.assign({},
     requireModule('./carousel'),
-    requireModule('./homeComment')
+    requireModule('./contributors'),
+    requireModule('./homeComment'),
+    requireModule('./homeGoodCourses')
+
 );
 
 module.exports = mockData;

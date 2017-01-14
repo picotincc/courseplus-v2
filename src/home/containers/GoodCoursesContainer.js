@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { Icon } from 'antd';
 import FormatUtil from 'base/util/FormatUtil';
-
-import HomeService from 'base/service/HomeService';
-
+import HomeGoodCoursesService from 'base/service/HomeGoodCoursesService';
 import GoodCourse from 'base/components/GoodCourse';
 
 
@@ -10,7 +9,6 @@ export default class GoodCoursesContainer extends Component {
 
     constructor (props) {
         super(props);
-        //this._loadGoodCourses();
         this.handleMoreClick = this.handleMoreClick.bind(this);
         this.handleListItemClick = this.handleListItemClick.bind(this);
     }
@@ -24,13 +22,16 @@ export default class GoodCoursesContainer extends Component {
     }
 
     state = {
-        goodCourses: []
+        goodCourses: null
     }
 
-    componentDidMount()
-    {
-
-
+    componentDidMount(){
+        HomeGoodCoursesService.getList().then((data) => {
+            console.log(data);
+            (data) && (this.setState({ goodCourses: data }));
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     handleMoreClick(){
@@ -45,33 +46,27 @@ export default class GoodCoursesContainer extends Component {
         FormatUtil.openNewTab("/search");
     }
 
-    _loadGoodCourses()
-    {
-        HomeService.getInstance().getGoodCourses()
-        .then(res => {
-            this.setState({
-                goodCourses: res
-            });
-        });
+    render(){
 
-    }
-
-    render()
-    {
-        const { goodCourses } = this.state;
         return (
             <div className="cp-home-good-courses">
                 <div className="title">
                     <span className="name">精品课程</span>
                     <span className="more" onClick={() => this.handleMoreClick()}>更多 ></span>
                 </div>
-                <ul className="courses-list">
-                    {goodCourses.map((item,index) => {
-                        return (
-                            <GoodCourse key={item.id} data={item} listItemClick={this.handleListItemClick} tagClick={this.handleTagClick}/>
-                        );
-                    })}
-                </ul>
+                {
+                    (this.state.goodCourses === null ) ? (
+                        <Icon type="loading" />
+                    ) : (
+                        <ul className="courses-list">
+                            {this.state.goodCourses.list.map((item,index) => {
+                                return (
+                                    <GoodCourse key={item.id} data={item} listItemClick={this.handleListItemClick} tagClick={this.handleTagClick} />
+                                );
+                            })}
+                        </ul>
+                    )
+                }
             </div>
         )
     }

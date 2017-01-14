@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Affix } from 'antd';
 
 import "course/resource/index.less";
 
+import TitleBar from "../components/TitleBar";
 import Sidebar from "../components/Sidebar";
+import TopTabs from "../components/TopTabs";
 
 
 class CourseContainer extends Component {
@@ -27,16 +30,22 @@ class CourseContainer extends Component {
     componentDidMount()
     {
 
+
     }
 
     render()
     {
         return (
             <div className="cp-course-container">
-                <div className="center-container">
+                <div className="titleBar">
+                    <TitleBar />
+                </div>
+                <div className="center-container" >
                     <div className="sidebar">
+                        <Sidebar />
                     </div>
                     <div className="detail">
+                        <TopTabs />
                     </div>
                 </div>
             </div>

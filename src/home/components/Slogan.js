@@ -7,7 +7,6 @@ export default class Slogan extends Component {
 
     constructor (props) {
         super(props);
-
     }
 
     static defaultProps = {

@@ -13,6 +13,7 @@ class CourseContainer extends Component {
 
     constructor (props) {
         super(props);
+        this._scroll_event = this._scroll_event.bind(this);
     }
 
     static defaultProps = {
@@ -29,26 +30,30 @@ class CourseContainer extends Component {
 
     componentDidMount()
     {
-        const thisContainer = this;
-        window.onscroll = function(){
-            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            //console.log(scrollTop);
-            if(scrollTop < 172){
-                thisContainer.setState({
-                    curClass: "state1"
-                });
-            }else if (scrollTop >= 172 && scrollTop < thisContainer.refs['detail'].offsetHeight-719+172) {
-                //172:header+titleBar;719:sidebar
-                thisContainer.setState({
-                    curClass: "state2"
-                });
-            }else{
-                thisContainer.setState({
-                    curClass: "state3"
-                });
-            }
+        this.sidebar = this.refs["sidebar"];
+        window.onscroll = this._scroll_event;
+        this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
+
+    }
+
+    _scroll_event()
+    {
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //console.log(scrollTop);
+        if(scrollTop < 172){
+            this.setState({
+                curClass: "state1"
+            });
+        }else if (scrollTop >= 172 && scrollTop < this.refs['detail'].offsetHeight-719+172) {
+            //172:header+titleBar;719:sidebar
+            this.setState({
+                curClass: "state2"
+            });
+        }else{
+            this.setState({
+                curClass: "state3"
+            });
         }
-        thisContainer.refs['sidebar'].style.height = thisContainer.refs['detail'].offsetHeight + 'px';
 
     }
 

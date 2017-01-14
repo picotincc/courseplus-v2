@@ -56,7 +56,7 @@ class ContributorsContainer extends Component {
       };
       return (groupedContributors.length) ?
              (
-              <div className="cp-home-contributors">
+              <div className="slider cp-home-contributors">
                 <div className="title">大神入驻</div>
                 <Slider {...settings}>
                     {groupedContributors.map((items, index) => (

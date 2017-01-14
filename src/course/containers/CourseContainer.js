@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Affix } from 'antd';
 
-import "course/resource/index.less";
+import 'course/resource/index.less';
 
-import TitleBar from "../components/TitleBar";
-import Sidebar from "../components/Sidebar";
-import TopTabs from "../components/TopTabs";
+import TitleBar from '../components/TitleBar';
+import Sidebar from '../components/Sidebar';
+import DetailContainer from './DetailContainer';
 
 
 class CourseContainer extends Component {
@@ -69,7 +69,7 @@ class CourseContainer extends Component {
                         <Sidebar curClass={this.state.curClass}/>
                     </div>
                     <div ref="detail" className="detail">
-                        <TopTabs />
+                        <DetailContainer />
                     </div>
                 </div>
             </div>

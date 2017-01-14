@@ -28,7 +28,7 @@ export default class Tag extends Component {
         event.stopPropagation();
         const school = this.props.school;
         const discipline = this.props.discipline;
-        FormatUtil.openNewTab("/search");
+        this.props.tagClick(school, discipline);
     }
 
     render(){

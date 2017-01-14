@@ -28,14 +28,14 @@ export default class GoodCourse extends Component {
     }
 
     render(){
-        const { data, listItemClick } = this.props;
+        const { data, listItemClick, tagClick } = this.props;
 
         return(
             <li key={data.id} className="course-item" onClick = {() => listItemClick(data.id)}>
                 <div className="course-info" style={{background:"url("+ data.bg_url +") no-repeat"}}>
                     <div className="title">{data.name}</div>
                     <div className="tag-wrapper">
-                        <Tag school={data.major.school.name} discipline={data.major.code + data.major.name} />
+                        <Tag school={data.major.school.name} discipline={data.major.code + data.major.name} tagClick={tagClick}/>
                     </div>
                     <Rate disabled allowHalf defaultValue={data.star} />
                 </div>

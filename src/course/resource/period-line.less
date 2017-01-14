@@ -1,0 +1,91 @@
+/*
+    课程时间轴样式 <xwang1024@126.com>
+ */
+@period-line-dot-radius: 10px;
+@period-line-dot-radius-active: 16px;
+@period-line-info-size: 12px;
+@period-line-info-size-active: 14px;
+
+.period-line {
+    padding: 18px 10px 0 10px;
+    background-color: white;
+    max-width: 810px;
+    height: 200px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    .locator {
+        width: 132px;
+        padding: 0 12px;
+        text-align: center;
+        color: @coral-pink;
+        position: relative;
+        top: 16px;
+        z-index: 3;
+        left: 0;
+        p {
+            margin: -4px 0 4px 0;
+        }
+        .anticon {
+            font-size: 22px;
+        }
+    }
+    .period-axis {
+        top: 12px;
+        position: relative;
+        width: 132px;
+        height: 4px;
+        background-image: -webkit-linear-gradient(left, @seafoam-blue, @cool-blue);
+        background-image: -o-linear-gradient(left, @seafoam-blue, @cool-blue);
+        background-image: linear-gradient(to right, @seafoam-blue, @cool-blue);
+        z-index: 0;
+        margin: 0 66px;
+    }
+    .period-item {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        width: 132px;
+        cursor: pointer;
+        .period-dot {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: @period-line-dot-radius;
+            height: @period-line-dot-radius;
+            border: 2px solid @cool-blue;
+            border-radius: @period-line-dot-radius;
+            background-color: white;
+            z-index: 1;
+            transition: transform .2s ease-in;
+        }
+        .period-info {
+            padding: 14px 12px;
+            font-size: @period-line-info-size;
+            white-space: normal;
+            transition: transform .2s ease-in;
+        }
+        &.active {
+            cursor: default;
+            .period-dot {
+                transform: scale(1.5);
+                border: 2px solid @coral-pink;
+            }
+            .period-info {
+                color: @coral-pink;
+                transform: scale(1.1);
+            }
+        }
+        &.disabled {
+            cursor: default;
+        }
+        &:not(.active):not(.disabled):hover {
+            .period-dot {
+                transform: scale(1.5);
+            }
+            .period-info {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

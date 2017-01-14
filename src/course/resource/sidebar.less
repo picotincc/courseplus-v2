@@ -1,0 +1,92 @@
+.cp-course-sidebar{
+    width: 180px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.state1{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &.state2{
+        position: fixed;
+	    top: 0;
+    }
+    &.state3{
+        position: absolute;
+	    bottom: 0;
+    }
+
+
+    >img{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    >.name{
+        font-size: 18px;
+        color: @cool-blue;
+        height: 26px;
+        line-height: 26px;
+        font-weight: bold;
+    }
+
+    >.desc{
+        font-size: 12px;
+        line-height: 14px;
+        color: @brownish-grey;
+        margin-bottom: 28px;
+    }
+
+    >.honour{
+        font-size: 18px;
+        color: @brownish-grey;
+        font-weight: bold;
+    }
+
+    >.label{
+        font-size: 12px;
+        color: @brownish-grey;
+        margin-bottom: 100px;
+        text-align: center;
+    }
+
+    >.question-btn{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        color: white;
+        background: @cool-blue;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+
+    >.buy-btn{
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 100%;
+        background: #fc5c63;
+        border-radius: 4px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+
+        >.text{
+            height: 24px;
+            line-height: 24px;
+        }
+
+        >.price{
+
+            >.origin{
+                color: #ffef00;
+                text-decoration: line-through;
+            }
+        }
+    }
+}

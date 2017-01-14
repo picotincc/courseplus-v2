@@ -24,7 +24,7 @@ class ContributorsContainer extends Component {
     }
 
     state = {
-        contributors:[]
+        contributorsData:[]
     }
 
     contributorsItemClick(id){
@@ -35,17 +35,17 @@ class ContributorsContainer extends Component {
     {
         ContributorsService.getList().then((data) => {
           console.log(data);
-          (data && data.length) && (this.setState({ contributors: data}));
+          (data && data.length) && (this.setState({ contributorsData: data}));
         }).catch((err) => {
           console.log(err);
         });
     }
 
     render(){
-      const {contributors} = this.state;
+      const {contributorsData} = this.state;
       var groupedContributors = []
-      while (contributors.length > 0) {
-        groupedContributors.push(contributors.splice(0,Math.min(4,contributors.length)))
+      while (contributorsData.length > 0) {
+        groupedContributors.push(contributorsData.splice(0,Math.min(4,contributorsData.length)))
       }
       let settings = {
           autoplay: false,
@@ -60,7 +60,7 @@ class ContributorsContainer extends Component {
                 <div className="title">大神入驻</div>
                 <Slider {...settings}>
                     {groupedContributors.map((items, index) => (
-                        <div key={items[0].id}><ContributorsItem contributors={items} contributorsItemClick={this.contributorsItemClick}/></div>
+                        <div key={items[0].id}><ContributorsItem contributorsData={items} contributorsItemClick={this.contributorsItemClick}/></div>
                     ))}
                 </Slider>
               </div>
@@ -73,7 +73,6 @@ class ContributorsContainer extends Component {
             )
     }
 }
-
 
 function mapStateToProps(state) {
   return {

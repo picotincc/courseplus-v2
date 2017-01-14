@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Icon } from 'antd';
 
 class ContributorsItem extends Component {
     constructor (props) {
@@ -21,10 +20,10 @@ class ContributorsItem extends Component {
     }
 
     render () {
-        let { contributors } = this.props;
+        let { contributorsData } = this.props;
         return (
           <div className="cp-home-contributorsItem">
-              {contributors.map((item) => {
+              {contributorsData.map((item) => {
                 return (
                      <div className="item" key={item.id}
                        onMouseDown={this.handleMouseDown.bind(this)}

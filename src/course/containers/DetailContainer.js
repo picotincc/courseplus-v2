@@ -6,6 +6,7 @@ export default class DetailContainer extends Component {
 
     constructor (props) {
         super(props);
+        this.handleTabClick =this.handleTabClick.bind(this);
     }
 
     static defaultProps = {

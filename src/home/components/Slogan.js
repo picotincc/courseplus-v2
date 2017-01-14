@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
+import SearchBar from 'base/components/SearchBar';
+
 export default class Slogan extends Component {
 
     constructor (props) {
@@ -24,7 +26,12 @@ export default class Slogan extends Component {
     {
         return (
             <div className="cp-home-slogan">
-                Home Slogan
+                <div className="slogan-container">
+                    <div className="slogan">让专业课更专业</div>
+                    <div className="search-bar">
+                        <SearchBar />                    
+                    </div>
+                </div>
             </div>
         );
     }

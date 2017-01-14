@@ -41,21 +41,21 @@ const data = {
                 },
                 {
                   "id": 2,
-                  "name": "919经济学原理",
+                  "name": "919经济学原理919经济学原理",
                   "teacher": {
                     "id": 1,
-                    "name": "王学长",
+                    "name": "王学长王学长王学长",
                     "img_url": "http://p1.bpimg.com/567571/1fa420592aa98a91.png",
                     "account": "string",
                     "gender": 1,
-                    "introduction": "2016年专业第二",
+                    "introduction": "2016年专业第二2016年专业第二2016年专业第二",
                     "description": "专业课110+ 数学130+ 英语80+ 政治70+",
                     "education": "南京大学2016级环境学院研究生"
                   },
                   "major": {
                     "id": 1,
                     "code": "020204",
-                    "name": "金融学",
+                    "name": "金融学金融学金融学",
                     "school": {
                       "id": 1,
                       "name": "南京大学",
@@ -70,7 +70,7 @@ const data = {
                   "code": "string",
                   "star": 4,
                   "bg_url": "http://p1.bpimg.com/567571/4015a9e4d584dc67.png",
-                  "purchase": 20
+                  "purchase": 200
                 },
                 {
                   "id": 3,
@@ -88,7 +88,7 @@ const data = {
                   "major": {
                     "id": 1,
                     "code": "020204",
-                    "name": "金融学",
+                    "name": "金融学金融学金融学金融学金融学金融学",
                     "school": {
                       "id": 1,
                       "name": "南京大学",

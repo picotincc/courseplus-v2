@@ -20,22 +20,13 @@ export default class Sidebar extends Component {
     }
 
     componentDidMount(){
-        window.onscroll = function(){
-            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            //console.log(scrollTop);
-            if(scrollTop < 165){
-                document.getElementById('sidebar').className = "cp-course-sidebar state1";
-            }else if (scrollTop >= 165 && scrollTop < 1723) {
-                document.getElementById('sidebar').className = "cp-course-sidebar state2";
-            }else{
-                document.getElementById('sidebar').className = "cp-course-sidebar state3";
-            }
-        }
+    
     }
 
     render(){
+        const { curClass } = this.props;
         return(
-            <div className="cp-course-sidebar" id="sidebar">
+            <div className={"cp-course-sidebar " + curClass}>
                 <img src="http://i1.piimg.com/567571/2f85c554e4ba8aeb.png" />
                 <div className="name">徐伟</div>
                 <div className="desc">南京大学2016级环境学院研究生</div>

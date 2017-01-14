@@ -123,21 +123,21 @@ export default class SearchBar extends Component {
         const school = this.state.selectedSchool;
         const major = this.state.selectedMajor;
         const isInSearchPage = location.href.includes("search");
+        let path = "/search";
+        if (school)
+        {
+            path = path + "/" + school.id;
+            if (major)
+            {
+                path = path + "/" + major.id;
+            }
+        }
         if (isInSearchPage)
         {
-            console.log("in search");
+            this.props.onSearch(school, major, path);
         }
         else
         {
-            let path = "/search";
-            if (school)
-            {
-                path = path + "/" + school.id;
-                if (major)
-                {
-                    path = path + "/" + major.id;
-                }
-            }
             FormatUtil.openNewTab(path);
         }
     }

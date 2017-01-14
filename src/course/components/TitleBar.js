@@ -34,7 +34,7 @@ export default class TitleBar extends Component {
         const discipline = "083001环境化学";
 
         return(
-            <div className="cp-home-title-bar">
+            <div className="cp-course-title-bar">
                 <span className="title">808环境化学</span>
                 <Tag school={school} discipline={discipline} tagClick={this.handleTagClick} />
             </div>

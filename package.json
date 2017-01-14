@@ -33,6 +33,7 @@
     "caller": "^1.0.1",
     "cors": "^2.8.1",
     "css-loader": "^0.26.1",
+    "dragscroll": "0.0.8",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",

@@ -49,7 +49,7 @@ export default class HomeCommentContainer extends Component {
         };
         return (groupedComments.length) ?
         (
-            <div className="cp-home-comments">
+            <div className="slider cp-home-comments">
             <HomeCommentTitle />
             <Slider {...settings}>
                 {groupedComments.map((item) => (

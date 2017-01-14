@@ -56,7 +56,7 @@ class CarouselContainer extends Component {
             pauseOnHover: true
         };
         return (
-            <div className="carousel">
+            <div className="slider cp-home-carousel">
             {
                 (!this.state.items.length) ? (
                     <Icon type="loading" />

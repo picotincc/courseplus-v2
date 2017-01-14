@@ -31,7 +31,8 @@ module.exports = {
             course: path.resolve(__dirname, 'src/course/'),
             user: path.resolve(__dirname, 'src/user/'),
             order: path.resolve(__dirname, 'src/order/'),
-            mycourse: path.resolve(__dirname, 'src/mycourse/')
+            mycourse: path.resolve(__dirname, 'src/mycourse/'),
+            live: path.resolve(__dirname, 'src/live/')
         }
     },
 

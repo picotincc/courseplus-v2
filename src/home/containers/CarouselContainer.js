@@ -63,7 +63,7 @@ class CarouselContainer extends Component {
                 ) : (
                     <Slider {...settings}>
                         {this.state.items.map((item) => (
-                            <div key={item.id}><CarouselItem item={item} handleClick={this.handleItemClick}/></div>
+                            <div key={item.id}><CarouselItem item={item} handleClick={this.handleItemClick.bind(this)}/></div>
                         ))}
                     </Slider>
                 )

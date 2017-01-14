@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getPeriods } from 'base/actions/CourseAction';
+import { getPeriods, selectPeriod } from 'base/actions/CourseAction';
+import PeriodLine from "../components/PeriodLine";
 
 class PeriodLineContainer extends Component {
 
@@ -26,9 +27,15 @@ class PeriodLineContainer extends Component {
         dispatch(getPeriods(1));
     }
 
+    handleSelectPeriod(period) {
+        let { dispatch } = this.props;
+        dispatch(selectPeriod(period));
+    }
+
     render() {
         return (
-            <div className="">
+            <div className="period-line-wrapper">
+                <PeriodLine periods={this.props.coursePeriods} handleSelectPeriod={this.handleSelectPeriod.bind(this)}/>
             </div>
         );
     }

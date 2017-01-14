@@ -13,6 +13,7 @@ class CourseContainer extends Component {
 
     constructor (props) {
         super(props);
+        this._scroll_event = this._scroll_event.bind(this);
     }
 
     static defaultProps = {
@@ -24,12 +25,35 @@ class CourseContainer extends Component {
     }
 
     state = {
-
+        curClass: "state1"
     }
 
     componentDidMount()
     {
+        this.sidebar = this.refs["sidebar"];
+        window.onscroll = this._scroll_event;
+        this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
 
+    }
+
+    _scroll_event()
+    {
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //console.log(scrollTop);
+        if(scrollTop < 172){
+            this.setState({
+                curClass: "state1"
+            });
+        }else if (scrollTop >= 172 && scrollTop < this.refs['detail'].offsetHeight-719+172) {
+            //172:header+titleBar;719:sidebar
+            this.setState({
+                curClass: "state2"
+            });
+        }else{
+            this.setState({
+                curClass: "state3"
+            });
+        }
 
     }
 
@@ -41,10 +65,10 @@ class CourseContainer extends Component {
                     <TitleBar />
                 </div>
                 <div className="center-container" >
-                    <div className="sidebar">
-                        <Sidebar />
+                    <div ref="sidebar" className="sidebar">
+                        <Sidebar curClass={this.state.curClass}/>
                     </div>
-                    <div className="detail">
+                    <div ref="detail" className="detail">
                         <TopTabs />
                     </div>
                 </div>

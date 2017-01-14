@@ -125,7 +125,7 @@ export default class SearchBar extends Component {
         const isInSearchPage = location.href.includes("search");
         if (isInSearchPage)
         {
-            
+            console.log("in search");
         }
         else
         {

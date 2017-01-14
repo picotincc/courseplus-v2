@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import SearchBar from "base/components/SearchBar";
+
 import "search/resource/index.less";
 
 export default class SearchContainer extends Component {
@@ -17,7 +19,7 @@ export default class SearchContainer extends Component {
     }
 
     state = {
-
+        courses: []
     }
 
     componentDidMount()
@@ -29,7 +31,11 @@ export default class SearchContainer extends Component {
     {
         return (
             <div className="cp-search-container">
-                course+ 搜索页面
+                <div className="slogan">
+                    <SearchBar />
+                </div>
+                <div className="courses-container">
+                </div>
             </div>
         );
     }

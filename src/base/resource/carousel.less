@@ -1,7 +1,6 @@
 .carousel {
     background-color: @pinkish-grey;
     max-width: 1080px;
-    height: 400px;
     margin: auto;
     text-align: center;
     
@@ -32,22 +31,28 @@
         }
     }
     .slick-arrow {
+        &.slick-prev, &.slick-next {
+            &:before {
+                font-family: "anticon" !important;
+                color: @cool-blue;
+                opacity: 1;
+                transition: color .3s ease;
+            }
+            &:hover:before {
+                color: @seafoam-blue;
+            }
+        }
         &.slick-prev {
             left: -30px;
             &:before {
-                font-family: "anticon" !important;
                 content: "\E60D";
-                color: @cool-blue;
             }
         }
         &.slick-next {
             right: -30px;
             &:before {
-                font-family: "anticon" !important;
                 content: "\E60C";
-                color: @cool-blue;
             }
-            
         }
     }
 }

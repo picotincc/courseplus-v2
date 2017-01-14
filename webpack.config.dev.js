@@ -31,7 +31,8 @@ module.exports = {
             course: path.resolve(__dirname, 'src/course/'),
             user: path.resolve(__dirname, 'src/user/'),
             order: path.resolve(__dirname, 'src/order/'),
-            mycourse: path.resolve(__dirname, 'src/mycourse/')
+            mycourse: path.resolve(__dirname, 'src/mycourse/'),
+            live: path.resolve(__dirname, 'src/live/')
         }
     },
 
@@ -88,17 +89,17 @@ module.exports = {
     ],
 
     devServer: {
-        proxy: {
-            "/v1/*": {
-                "target": {
-                  "host": "120.26.65.167",
-                  "protocol": 'http:',
-                  "port": 8080
-                },
-                ignorePath: false,
-                changeOrigin: true,
-                secure: false,
-            }
-        }
+        // proxy: {
+        //     "/v1/*": {
+        //         "target": {
+        //           "host": "120.26.65.167",
+        //           "protocol": 'http:',
+        //           "port": 8080
+        //         },
+        //         ignorePath: false,
+        //         changeOrigin: true,
+        //         secure: false,
+        //     }
+        // }
     }
 };

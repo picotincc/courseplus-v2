@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import SchoolService from 'base/service/SchoolService';
+
 import SchoolSearchInput from './SchoolSearchInput';
 import MajorSearchInput from './MajorSearchInput';
 
@@ -32,25 +34,12 @@ export default class SearchBar extends Component {
 
     componentDidMount()
     {
-        const schools = [
-            {
-                id: 0,
-                name: "南京大学",
-                img_url: "http://p1.bqimg.com/573251/53b39b48c75d9ad3.png"
-            },
-            {
-                id: 1,
-                name: "北京大学",
-                img_url: "http://p1.bqimg.com/573251/47417bcea92bf6b4.png"
-            },
-            {
-                id: 2,
-                name: "东南大学",
-                img_url: "http://i1.piimg.com/573251/e488cc08cc340fa7.png"
-            }
-        ];
-        this.setState({
-            schools
+        SchoolService.getSchools().then(res => {
+            this.setState({
+                schools: res
+            });
+        }).catch(err => {
+            console.log(err);
         });
     }
 
@@ -72,79 +61,17 @@ export default class SearchBar extends Component {
                 if (selectedSchool === null || selectedSchool.id !== school.id)
                 {
                     //请求相应学校的所有专业，转换数据结构
-                    const TestMajors = [
-                        {
-                            id: 0,
-                            name: "02经济学",
-                            list: [
-                                {
-                                    id: 0,
-                                    name:　"020204金融学"
-                                },
-                                {
-                                    id: 1,
-                                    name:　"020205应用心理学"
-                                },
-                                {
-                                    id: 2,
-                                    name:　"020206高等教育学"
-                                }
-                            ]
-                        },
-                        {
-                            id: 1,
-                            name: "03心理学",
-                            list: [
-                                {
-                                    id: 0,
-                                    name:　"020204金融学"
-                                },
-                                {
-                                    id: 1,
-                                    name:　"020205应用心理学"
-                                },
-                                {
-                                    id: 2,
-                                    name:　"020206高等教育学"
-                                }
-                            ]
-                        },
-                        {
-                            id: 3,
-                            name: "08工学",
-                            list: [
-                                {
-                                    id: 0,
-                                    name:　"081501水文水资料"
-                                },
-                                {
-                                    id: 1,
-                                    name:　"020232环境科学"
-                                },
-                                {
-                                    id: 2,
-                                    name:　"020255环境工程（普通学）"
-                                },
-                                {
-                                    id: 3,
-                                    name:　"085100建筑学"
-                                },
-                                {
-                                    id: 4,
-                                    name:　"085229环境工程（专业工程硕士）"
-                                },
-                                {
-                                    id: 5,
-                                    name:　"085212软件工程"
-                                }
-                            ]
-                        }
-                    ];
+                    SchoolService.getMajors(school.id).then(res => {
+                        const majors = _formatMajors(res);
+                        this.setState({
+                            selectedSchool: school,
+                            majors: majors
+                        });
+                    }).catch(err => {
+                        console.log(err);
+                    })
 
-                    this.setState({
-                        selectedSchool: school,
-                        majors: TestMajors
-                    });
+
                 }
             }
             else
@@ -161,7 +88,7 @@ export default class SearchBar extends Component {
     handleMajorSelect(mname)
     {
         let selectedMajor = null;
-        const majors = this.state.majors.every(category => {
+        this.state.majors.every(category => {
             let res = category.list.find(item => item.name === mname);
             if (res)
             {
@@ -170,7 +97,9 @@ export default class SearchBar extends Component {
             }
             return true;
         });
-        console.log(selectedMajor);
+        this.setState({
+            selectedMajor
+        });
     }
 
     addWarning()
@@ -209,6 +138,7 @@ export default class SearchBar extends Component {
                         selectedSchool={this.state.selectedSchool}
                         addWarning={this.addWarning}
                         onMajorSelect={this.handleMajorSelect}
+                        selectedMajor={this.state.selectedMajor}
                     />
                 </div>
                 <div className="search-btn">
@@ -219,4 +149,34 @@ export default class SearchBar extends Component {
             </div>
         );
     }
+}
+
+function _formatMajors(majors)
+{
+    let categories = [];
+    majors.forEach(major => {
+        let curCategory = categories.find(category => category.id === major.category.id);
+        if (!curCategory)
+        {
+            let newCategory = major.category;
+            newCategory.name = major.category.code + major.category.name;
+            newCategory.list = [];
+            categories.push(newCategory);
+        }
+    });
+    categories.map(category => {
+        const cid = category.id;
+        majors.forEach(major => {
+            if (major.category.id === cid)
+            {
+                let newMajor = {
+                    id: major.id,
+                    code: major.code,
+                    name: major.code + major.name
+                };
+                category.list.push(newMajor);
+            }
+        });
+    });
+    return categories;
 }

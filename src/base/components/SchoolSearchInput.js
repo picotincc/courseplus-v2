@@ -59,7 +59,6 @@ export default class SchoolSearchInput extends Component {
     handleSelect(sname)
     {
         this.schoolInput.value = sname;
-        this.props.onSchoolSelect(sname);
     }
 
     handleInputChange()

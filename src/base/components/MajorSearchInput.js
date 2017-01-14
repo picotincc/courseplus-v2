@@ -34,12 +34,23 @@ export default class MajorSearchInput extends Component {
 
     componentWillReceiveProps(nextProps)
     {
-        if (nextProps.majors.length > 0)
+        if (nextProps.selectedSchool === null)
         {
             this.setState({
                 inputValue: "",
-                filterMajors: nextProps.majors
+                filterMajors: []
             });
+        }
+        else
+        {
+            if (nextProps.majors.length > 0)
+            {
+                const inputValue = nextProps.selectedMajor ? nextProps.selectedMajor.name : "";
+                this.setState({
+                    inputValue,
+                    filterMajors: nextProps.majors
+                });
+            }
         }
     }
 

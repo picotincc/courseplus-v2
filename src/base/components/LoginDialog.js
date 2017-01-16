@@ -13,7 +13,7 @@ class LoginDialog extends Component {
                 <div className="seperate-line"> </div>
                 <div className="register-row"> 
                     <span className="tip"> 还没有course+账户？ </span>
-                    <a className="register-button">注册</a>
+                    <a className="register-button" onClick={this.props.handleRegisterClick}>注册</a>
 
                 </div>
             </div>

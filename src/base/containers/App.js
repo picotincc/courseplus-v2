@@ -29,10 +29,12 @@ class App extends Component {
     }
 
     showLoginModal(){
+        this.refs.registerModal.hideModal();
         this.refs.loginModal.showModal();
     }
 
     showRegisterModal(){
+        this.refs.loginModal.hideModal();
         this.refs.registerModal.showModal();
     }
 
@@ -56,10 +58,11 @@ class App extends Component {
                 <footer className="flex-center"><Footer /></footer>
 
                 <Modal width="400px" ref="loginModal" >
-                    <LoginDialog />
+                    <LoginDialog handleRegisterClick={this.showRegisterModal}/>
                 </Modal>
-                <Modal width="400px" ref="registerModal" >
-                    <RegisterDialog />
+
+                <Modal width="400px" ref="registerModal"  >
+                    <RegisterDialog handleLoginClick={this.showLoginModal}/>
                 </Modal>
             </div>
         );

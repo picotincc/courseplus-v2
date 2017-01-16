@@ -39,6 +39,7 @@ export default class DetailContainer extends Component {
 
     render(){
         const TabPane = Tabs.TabPane;
+        const courseId = this.props.courseId;
         return(
             <div className="cp-course-detail-container">
                 <Affix>
@@ -50,7 +51,8 @@ export default class DetailContainer extends Component {
                     </Tabs>
                 </Affix>
                 <ul>
-                    <li className="tab-content"><PeriodLineContainer /><CourseVideoContainer/></li>
+
+                    <li className="tab-content"><PeriodLineContainer courseId={courseId}/><CourseVideoContainer/></li>
                     <li className="tab-content" hidden>2</li>
                     <li className="tab-content" hidden>3</li>
                     <li className="tab-content" hidden>4</li>

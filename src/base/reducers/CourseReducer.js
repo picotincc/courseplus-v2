@@ -1,14 +1,23 @@
 import {
     REQUEST_PERIODS,
     RECEIVE_PERIODS,
-    SELECT_PERIOD
+    SELECT_PERIOD,
+    REQUEST_COURSE,
+    RECEIVE_COURSE
 } from 'base/actions/CourseAction';
 
 import DateUtil from '../util/DateUtil';
 
-// TODO Get Course
 function getCourse(state = [], action) {
-    return state;
+    switch (action.type) {
+        case REQUEST_COURSE:
+            return state;
+        case RECEIVE_COURSE:
+            let nextState = action.res;
+            return nextState;
+        default:
+            return state;
+    }
 }
 
 function getPeriods(state = [], action) {

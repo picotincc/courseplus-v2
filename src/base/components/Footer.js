@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Popover } from 'antd';
 
 export default class Footer extends Component {
 
@@ -25,6 +26,10 @@ export default class Footer extends Component {
 
     render()
     {
+        const content = (
+            <img src="/imgs/gongzhonghao.png" style={{width: '150px'}} />
+        );
+
         return (
             <div className="cp-footer">
                 <div className="left">
@@ -41,7 +46,9 @@ export default class Footer extends Component {
                         <span>意见反馈</span>
                         <span>关注我们</span>
                     </div>
-                    <img src="/imgs/weixin.png" className="weixin" />
+                    <Popover content={content}>
+                        <img src="/imgs/weixin.png" className="weixin" />
+                    </Popover>
                 </div>
             </div>
         );

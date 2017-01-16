@@ -23,14 +23,17 @@ export default class Header extends Component {
 
     }
 
+
+
     render()
     {
+        const {handleLoginClick} = this.props;
         return (
             <div className="cp-header">
                 <div className="logo">
                     <img src="/imgs/logo.png" />
                 </div>
-                <div className="login-btn">
+                <div className="login-btn" onClick={handleLoginClick}>
                     <span>登录</span>
                 </div>
                 <div className="register-btn">

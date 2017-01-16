@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import "base/resource/index.less";
-
+import Modal from 'base/components/Modal';
 import Header from 'base/components/Header';
 import Footer from 'base/components/footer';
+import LoginDialog from 'base/components/LoginDialog';
 import { login } from 'base/actions/HomeAction';
 
 class App extends Component {
 
     constructor (props) {
         super(props);
+        this.showModal = this.showModal.bind(this);
     }
 
     static defaultProps = {
@@ -25,6 +26,11 @@ class App extends Component {
 
     }
 
+    showModal(){
+        this.refs.modal.showModal();
+    }
+
+
     componentDidMount()
     {
 
@@ -34,13 +40,18 @@ class App extends Component {
     {
         return (
             <div className="cp-app">
-                <header className="flex-center"><Header userId={this.props.userId} /></header>
+                <header className="flex-center"><Header handleLoginClick={this.showModal} userId={this.props.userId} /></header>
 
                 <div className="cp-container">
                     {this.props.children}
                 </div>
 
                 <footer className="flex-center"><Footer /></footer>
+
+                <Modal width="400px" ref="modal" >
+                    <LoginDialog />
+                </Modal>
+              
             </div>
         );
     }

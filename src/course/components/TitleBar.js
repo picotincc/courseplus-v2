@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Icon } from 'antd';
 import Tag from 'base/components/Tag';
 import FormatUtil from 'base/util/FormatUtil';
 
@@ -26,18 +27,21 @@ export default class TitleBar extends Component {
     }
 
     handleTagClick(school, discipline){
-        FormatUtil.openNewTab("/search");
+        FormatUtil.openNewTab("/search/"+school+"/"+discipline);
     }
 
     render(){
-        const school = "南京大学";
-        const discipline = "083001环境化学";
-
+        const { course } = this.props;
         return(
-            <div className="cp-course-title-bar">
-                <span className="title">808环境化学</span>
-                <Tag school={school} discipline={discipline} tagClick={this.handleTagClick} />
-            </div>
+            (course.length == 0) ? (
+                <Icon type="loading" />
+            ) : (
+                <div className="cp-course-title-bar">
+                    <span className="title">{course.subject.code}{course.subject.major.name}</span>
+                    <Tag school={course.major.school.name} discipline={course.major.code+course.major.name} tagClick={this.handleTagClick} />
+                </div>
+
+            )
         )
     }
 }

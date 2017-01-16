@@ -8,6 +8,8 @@ import TitleBar from '../components/TitleBar';
 import Sidebar from '../components/Sidebar';
 import DetailContainer from './DetailContainer';
 
+import { getCourse } from 'base/actions/CourseAction';
+
 
 class CourseContainer extends Component {
 
@@ -30,9 +32,13 @@ class CourseContainer extends Component {
 
     componentDidMount()
     {
+        //设置sidebar高度
         this.sidebar = this.refs["sidebar"];
         window.onscroll = this._scroll_event;
         this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
+        //获取数据
+        let { dispatch } = this.props;
+        dispatch(getCourse(1));
 
     }
 
@@ -59,13 +65,14 @@ class CourseContainer extends Component {
 
     render()
     {
+        console.log(this.props.course);
         return (
             <div className="cp-course-container">
-                <div className="titleBar">
+                <div className="titleBar" course={this.props.course}>
                     <TitleBar />
                 </div>
                 <div className="center-container" >
-                    <div ref="sidebar" className="sidebar">
+                    <div ref="sidebar" className="sidebar" >
                         <Sidebar curClass={this.state.curClass}/>
                     </div>
                     <div ref="detail" className="detail">
@@ -73,13 +80,13 @@ class CourseContainer extends Component {
                     </div>
                 </div>
             </div>
-        );
+        );    
     }
 }
 
 function mapStateToProps(state) {
   return {
-      goodCourses: state.goodCourses
+      course: state.course
   };
 }
 

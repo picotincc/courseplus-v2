@@ -23,6 +23,7 @@ export default class SchoolSearchInput extends Component {
     }
 
     state = {
+        inputValue: "",
         filterSchools: [],
         selectedSchool: null
     }
@@ -38,9 +39,21 @@ export default class SchoolSearchInput extends Component {
     {
         if (nextProps.schools.length > 0)
         {
-            this.setState({
-                filterSchools: nextProps.schools
-            });
+            if (nextProps.selectedSchool)
+            {
+                this.setState({
+                    inputValue: nextProps.selectedSchool.name,
+                    filterSchools: nextProps.schools
+                });
+            }
+            else
+            {
+                this.setState({
+                    inputValue: "",
+                    filterSchools: nextProps.schools
+                });
+            }
+
         }
     }
 
@@ -52,21 +65,24 @@ export default class SchoolSearchInput extends Component {
 
     handleInputBlur()
     {
-        const value = this.schoolInput.value;
+        const value = this.state.inputValue;
         this.props.onSchoolSelect(value.trim());
         this._removeDropdown();
     }
 
     handleSelect(sname)
     {
-        this.schoolInput.value = sname;
+        this.setState({
+            inputValue: sname
+        });
     }
 
-    handleInputChange()
+    handleInputChange(e)
     {
-        const value = this.schoolInput.value;
+        const value = e.target.value;
         const filterSchools = _filterSchools(value.trim(), this.props.schools);
         this.setState({
+            inputValue: value,
             filterSchools
         });
     }
@@ -102,10 +118,12 @@ export default class SchoolSearchInput extends Component {
     render()
     {
         const schools = this.state.filterSchools;
+        const schoolName = this.state.inputValue;
 
         return (
             <div ref="school-search" className="cp-school-search">
                 <input ref={(input) => { this.schoolInput = input; }} type="text" placeholder="请选择学校"
+                       value={schoolName}
                        onFocus={this.handleInputFocus}
                        onBlur={this.handleInputBlur}
                        onChange={this.handleInputChange}
@@ -116,7 +134,7 @@ export default class SchoolSearchInput extends Component {
                     <ul className="school-list">
                         {schools.map(item => {
                             return (
-                                <li key={item.id} onMouseDown={(e) => this.handleSelect(item.name, e)}>
+                                <li key={item.id} onMouseDown={(e) => this.handleSelect(item.name)}>
                                     <img src={item.img_url}/>
                                 </li>
                             );

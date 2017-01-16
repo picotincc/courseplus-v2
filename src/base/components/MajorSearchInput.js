@@ -60,7 +60,10 @@ export default class MajorSearchInput extends Component {
         {
             this.props.addWarning();
         }
-        this._addDropdown();
+        else
+        {
+            this._addDropdown();            
+        }
     }
 
     handleInputBlur()

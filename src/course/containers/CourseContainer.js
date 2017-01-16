@@ -48,8 +48,8 @@ class CourseContainer extends Component {
             this.setState({
                 curClass: "state1"
             });
-        }else if (scrollTop >= 172 && scrollTop < this.refs['detail'].offsetHeight-719+172) {
-            //172:header+titleBar;719:sidebar
+        }else if (scrollTop >= 172 && scrollTop < this.refs['detail'].offsetHeight-720+172) {
+            //172:header+titleBar;720:sidebar
             this.setState({
                 curClass: "state2"
             });

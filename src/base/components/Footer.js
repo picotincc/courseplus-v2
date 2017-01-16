@@ -27,7 +27,7 @@ export default class Footer extends Component {
     render()
     {
         const content = (
-            <img src="/imgs/gongzhonghao.png"/>
+            <img src="/imgs/gongzhonghao.png" style={{width: '150px'}} />
         );
 
         return (

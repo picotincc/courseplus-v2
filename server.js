@@ -7,11 +7,12 @@ global.requireModule = function (modulePath) {
     return mod;
 }
 
-const express = require('express');
-const caller  = require('caller');
-const morgan  = require('morgan');
-const path    = require('path');
-const cors    = require('cors');
+const express    = require('express');
+const bodyParser = require('body-parser');
+const caller     = require('caller');
+const morgan     = require('morgan');
+const path       = require('path');
+const cors       = require('cors');
 
 let app = express();
 
@@ -19,6 +20,8 @@ app.use(cors({
     origin: 'http://127.0.0.1:3000',
     credentials: true
 }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.disable('x-powered-by');
 
@@ -28,7 +31,12 @@ app.all('*', function(req, res) {
     let pathName = req.path;
 
     if(mock && mock[pathName] && mock[pathName][method]) {
-        res.send(mock[pathName][method]);
+        let configItem = mock[pathName][method];
+        if(typeof(configItem) === 'function') {
+            configItem(req, res);
+        } else {
+            res.send(configItem);
+        }
     } else {
         res.status(404).end();
     }

@@ -14,6 +14,7 @@ export default class SearchContainer extends Component {
 
         this.handleSearch = this.handleSearch.bind(this);
         this.searchCourses = this.searchCourses.bind(this);
+        this.handlePaginationClick = this.handlePaginationClick.bind(this);
     }
 
     static defaultProps = {
@@ -59,6 +60,19 @@ export default class SearchContainer extends Component {
         this.searchCourses(paras);
     }
 
+    handlePaginationClick(offset)
+    {
+        const school_id = this.state.school_id;
+        const major_id = this.state.major_id;
+        const paras = {
+            school_id,
+            major_id,
+            limit: this.state.limit,
+            offset
+        };
+        this.searchCourses(paras);
+    }
+
     searchCourses(paras)
     {
         let query = {};
@@ -83,7 +97,7 @@ export default class SearchContainer extends Component {
                 school_id: paras["school_id"],
                 major_id: paras["major_id"],
                 offset: res.offset,
-                limit: res.limit,
+                // limit: res.limit,
                 count: res.count,
                 courses: res.list
             })
@@ -106,6 +120,7 @@ export default class SearchContainer extends Component {
                         limit={limit}
                         offset={offset}
                         count={count}
+                        onPaginationClick={this.handlePaginationClick}
                     />
                 </div>
             </div>

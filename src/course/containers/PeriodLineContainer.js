@@ -24,7 +24,7 @@ class PeriodLineContainer extends Component {
 
     componentDidMount() {
         let { dispatch } = this.props;
-        dispatch(getPeriods(1));
+        dispatch(getPeriods(this.props.courseId));
     }
 
     handleSelectPeriod(period) {

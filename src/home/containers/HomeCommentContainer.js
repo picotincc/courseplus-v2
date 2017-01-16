@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HomeCommentGroup from '../components/HomeCommentsGroup'
 import FormatUtil from 'base/util/FormatUtil';
-import HomeCommentService from 'base/service/HomeCommentService';
+import CourseService from 'base/service/CourseService';
 import Slider from 'react-slick';
 import { Icon } from 'antd';
 import "slick-carousel/slick/slick.css";
@@ -14,7 +14,7 @@ export default class HomeCommentContainer extends Component {
     }
 
     componentDidMount() {
-        HomeCommentService.getList().then((data) => {
+        CourseService.getQualityComments().then((data) => {
             (data && data.length) && (this.setState({ comments: data }));
         }).catch((err) => {
             console.log(err);
@@ -49,7 +49,7 @@ export default class HomeCommentContainer extends Component {
         };
         return (groupedComments.length) ?
         (
-            <div className="cp-home-comments">
+            <div className="slider cp-home-comments">
             <HomeCommentTitle />
             <Slider {...settings}>
                 {groupedComments.map((item) => (

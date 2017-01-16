@@ -1,10 +1,6 @@
 .course-item{
         overflow: hidden;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
         flex: 0 0 auto;
         width: 255px;
         height: 220px;
@@ -90,17 +86,16 @@
 
             >.author{
                 height: 60px;
-                display: -webkit-box;
-                display: -ms-flexbox;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
                 font-size: 12px;
 
                 >.icon{
+                    margin-right: 14px;
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
+                    flex: 0 0 auto;
                 }
 
                 >span{
@@ -110,7 +105,11 @@
                 }
 
                 >.name{
-                    margin-left: -20px;
+                    width: 66px;
+                    margin-right: 14px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                 }
 
                 >.purchase{
@@ -124,6 +123,9 @@
                 font-size: 18px;
                 color: @cool-blue;
                 margin-bottom: 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
 
             >.lable-group{

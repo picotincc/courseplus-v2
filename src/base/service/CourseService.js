@@ -5,6 +5,7 @@ const version = '/v1';
 
 export default {
     getPeriods: (course_id) => fetch(`${version}/course/period`, { query: { course_id } }),
-
-    search: (paras) => fetch(`${version}/course/search`, { query: paras })
+    search: (paras) => fetch(`${version}/course/search`, { query: paras }),
+    getGoodCourses: () => fetch(`${version}/course/search`),
+    getQualityComments: () => fetch(`${version}/course/qualityComment`)
 }

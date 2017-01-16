@@ -1,13 +1,6 @@
-.carousel {
-    background-color: @pinkish-grey;
+.slider {
     max-width: 1080px;
     margin: auto;
-    text-align: center;
-    
-    .anticon-loading {
-        font-size: 50px;
-        line-height: 400px;
-    }
 
     .slider-image {
         height: 400px;
@@ -53,6 +46,9 @@
             &:before {
                 content: "\E60C";
             }
+        }
+        &.slick-disabled {
+          display: none !important;
         }
     }
 }

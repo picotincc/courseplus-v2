@@ -88,7 +88,6 @@ export default class SearchBar extends Component {
             {
                 if (selectedSchool === null || selectedSchool.id !== school.id)
                 {
-                    //请求相应学校的所有专业，转换数据结构
                     SchoolService.getMajors(school.id).then(res => {
                         const majors = _formatMajors(res);
                         this.setState({

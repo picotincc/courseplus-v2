@@ -4,19 +4,22 @@ const FormItem = Form.Item;
 
 export default class RegisterDialog extends Component {
     render() {
+        console.log(this.props.handleLoginClick);
         return (
             <div className="register-dialog">
                 <div className="logo">
                     <img src="/imgs/logo.png" />
                 </div>
                 <RegistrationForm />
-
+                <div className="seperate-line"> </div>
+                <div className="login-row"> 
+                    <span className="tip"> 已有course+账户？ </span>
+                    <a className="login-button" onClick={this.props.handleLoginClick} >登录</a>
+                </div>
             </div>
         );
     }
 }
-
-
 
 
 const RegistrationForm = Form.create()(React.createClass({
@@ -51,7 +54,6 @@ const RegistrationForm = Form.create()(React.createClass({
   },
   render() {
     const { getFieldDecorator } = this.props.form;
-   
     return (
       <Form className="register-form" onSubmit={this.handleSubmit}>
         <FormItem>
@@ -64,15 +66,15 @@ const RegistrationForm = Form.create()(React.createClass({
 
         <FormItem>
           <Row gutter={8}>
-            <Col span={14}>
+            <Col span={15}>
               {getFieldDecorator('captcha', {
                 rules: [{ required: true, message: '请输入验证码!' }],
               })(
             <Input size="large" addonBefore={<Icon type="lock" />}  placeholder="请输入验证码" />
           )}
             </Col>
-            <Col span={10}>
-              <Button size="large">发送验证码</Button>
+            <Col span={9}>
+              <Button className="comfirm-button" size="large">发送验证码</Button>
             </Col>
           </Row>
         </FormItem>
@@ -87,7 +89,7 @@ const RegistrationForm = Form.create()(React.createClass({
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{
-              required: true, message: 'Please input your password!',
+              required: true, message: '请输入密码!',
             }, {
               validator: this.checkConfirm,
             }],
@@ -98,7 +100,7 @@ const RegistrationForm = Form.create()(React.createClass({
         <FormItem>
           {getFieldDecorator('confirm', {
             rules: [{
-              required: true, message: 'Please confirm your password!',
+              required: true, message: '请输入确认密码!',
             }, {
               validator: this.checkPassword,
             }],

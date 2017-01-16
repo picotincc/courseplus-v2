@@ -1,6 +1,6 @@
 .register-dialog {
     width: 400px;
-    height: 510px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,5 +40,42 @@
             height: 40px; 
             margin-top: 5px;
         }
+
+        .comfirm-button {
+            background: @cool-blue;
+            height: 40px;
+            color: white;
+        }
+
+        .comfirm-button:hover {
+            background: @cool-blue;
+            height: 40px;
+            color: white;
+        }
      }
+    
+    .seperate-line {
+        width: 380px;
+        height: 1px;
+        margin-top: 30px;
+        background-color: @pinkish-grey;
+    }
+
+    .login-row {
+        margin-top: 20px;
+        width: 280px;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        >.tip {
+            font-size: 14px;
+        }
+
+        >.login-button {
+            margin-right: 5px;
+            font-size: 16px;
+            color: @cool-blue;
+        }
+    }
 }

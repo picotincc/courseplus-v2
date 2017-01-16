@@ -30,7 +30,7 @@ export default class CoursesContainer extends Component {
 
     handlePageChange(page)
     {
-        const offset = this.props.limit * page;
+        const offset = this.props.limit * ( page - 1 );
         this.props.onPaginationClick(offset);
     }
 

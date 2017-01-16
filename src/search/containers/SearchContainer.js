@@ -96,7 +96,7 @@ export default class SearchContainer extends Component {
             this.setState({
                 school_id: paras["school_id"],
                 major_id: paras["major_id"],
-                offset: res.offset,
+                offset: paras["offset"],
                 // limit: res.limit,
                 count: res.count,
                 courses: res.list

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class Header extends Component {
 
@@ -31,7 +32,9 @@ export default class Header extends Component {
         return (
             <div className="cp-header">
                 <div className="logo">
-                    <img src="/imgs/logo.png" />
+                    <Link href="/">
+                        <img src="/imgs/logo.png" />
+                    </Link>
                 </div>
                 <div className="login-btn" onClick={handleLoginClick}>
                     <span>登录</span>

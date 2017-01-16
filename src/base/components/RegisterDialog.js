@@ -3,19 +3,33 @@ import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Butto
 const FormItem = Form.Item;
 
 export default class RegisterDialog extends Component {
+
+    static defaultProps = {
+        isRegister : true
+    }
+    
     render() {
         console.log(this.props.handleLoginClick);
+        const {isRegister, handleLoginClick} = this.props;
         return (
             <div className="register-dialog">
                 <div className="logo">
                     <img src="/imgs/logo.png" />
                 </div>
-                <RegistrationForm />
-                <div className="seperate-line"> </div>
-                <div className="login-row"> 
-                    <span className="tip"> 已有course+账户？ </span>
-                    <a className="login-button" onClick={this.props.handleLoginClick} >登录</a>
-                </div>
+                <RegistrationForm isRegister={isRegister} />
+                {
+                 (isRegister) ? (
+                    <div className="bottom-part">
+                        <div className="seperate-line"> </div>
+                        <div className="login-row"> 
+                            <span className="tip"> 已有course+账户？ </span>
+                            <a className="login-button" onClick={handleLoginClick} >登录</a>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="bottom-part" />          
+                  )}
+                
             </div>
         );
     }
@@ -53,7 +67,11 @@ const RegistrationForm = Form.create()(React.createClass({
     callback();
   },
   render() {
+
+
+    
     const { getFieldDecorator } = this.props.form;
+    const {isRegister} = this.props;
     return (
       <Form className="register-form" onSubmit={this.handleSubmit}>
         <FormItem>
@@ -78,14 +96,17 @@ const RegistrationForm = Form.create()(React.createClass({
             </Col>
           </Row>
         </FormItem>
-       
-        <FormItem>
-          {getFieldDecorator('nickname', {
-            rules: [{ required: true, message: '请输入昵称！' }],
-          })(
-            <Input addonBefore={<Icon type="lock" />} placeholder="昵称" />
-          )}
-        </FormItem>
+       {
+            (isRegister) ? (
+            <FormItem>
+                    {getFieldDecorator('nickname', {
+                        rules: [{ required: true, message: '请输入昵称！' }],
+                    })(
+                        <Input addonBefore={<Icon type="lock" />} placeholder="昵称" />
+                    )}
+            </FormItem>):(<span />)
+       }
+      
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{
@@ -110,7 +131,7 @@ const RegistrationForm = Form.create()(React.createClass({
         </FormItem>
 
         <FormItem>
-          <Button type="primary" htmlType="submit"  className="register-form-button">注册</Button>
+          <Button type="primary" htmlType="submit"  className="register-form-button">{isRegister ? "注册" : "修改密码"}</Button>
         </FormItem>
 
       </Form>

@@ -11,7 +11,7 @@ class Modal extends Component {
 
     static defaultProps = {
         width : "50%",
-        backgroundColor: "RGBA(255,255,255,0)"
+        backgroundColor: "RGBA(255,255,255,1)"
     }
 
     showModal(){
@@ -28,11 +28,13 @@ class Modal extends Component {
 
     modalStyle = {
         width: this.props.width,
-        backgroundColor: this.props.backgroundColor,
+        backgroundColor: "RGBA(255,255,255,0)"
+
     };
 
     contentStyle = {
         borderRadius: "4px",
+        backgroundColor: this.props.backgroundColor
     };
 
   

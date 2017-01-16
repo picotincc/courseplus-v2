@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getPeriods, selectPeriod } from 'base/actions/CourseAction';
+import CourseService from 'base/service/CourseService';
 import CourseVideo from "../components/CourseVideo";
 
 class CourseVideoContainer extends Component {
@@ -19,7 +20,20 @@ class CourseVideoContainer extends Component {
     }
 
     state = {
+        detail: null
+    }
 
+    componentWillReceiveProps(nextProp){
+        let id = nextProp.selectedPeriod.id;
+        console.log(id);
+        if(id){
+          CourseService.getPeriodDetail(id).then((data) => {
+              console.log(data);
+              (data) && (this.setState({ detail: data }));
+          }).catch((err) => {
+              console.log(err);
+          });
+        }
     }
 
     componentDidMount() {
@@ -30,7 +44,7 @@ class CourseVideoContainer extends Component {
     {
         return (
             <div className="course-video-wrapper">
-                <CourseVideo period={this.props.selectedPeriod}/>
+                <CourseVideo period={this.props.selectedPeriod} detail={this.state.detail}/>
             </div>
         );
     }
@@ -38,7 +52,7 @@ class CourseVideoContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-      selectedPeriod: state.selectedPeriod
+      selectedPeriod: state.selectedPeriod,
   };
 }
 

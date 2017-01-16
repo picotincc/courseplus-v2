@@ -52,6 +52,82 @@ const data = {
                 }
             ]
         }
+    },
+    "/v1/course/periodDetail": {
+        GET: (req, res) => {
+            var id = req.query.id;
+            if (id==="1") {
+                res.send({
+                    "data": {
+                        "live": {
+                            "id": 1,
+                            "start_time": "string",
+                            "state": "string",
+                            "preview_url": "string",
+                            "complete_url": "string",
+                            "live_url": "string"
+                          },
+                          "content": "string"
+                    }
+                })
+            }else if (id==="2") {
+                res.send({
+                    "data": {
+                        "live": {
+                            "id": 2,
+                            "start_time": "string",
+                            "state": "string",
+                            "preview_url": "string",
+                            "complete_url": "string",
+                            "live_url": "string"
+                          },
+                          "content": "string"
+                    }
+                })
+            }else if (id==="3") {
+                res.send({
+                    "data": {
+                        "live": {
+                            "id": 3,
+                            "start_time": "string",
+                            "state": "string",
+                            "preview_url": "string",
+                            "complete_url": "string",
+                            "live_url": "string"
+                          },
+                          "content": "string"
+                    }
+                })
+            }else if (id==="4") {
+                res.send({
+                    "data": {
+                        "live": {
+                            "id": 4,
+                            "start_time": "string",
+                            "state": "string",
+                            "preview_url": "string",
+                            "complete_url": "string",
+                            "live_url": "string"
+                          },
+                          "content": "string"
+                    }
+                })
+            }else{
+                res.send({
+                    "data": {
+                        "live": {
+                            "id": 100,
+                            "start_time": "string",
+                            "state": "string",
+                            "preview_url": "string",
+                            "complete_url": "string",
+                            "live_url": "string"
+                          },
+                          "content": "string"
+                    }
+                })
+            }
+        }
     }
 }
 

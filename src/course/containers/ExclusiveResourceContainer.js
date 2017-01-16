@@ -28,11 +28,15 @@ export default class ExclusiveResourceContainer extends Component {
     }
 
     handleExclusiveResourceItem(){
-      // FormatUtil.openNewTab("http://www.baidu.com")
       const previewDisplay = document.getElementsByClassName('resourcePreview');
       previewDisplay[0].style.display = "block";
       document.body.style.overflow = "hidden";
+    }
 
+    handelClosePre(){
+      const previewDisplay = document.getElementsByClassName('resourcePreview');
+      previewDisplay[0].style.display = "none";
+      document.body.style.overflow = "visible";
     }
 
     componentDidMount()
@@ -51,8 +55,7 @@ export default class ExclusiveResourceContainer extends Component {
       return (
         <div className="cp-course-exclusiveResource">
           <div className="resourcePreview">
-            <h1>资料预览</h1>
-            <button onClick={() => this.handlePackageDownload()}>点击阿萨德加快速度</button>
+            <Icon className="closePre" type="close" onClick={this.handelClosePre}></Icon>
           </div>
           <div  className="downloadTitle">
             <span onClick={() => this.handlePackageDownload()} className="packageDownload"><Icon type="download"></Icon> 资料打包下载</span>

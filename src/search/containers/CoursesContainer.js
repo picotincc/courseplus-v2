@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Pagination } from 'antd';
 
 import GoodCourse from 'base/components/GoodCourse';
+import FormatUtil from 'base/util/FormatUtil';
 
 export default class CoursesContainer extends Component {
 
@@ -34,6 +35,10 @@ export default class CoursesContainer extends Component {
         this.props.onPaginationClick(offset);
     }
 
+    handleListItemClick(id){
+        FormatUtil.openNewTab("/course/"+id);
+    }
+
     render()
     {
         const { courses, limit, offset, count } = this.props;
@@ -43,7 +48,7 @@ export default class CoursesContainer extends Component {
                 <ul className="courses-list">
                     {courses.map((item, index) => {
                         return (
-                            <GoodCourse key={index} data={item}  />
+                            <GoodCourse key={index} data={item} listItemClick={this.handleListItemClick} />
                         );
                     })}
                 </ul>

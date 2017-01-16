@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM  from 'react-dom';
+
 
 export default class SchoolSearchInput extends Component {
 
@@ -7,9 +9,9 @@ export default class SchoolSearchInput extends Component {
 
         this.handleInputFocus = this.handleInputFocus.bind(this);
         this.handleInputBlur = this.handleInputBlur.bind(this);
-        this._toggleDropdown = this._toggleDropdown.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleIconClick = this.handleIconClick.bind(this);
     }
 
     static defaultProps = {
@@ -30,7 +32,6 @@ export default class SchoolSearchInput extends Component {
         this.schoolSearch = this.refs["school-search"];
         this.icon = this.refs["icon"];
         this.suggestion = this.refs["suggestion"];
-        this.schoolInput = this.refs["school-input"];
     }
 
     componentWillReceiveProps(nextProps)
@@ -46,14 +47,14 @@ export default class SchoolSearchInput extends Component {
     handleInputFocus()
     {
         this.props.removeWarning();
-        this._toggleDropdown();
+        this._addDropdown();
     }
 
     handleInputBlur()
     {
         const value = this.schoolInput.value;
         this.props.onSchoolSelect(value.trim());
-        this._toggleDropdown();
+        this._removeDropdown();
     }
 
     handleSelect(sname)
@@ -70,11 +71,32 @@ export default class SchoolSearchInput extends Component {
         });
     }
 
-    _toggleDropdown()
+    handleIconClick(e)
     {
-        this.schoolSearch.classList.toggle("focus");
-        this.icon.classList.toggle("dropdown");
-        this.suggestion.classList.toggle("show");
+        const isDropdown = this.icon.classList.contains("dropdown");
+        if (isDropdown)
+        {
+            this.schoolInput.blur();
+        }
+        else
+        {
+            this.schoolInput.focus();
+        }
+        e.preventDefault();
+    }
+
+    _addDropdown()
+    {
+        this.schoolSearch.classList.add("focus");
+        this.icon.classList.add("dropdown");
+        this.suggestion.classList.add("show");
+    }
+
+    _removeDropdown()
+    {
+        this.schoolSearch.classList.remove("focus");
+        this.icon.classList.remove("dropdown");
+        this.suggestion.classList.remove("show");
     }
 
     render()
@@ -83,18 +105,18 @@ export default class SchoolSearchInput extends Component {
 
         return (
             <div ref="school-search" className="cp-school-search">
-                <input ref="school-input" type="text" placeholder="请选择学校"
+                <input ref={(input) => { this.schoolInput = input; }} type="text" placeholder="请选择学校"
                        onFocus={this.handleInputFocus}
                        onBlur={this.handleInputBlur}
                        onChange={this.handleInputChange}
                 />
-                <span ref="icon" className="icon iconfont icon-dropdown"></span>
+                <span ref="icon" className="icon iconfont icon-dropdown" onMouseDown={this.handleIconClick}></span>
                 <div ref="suggestion" className="suggestion">
                     <i className="triangle"></i>
                     <ul className="school-list">
                         {schools.map(item => {
                             return (
-                                <li key={item.id} onMouseDown={() => this.handleSelect(item.name)}>
+                                <li key={item.id} onMouseDown={(e) => this.handleSelect(item.name, e)}>
                                     <img src={item.img_url}/>
                                 </li>
                             );

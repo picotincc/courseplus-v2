@@ -56,14 +56,14 @@ class CarouselContainer extends Component {
             pauseOnHover: true
         };
         return (
-            <div className="carousel">
+            <div className="slider cp-home-carousel">
             {
                 (!this.state.items.length) ? (
                     <Icon type="loading" />
                 ) : (
                     <Slider {...settings}>
                         {this.state.items.map((item) => (
-                            <div key={item.id}><CarouselItem item={item} handleClick={this.handleItemClick}/></div>
+                            <div key={item.id}><CarouselItem item={item} handleClick={this.handleItemClick.bind(this)}/></div>
                         ))}
                     </Slider>
                 )

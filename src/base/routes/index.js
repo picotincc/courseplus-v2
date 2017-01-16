@@ -50,6 +50,8 @@ const routes = (
 		<Route path='/' component={App}>
 			<IndexRoute getComponent={home} />
             <Route path='home' getComponent={home} />
+			<Route path='search(/:school)(/:major)' getComponent={search} />
+			<Route path='course' getComponent={course} />
 			<Route path='search(/:school)(/:speciality)' getComponent={search} />
 			<Route path='course/:courseId' getComponent={course} />
 			<Route path='user' getComponent={user} />

@@ -8,6 +8,7 @@ export default class ExclusiveResourceContainer extends Component {
 
     constructor (props) {
         super(props);
+        this.handleExclusiveResourceItem = this.handleExclusiveResourceItem.bind(this);
     }
 
     static defaultProps = {
@@ -27,7 +28,11 @@ export default class ExclusiveResourceContainer extends Component {
     }
 
     handleExclusiveResourceItem(){
-      FormatUtil.openNewTab("http://www.baidu.com")
+      // FormatUtil.openNewTab("http://www.baidu.com")
+      const previewDisplay = document.getElementsByClassName('resourcePreview');
+      previewDisplay[0].style.display = "block";
+      document.body.style.overflow = "hidden";
+
     }
 
     componentDidMount()
@@ -45,8 +50,12 @@ export default class ExclusiveResourceContainer extends Component {
       const {exclusiveResourceData} = this.state;
       return (
         <div className="cp-course-exclusiveResource">
-          <div onClick={() => this.handlePackageDownload()} className="packageDownload">
-            <span ><Icon type="download"></Icon> 资料打包下载</span>
+          <div className="resourcePreview">
+            <h1>资料预览</h1>
+            <button onClick={() => this.handlePackageDownload()}>点击阿萨德加快速度</button>
+          </div>
+          <div  className="downloadTitle">
+            <span onClick={() => this.handlePackageDownload()} className="packageDownload"><Icon type="download"></Icon> 资料打包下载</span>
           </div>
           <div>
             {exclusiveResourceData.map((item,index) => (

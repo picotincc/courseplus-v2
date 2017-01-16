@@ -108,11 +108,11 @@ export default class SearchContainer extends Component {
 
     render()
     {
-        const { courses, limit, offset, count } = this.state;
+        const { school_id, major_id, courses, limit, offset, count } = this.state;
         return (
             <div className="cp-search-container">
                 <div className="slogan">
-                    <SearchBar onSearch={this.handleSearch}/>
+                    <SearchBar schoolId={school_id} majorId={major_id} onSearch={this.handleSearch}/>
                 </div>
                 <div className="courses-container">
                     <CoursesContainer

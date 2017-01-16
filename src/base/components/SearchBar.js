@@ -45,6 +45,32 @@ export default class SearchBar extends Component {
         });
     }
 
+    componentWillReceiveProps(nextProps)
+    {
+        if (nextProps.schoolId)
+        {
+            const schoolId = parseInt(nextProps.schoolId);
+            const selectedSchool = this.state.schools.find(school => school.id === schoolId);
+            SchoolService.getMajors(schoolId).then(res => {
+                const majors = _formatMajors(res);
+                let selectedMajor = null;
+                if (nextProps.majorId)
+                {
+                    const majorId = parseInt(nextProps.majorId);
+                    selectedMajor = res.find(item => item.id === majorId);
+                    selectedMajor.name = selectedMajor.code + selectedMajor.name;
+                }
+                this.setState({
+                    selectedSchool,
+                    majors,
+                    selectedMajor
+                });
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+
     handleSchoolSelect(sname)
     {
         const selectedSchool = this.state.selectedSchool;
@@ -154,6 +180,7 @@ export default class SearchBar extends Component {
                 <div className={"school " + warning}>
                     <SchoolSearchInput
                         schools={this.state.schools}
+                        selectedSchool={this.state.selectedSchool}
                         onSchoolSelect={this.handleSchoolSelect}
                         removeWarning={this.removeWarning}
                     />

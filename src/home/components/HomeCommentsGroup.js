@@ -18,15 +18,28 @@ export default class HomeCommentsGroup extends Component {
 
 
 class HomeComment extends Component {
+
+    handleMouseDown(e){
+      this.mouseDownX = e.clientX;
+    }
+
+    handleMouseUp(id,e){
+      if(Math.abs(e.clientX - this.mouseDownX) < 5) {
+          this.props.listItemClick && this.props.listItemClick();
+      }
+      this.mouseDownX = null;
+    }
+
     render () {
-        let { comment ,listItemClick } = this.props;
+        let { comment } = this.props;
         let course = comment.course;
         let teacher = course.teacher;
         let major = course.major
         let tag = major.school.name + "  " + course.code + course.name;
         let majorName = major.code + major.name;
         return (
-                <div className="home-comment" onClick = {() => listItemClick()}>
+                <div className="home-comment" onMouseDown={this.handleMouseDown.bind(this)}
+              onMouseUp={this.handleMouseUp.bind(this, comment.id)}>
                     <div className="top-part">
                         <div className="userInfo">
                             <img src={teacher.img_url} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Affix } from 'antd';
+import { Affix, Icon } from 'antd';
 
 export default class Sidebar extends Component {
 
@@ -20,26 +20,30 @@ export default class Sidebar extends Component {
     }
 
     componentDidMount(){
-    
+
     }
 
     render(){
-        const { curClass } = this.props;
+        const { curClass, course } = this.props;
         return(
-            <div className={"cp-course-sidebar " + curClass}>
-                <img src="http://i1.piimg.com/567571/2f85c554e4ba8aeb.png" />
-                <div className="name">徐伟</div>
-                <div className="desc">南京大学2016级环境学院研究生</div>
-                <div className="honour">专业课排名第一</div>
-                <div className="label">总分380 外语76 政治65 数学112 专业课127</div>
-                <div className="question-btn">向他提问</div>
-                <div className="buy-btn">
-                    <div className="text">买断课程</div>
-                    <div className="price">
-                        <span className="origin">¥350</span>&nbsp;<span className="current">¥270</span>
+            (course.length == 0) ? (
+                <Icon type="loading" />
+            ) : (
+                <div className={"cp-course-sidebar " + curClass}>
+                    <img src={course.teacher.img_url} />
+                    <div className="name">{course.teacher.name}</div>
+                    <div className="desc">{course.teacher.education}</div>
+                    <div className="honour">{course.teacher.introduction}</div>
+                    <div className="label">{course.teacher.description}</div>
+                    <div className="question-btn">向他提问</div>
+                    <div className="buy-btn">
+                        <div className="text">买断课程</div>
+                        <div className="price">
+                            <span className="origin">¥{course.origin_price}</span>&nbsp;<span className="current">¥{course.currentPrice}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )
         )
     }
 }

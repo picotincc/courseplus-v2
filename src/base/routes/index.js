@@ -51,7 +51,7 @@ const routes = (
 			<IndexRoute getComponent={home} />
             <Route path='home' getComponent={home} />
 			<Route path='search(/:school)(/:speciality)' getComponent={search} />
-			<Route path='course' getComponent={course} />
+			<Route path='course/:courseId' getComponent={course} />
 			<Route path='user' getComponent={user} />
 			<Route path='order' getComponent={order} />
 			<Route path='mycourse' getComponent={myCourse} />

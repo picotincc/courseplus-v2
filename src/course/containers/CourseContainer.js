@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import { Affix } from 'antd';
 
 import 'course/resource/index.less';
-
+import { getCourse } from 'base/actions/CourseAction';
 import TitleBar from '../components/TitleBar';
 import Sidebar from '../components/Sidebar';
 import DetailContainer from './DetailContainer';
-
-import { getCourse } from 'base/actions/CourseAction';
-
 
 class CourseContainer extends Component {
 
@@ -37,8 +34,9 @@ class CourseContainer extends Component {
         window.onscroll = this._scroll_event;
         this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
         //获取数据
+        let courseId = this.props.params.courseId;
         let { dispatch } = this.props;
-        dispatch(getCourse(1));
+        dispatch(getCourse(courseId));
 
     }
 
@@ -65,22 +63,22 @@ class CourseContainer extends Component {
 
     render()
     {
-        console.log(this.props.course);
+        const courseId = this.props.params.courseId;
         return (
             <div className="cp-course-container">
-                <div className="titleBar" course={this.props.course}>
-                    <TitleBar />
+                <div className="titleBar">
+                    <TitleBar course={this.props.course}/>
                 </div>
                 <div className="center-container" >
                     <div ref="sidebar" className="sidebar" >
-                        <Sidebar curClass={this.state.curClass}/>
+                        <Sidebar curClass={this.state.curClass} course={this.props.course}/>
                     </div>
                     <div ref="detail" className="detail">
-                        <DetailContainer />
+                        <DetailContainer courseId={courseId}/>
                     </div>
                 </div>
             </div>
-        );    
+        );
     }
 }
 

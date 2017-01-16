@@ -5,13 +5,15 @@ import Modal from 'base/components/Modal';
 import Header from 'base/components/Header';
 import Footer from 'base/components/footer';
 import LoginDialog from 'base/components/LoginDialog';
+import RegisterDialog from 'base/components/RegisterDialog';
 import { login } from 'base/actions/HomeAction';
 
 class App extends Component {
 
     constructor (props) {
         super(props);
-        this.showModal = this.showModal.bind(this);
+        this.showLoginModal = this.showLoginModal.bind(this);
+        this.showRegisterModal = this.showRegisterModal.bind(this)
     }
 
     static defaultProps = {
@@ -26,9 +28,14 @@ class App extends Component {
 
     }
 
-    showModal(){
-        this.refs.modal.showModal();
+    showLoginModal(){
+        this.refs.loginModal.showModal();
     }
+
+    showRegisterModal(){
+        this.refs.registerModal.showModal();
+    }
+
 
 
     componentDidMount()
@@ -40,7 +47,7 @@ class App extends Component {
     {
         return (
             <div className="cp-app">
-                <header className="flex-center"><Header handleLoginClick={this.showModal} userId={this.props.userId} /></header>
+                <header className="flex-center"><Header handleLoginClick={this.showLoginModal} handleRegisterClick={this.showRegisterModal} userId={this.props.userId} /></header>
 
                 <div className="cp-container">
                     {this.props.children}
@@ -48,10 +55,12 @@ class App extends Component {
 
                 <footer className="flex-center"><Footer /></footer>
 
-                <Modal width="400px" ref="modal" >
+                <Modal width="400px" ref="loginModal" >
                     <LoginDialog />
                 </Modal>
-              
+                <Modal width="400px" ref="registerModal" >
+                    <RegisterDialog />
+                </Modal>
             </div>
         );
     }

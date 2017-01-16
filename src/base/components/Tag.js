@@ -26,17 +26,17 @@ export default class Tag extends Component {
 
     handleTagClick(event){
         event.stopPropagation();
-        const school = this.props.school;
-        const discipline = this.props.discipline;
-        this.props.tagClick(school, discipline);
+        const schoolId = this.props.tagData.schoolId;
+        const majorId = this.props.tagData.majorId;
+        this.props.tagClick(schoolId, majorId);
     }
 
     render(){
-        const {school, discipline} = this.props;
+        const { tagData } = this.props;
 
         return(
             <div className="cp-tag" onClick = {this.handleTagClick}>
-                {school}&nbsp;{discipline}
+                {tagData.schoolName}&nbsp;{tagData.majorName}
             </div>
         )
     }

@@ -42,8 +42,8 @@ export default class GoodCoursesContainer extends Component {
         FormatUtil.openNewTab("/course/"+id);
     }
 
-    handleTagClick(school, discipline){
-        FormatUtil.openNewTab("/search/"+school+"/"+discipline);
+    handleTagClick(schoolId, majorId){
+        FormatUtil.openNewTab("/search/"+schoolId+"/"+majorId);
     }
 
     render(){

@@ -30,12 +30,18 @@ class Modal extends Component {
         width: this.props.width,
         backgroundColor: this.props.backgroundColor,
     };
+
+    contentStyle = {
+        borderRadius: "4px",
+    };
+
+  
     
     render() {
         return (
-            <BoronModel ref="modal" modalStyle={this.modalStyle} backdropStyle={this.backdropStyle}>
+            <BoronModel ref="modal" contentStyle={this.contentStyle} modalStyle={this.modalStyle} backdropStyle={this.backdropStyle}>
                 {this.props.children}
-                <Icon onClick={this.hideModal} type="close" ></Icon>
+                <Icon className="modal-icon" onClick={this.hideModal} type="close" ></Icon>
             </BoronModel>
         );
     }

@@ -74,7 +74,7 @@ class CourseContainer extends Component {
                     <div ref="sidebar" className="sidebar" >
                         <Sidebar curClass={this.state.curClass} course={this.props.course}/>
                     </div>
-                    <div className="detail" ref="detail">
+                    <div ref="detail" className="detail">
                         <DetailContainer courseId={courseId}/>
                     </div>
                 </div>

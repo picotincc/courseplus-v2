@@ -14,6 +14,7 @@ class App extends Component {
         super(props);
         this.showLoginModal = this.showLoginModal.bind(this);
         this.showRegisterModal = this.showRegisterModal.bind(this)
+        this.showForgetPasswordModal = this.showForgetPasswordModal.bind(this)
     }
 
     static defaultProps = {
@@ -29,11 +30,18 @@ class App extends Component {
     }
 
     showLoginModal(){
+        this.refs.registerModal.hideModal();
         this.refs.loginModal.showModal();
     }
 
     showRegisterModal(){
+        this.refs.loginModal.hideModal();
         this.refs.registerModal.showModal();
+    }
+
+    showForgetPasswordModal(){
+        this.refs.loginModal.hideModal();
+        this.refs.forgetPasswordModal.showModal();
     }
 
 
@@ -56,10 +64,15 @@ class App extends Component {
                 <footer className="flex-center"><Footer /></footer>
 
                 <Modal width="400px" ref="loginModal" >
-                    <LoginDialog />
+                    <LoginDialog handleForgetPasswordClick={this.showForgetPasswordModal} handleRegisterClick={this.showRegisterModal}/>
                 </Modal>
-                <Modal width="400px" ref="registerModal" >
-                    <RegisterDialog />
+
+                <Modal width="400px" ref="forgetPasswordModal"  >
+                    <RegisterDialog isRegister={false}/>
+                </Modal>
+                
+                <Modal width="400px" ref="registerModal"  >
+                    <RegisterDialog isRegister={true} handleLoginClick={this.showLoginModal}/>
                 </Modal>
             </div>
         );

@@ -28,19 +28,21 @@ export default class ExclusiveResource extends Component {
     render()
     {
       let { exclusiveResourceItemClick , exclusiveResourceData } = this.props;
-      let img_url = exclusiveResourceData.img_url;
+      let id = exclusiveResourceData.id;
+      let cover_path = exclusiveResourceData.cover_path;
       let name = exclusiveResourceData.name;
-      let buy = exclusiveResourceData.buy;
-      let pay = exclusiveResourceData.pay;
+      let buy_count = exclusiveResourceData.buy_count;
+      let price = exclusiveResourceData.price;
+      let origin_price = exclusiveResourceData.origin_price;
 
       return (
         <div className="cp-course-exclusiveResourceItem">
-          <img className="img" onClick={() => {this.props.exclusiveResourceItemClick()}} src={img_url}/>
+          <img className="cover_path" onClick={() => {this.props.exclusiveResourceItemClick()}} src={cover_path}/>
           <div className="exclusiveResourceItem-footer">
             <p className="name">{name}</p>
             {
-              (pay) ? (
-                <p className="pay">￥{pay}<span className="buy">{buy}人最近购买</span></p>
+              (price) ? (
+                <p className="price">￥{price}<span className="buy_count">{buy_count}人最近购买</span></p>
               ) :
               (
                 <p className="free">米盒限时赠送</p>

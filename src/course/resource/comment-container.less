@@ -1,0 +1,83 @@
+.cp-course-comment-container{
+
+    >.comment-pagination{
+        margin-top: 30px;
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: center;
+
+        .ant-pagination-item{
+            &:hover{
+                border-color: @cool-blue;
+
+                >a{
+                    color: @cool-blue;
+                }
+            }
+        }
+
+        .ant-pagination-item-active{
+            background-color: @cool-blue;
+            border-color: @cool-blue;
+
+            &:hover{
+                >a{
+                    color: white;
+                }
+            }
+        }
+
+        .ant-pagination-prev,
+        .ant-pagination-next{
+            &:hover{
+                border-color: @cool-blue;
+
+                a{
+                    color: @cool-blue;
+                }
+            }
+        }
+
+        .ant-pagination-disabled{
+            &:hover{
+                border-color: #d9d9d9;
+
+                a{
+                    color: rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+
+    }
+
+    >.comment-part{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 30px;
+
+        >.comment-input{
+            width: 100%;
+            height: 88px;
+            padding: 10px;
+            resize: none;
+            border: 1px solid @warm-grey;
+            border-radius: 4px;
+            font-size: 14px;
+            color: @brownish-grey;
+            margin-bottom: 10px;
+        }
+        >.comment-btn{
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            background: @cool-blue;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+}

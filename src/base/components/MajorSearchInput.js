@@ -62,7 +62,7 @@ export default class MajorSearchInput extends Component {
         }
         else
         {
-            this._addDropdown();            
+            this._addDropdown();
         }
     }
 

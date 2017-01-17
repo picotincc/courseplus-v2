@@ -11,7 +11,7 @@ class Modal extends Component {
 
     static defaultProps = {
         width : "50%",
-        backgroundColor: "RGBA(255,255,255,0)"
+        backgroundColor: "RGBA(255,255,255,1)"
     }
 
     showModal(){
@@ -28,14 +28,22 @@ class Modal extends Component {
 
     modalStyle = {
         width: this.props.width,
-        backgroundColor: this.props.backgroundColor,
+        backgroundColor: "RGBA(255,255,255,0)"
+
     };
+
+    contentStyle = {
+        borderRadius: "4px",
+        backgroundColor: this.props.backgroundColor
+    };
+
+  
     
     render() {
         return (
-            <BoronModel ref="modal" modalStyle={this.modalStyle} backdropStyle={this.backdropStyle}>
+            <BoronModel ref="modal" contentStyle={this.contentStyle} modalStyle={this.modalStyle} backdropStyle={this.backdropStyle}>
                 {this.props.children}
-                <Icon onClick={this.hideModal} type="close" ></Icon>
+                <Icon className="modal-icon" onClick={this.hideModal} type="close" ></Icon>
             </BoronModel>
         );
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class Header extends Component {
 
@@ -27,16 +28,18 @@ export default class Header extends Component {
 
     render()
     {
-        const {handleLoginClick} = this.props;
+        const {handleLoginClick, handleRegisterClick } = this.props;
         return (
             <div className="cp-header">
                 <div className="logo">
-                    <img src="/imgs/logo.png" />
+                    <Link href="/">
+                        <img src="/imgs/logo.png" />
+                    </Link>
                 </div>
                 <div className="login-btn" onClick={handleLoginClick}>
                     <span>登录</span>
                 </div>
-                <div className="register-btn">
+                <div className="register-btn" onClick={handleRegisterClick}>
                     <span>注册</span>
                 </div>
             </div>

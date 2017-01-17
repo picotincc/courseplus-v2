@@ -28,7 +28,7 @@ export default class Header extends Component {
 
     render()
     {
-        const {handleLoginClick, handleRegisterClick } = this.props;
+        const { onLoginClick, onRegisterClick } = this.props;
         return (
             <div className="cp-header">
                 <div className="logo">
@@ -36,10 +36,10 @@ export default class Header extends Component {
                         <img src="/imgs/logo.png" />
                     </Link>
                 </div>
-                <div className="login-btn" onClick={handleLoginClick}>
+                <div className="login-btn" onClick={onLoginClick}>
                     <span>登录</span>
                 </div>
-                <div className="register-btn" onClick={handleRegisterClick}>
+                <div className="register-btn" onClick={onRegisterClick}>
                     <span>注册</span>
                 </div>
             </div>

@@ -23,13 +23,14 @@ class Modal extends Component {
     }
 
     backdropStyle = {
-        backgroundColor: 'RGBA(0,0,0,0.8)'
+        backgroundColor: 'RGBA(0,0,0,0.8)',
+        zIndex: "998"
     };
 
     modalStyle = {
         width: this.props.width,
-        backgroundColor: "RGBA(255,255,255,0)"
-
+        backgroundColor: "RGBA(255,255,255,0)",
+        zIndex: "999"
     };
 
     contentStyle = {
@@ -37,8 +38,8 @@ class Modal extends Component {
         backgroundColor: this.props.backgroundColor
     };
 
-  
-    
+
+
     render() {
         return (
             <BoronModel ref="modal" contentStyle={this.contentStyle} modalStyle={this.modalStyle} backdropStyle={this.backdropStyle}>

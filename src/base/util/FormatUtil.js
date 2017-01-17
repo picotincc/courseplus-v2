@@ -2,7 +2,7 @@ export default class FormatUtil
 {
     static isPhoneNumber(phone)
     {
-        if (phone.length === 11)
+        if (phone && phone.length === 11)
         {
             return _isNum(phone);
         }

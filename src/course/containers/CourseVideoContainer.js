@@ -24,16 +24,17 @@ class CourseVideoContainer extends Component {
     }
 
     componentWillReceiveProps(nextProp){
-        let id = nextProp.selectedPeriod.id;
-        console.log(id);
-        if(id){
-          CourseService.getPeriodDetail(id).then((data) => {
-              console.log(data);
-              (data) && (this.setState({ detail: data }));
-          }).catch((err) => {
-              console.log(err);
-          });
+        var id = nextProp.selectedPeriod.id;
+        if(id == null && nextProp.coursePeriods.length > 0){
+            id = nextProp.coursePeriods[0].id;
         }
+        console.log(id);
+        CourseService.getPeriodDetail(id).then((data) => {
+          console.log(data);
+          (data) && (this.setState({ detail: data }));
+        }).catch((err) => {
+          console.log(err);
+        });
     }
 
     componentDidMount() {
@@ -52,7 +53,8 @@ class CourseVideoContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-      selectedPeriod: state.selectedPeriod,
+      coursePeriods: state.coursePeriods,
+      selectedPeriod: state.selectedPeriod
   };
 }
 

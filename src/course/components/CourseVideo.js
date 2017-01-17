@@ -26,14 +26,27 @@ class CourseVideo extends Component {
     render()
     {
         let { period, detail } = this.props;
-        let video = detail ? detail.content : "";
-        let status = period.is_buy === 1 ? "进入直播间" : "立刻购买";
+        let state = detail ? detail.live.state : null;
+        let isBuy = period.is_buy;
+
+        let videoShow = (state=="CODED"||state=="CODING") ? "block" : "none";
+        let introContent = detail ? detail.content : "";
+        let barShow = isBuy==0 || (isBuy && (state=="ING"||state=="BEFORE")) ? "block" : "none";
+        let statusBtn = isBuy ? (state=="BEFORE" ? "status-button disabled" : "status-button live") : "status-button";
+
         return(
             <div className="course-video">
-                <iframe className="main-window" src={video}></iframe>
-                <div className="status-bar">
-                    <span className="period-price">{period.price}</span>
-                    <div className="status-button">{status}</div>
+                <div className="video-window" style={{display:videoShow}}>
+                    此处应有视频
+                </div>
+                <iframe className="intro-window" src={introContent}>
+                </iframe>
+                <div className="status-bar" style={{display:barShow}}>
+                    <div className="period-price" style={{display:isBuy ? "none" : "block"}}>
+                        <div>¥{period.price}</div>
+                        <div className="buy-hint">买断购买更划算！</div>
+                    </div>
+                    <div className={statusBtn}>{isBuy ? "进入直播间" : "单课购买"}</div>
                 </div>
             </div>
         );

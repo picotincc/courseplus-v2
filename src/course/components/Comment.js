@@ -60,21 +60,6 @@ export default class Comment extends Component {
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div className="reply-user">
-                                <i className="reply-icon"></i>
-                                <span className="reply-name">浪奔</span>
-                            </div>
-                            <div className="reply-content">
-                                <div className="reply-text">回复 <span className="reply-target">权利的伪娘</span>：资料真的不错 希望你们加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油加油</div>
-                                <div className="reply-infos">
-                                    <span className="reply-time">2016-11-12 20:34:51</span>
-                                    <div className="reply-operation">
-                                        <span className="reply-reply">回复</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                     <div className="reply-more">查看更多回复</div>
                 </div>

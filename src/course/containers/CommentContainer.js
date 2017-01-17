@@ -25,7 +25,7 @@ export default class CommentContainer extends Component {
     }
 
     render(){
-        const commentList = [1,2,3];
+        const commentList = [1,2];
 
         return(
             <div className="cp-course-comment-container">

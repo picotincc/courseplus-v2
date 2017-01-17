@@ -1,0 +1,217 @@
+.cp-course-comment{
+    width: 790px;
+    margin: 0 10px;
+    padding: 20px 10px 20px 5px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #979797;
+    justify-content: space-between;
+
+    >.user{
+        width: 50px;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        >.icon{
+            position: relative;
+            display: flex;
+            width: 40px;
+            height: 40px;
+            background: url('http://p1.bpimg.com/567571/1fa420592aa98a91.png') no-repeat;
+            background-size: 40px;
+            border-radius: 50%;
+            margin-left: 5px;
+            margin-bottom: 10px;
+        }
+        >.name{
+            font-size: 12px;
+            color: @brownish-grey;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    }
+
+    >.comment{
+        width: 700px;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        >.text{
+            font-size: 14px;
+            color: @brownish-grey;
+            line-height: 20px;
+        }
+        >.review-more{
+            width: 60px;
+            font-size: 14px;
+            color: @cool-blue;
+            margin-bottom: -10px;
+            cursor: pointer;
+        }
+        >.infos{
+            margin-top: 26px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            >.time{
+                font-size: 12px;
+                color: @warm-grey;
+                margin-right: 20px;
+            }
+            .ant-rate{
+                font-size: 14px;
+                margin-right: 18px;
+
+                .ant-rate-star{
+                    margin-right: 4px;
+                }
+            }
+
+            >.resource{
+                width: 400px;
+                font-size: 12px;
+                color: @warm-grey;
+                margin-right: 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            >.reply{
+                font-size: 16px;
+                color: @cool-blue;
+                cursor: pointer;
+            }
+        }
+
+        >.reply-part{
+            margin-bottom: 10px;
+
+            >.reply-input{
+                width: 100%;
+                height: 60px;
+                padding: 10px;
+                background: white;
+                border: 1px solid @brownish-grey;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                font-size: 14px;
+                color: @warm-grey;
+                resize: none;
+            }
+            >.reply-btn{
+                float: right;
+                width: 68px;
+                height: 40px;
+                background: @cool-blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                color: white;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        }
+
+        >.reply-list{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            >li{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                >.reply-user{
+                    width: 50px;
+                    flex: 0 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+
+                    >.reply-icon{
+                        position: relative;
+                        display: flex;
+                        width: 40px;
+                        height: 40px;
+                        background: url('http://p1.bpimg.com/567571/3f03cef44787efe2.png') no-repeat;
+                        background-size: 40px;
+                        border-radius: 50%;
+                        margin-left: 5px;
+                        margin-bottom: 10px;
+                    }
+                    >.reply-name{
+                        font-size: 12px;
+                        color: @brownish-grey;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+                >.reply-content{
+                    width: 620px;
+
+                    >.reply-text{
+                        font-size: 14px;
+                        color: @brownish-grey;
+                        line-height: 20px;
+                        margin-bottom: 15px;
+
+                        >.reply-target{
+                            color: @cool-blue;
+                            margin-left: 10px;
+                        }
+                    }
+
+                    >.reply-infos{
+                        margin-bottom: 10px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        >.reply-time{
+                            font-size: 12px;
+                            color: @warm-grey;
+                            margin-right: 20px;
+                        }
+                        >.reply-operation{
+                            font-size: 16px;
+
+                            >.reply-delete{
+                                color: @brownish-grey;
+                                margin-right: 40px;
+                                cursor: pointer;
+                            }
+                            >.reply-reply{
+                                color: @cool-blue;
+                                margin-right: 20px;
+                                cursor: pointer;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+
+
+        }
+
+        >.reply-more{
+            font-size: 16px;
+            color: @cool-blue;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+
+}

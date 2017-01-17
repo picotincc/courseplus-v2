@@ -6,7 +6,8 @@ const mockData = Object.assign({},
     requireModule('./Course'),
     requireModule('./school'),
     requireModule('./period'),
-    requireModule('./courseDetail')
+    requireModule('./courseDetail'),
+    requireModule('./User')
 
 );
 

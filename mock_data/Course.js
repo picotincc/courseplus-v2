@@ -1,7 +1,7 @@
 const data = {
     "/v1/course/search": {
         GET: (req, res) => {
-            if (req.query)
+            if (req.query.offset)
             {
                 const query = req.query;
                 const result = {
@@ -181,7 +181,7 @@ const courses = [
       "buyer_num": 20
     },
     {
-      "id": 4,
+      "id": 5,
       "subject": {
           "id": 1,
           "code": 919,
@@ -218,7 +218,7 @@ const courses = [
       "buyer_num": 20
     },
     {
-      "id": 5,
+      "id": 6,
       "subject": {
           "id": 1,
           "code": 919,
@@ -255,7 +255,7 @@ const courses = [
       "buyer_num": 200
     },
     {
-      "id": 6,
+      "id": 7,
       "subject": {
           "id": 1,
           "code": 919,
@@ -292,7 +292,7 @@ const courses = [
       "buyer_num": 20
     },
     {
-      "id": 7,
+      "id": 8,
       "subject": {
           "id": 1,
           "code": 919,

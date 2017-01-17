@@ -55,7 +55,7 @@ class App extends Component {
     {
         return (
             <div className="cp-app">
-                <header className="flex-center"><Header handleLoginClick={this.showLoginModal} handleRegisterClick={this.showRegisterModal} userId={this.props.userId} /></header>
+                <header className="flex-center"><Header onLoginClick={this.showLoginModal} onRegisterClick={this.showRegisterModal} userId={this.props.userId} /></header>
 
                 <div className="cp-container">
                     {this.props.children}
@@ -64,15 +64,15 @@ class App extends Component {
                 <footer className="flex-center"><Footer /></footer>
 
                 <Modal width="400px" ref="loginModal" >
-                    <LoginDialog handleForgetPasswordClick={this.showForgetPasswordModal} handleRegisterClick={this.showRegisterModal}/>
+                    <LoginDialog onForgetPasswordClick={this.showForgetPasswordModal} onRegisterClick={this.showRegisterModal}/>
                 </Modal>
 
                 <Modal width="400px" ref="forgetPasswordModal"  >
-                    <RegisterDialog isRegister={false}/>
+                    <RegisterDialog isRegister={false} />
                 </Modal>
-                
+
                 <Modal width="400px" ref="registerModal"  >
-                    <RegisterDialog isRegister={true} handleLoginClick={this.showLoginModal}/>
+                    <RegisterDialog isRegister={true} onLoginClick={this.showLoginModal}/>
                 </Modal>
             </div>
         );

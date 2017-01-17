@@ -23,6 +23,15 @@ class CourseVideo extends Component {
 
     }
 
+    handleClick(period, detail) {
+        let id = period.id;
+        if(!period.is_buy){
+            console.log("去购买！" + id);
+        }else if (detail.live.state=="ING") {
+            console.log("去直播！" + detail.live.live_url);
+        }
+    }
+
     render()
     {
         let { period, detail } = this.props;
@@ -43,10 +52,10 @@ class CourseVideo extends Component {
                 </iframe>
                 <div className="status-bar" style={{display:barShow}}>
                     <div className="period-price" style={{display:isBuy ? "none" : "block"}}>
-                        <div>¥{period.price}</div>
+                        <div>¥{parseFloat(period.price).toFixed(2)}</div>
                         <div className="buy-hint">买断购买更划算！</div>
                     </div>
-                    <div className={statusBtn}>{isBuy ? "进入直播间" : "单课购买"}</div>
+                    <div className={statusBtn} onClick={this.handleClick.bind(this, period, detail)}>{isBuy ? "进入直播间" : "单课购买"}</div>
                 </div>
             </div>
         );

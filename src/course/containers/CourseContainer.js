@@ -58,6 +58,7 @@ class CourseContainer extends Component {
                 curClass: "state3"
             });
         }
+        this.sidebar.style.height = 0;
         this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
     }
 
@@ -73,7 +74,7 @@ class CourseContainer extends Component {
                     <div ref="sidebar" className="sidebar" >
                         <Sidebar curClass={this.state.curClass} course={this.props.course}/>
                     </div>
-                    <div ref="detail" className="detail">
+                    <div className="detail" ref="detail">
                         <DetailContainer courseId={courseId}/>
                     </div>
                 </div>

@@ -40,7 +40,7 @@ export default class GoodCourse extends Component {
             <li key={data.id} className="course-item" onClick = {() => listItemClick(data.id)}>
                 <div className="course-info" style={{
                     "background":"url("+ data.subject.img_url +") no-repeat",
-                    "background-size": "255px"
+                    "backgroundSize": "255px"
                 }}>
                     <div className="title">{data.subject.code+data.subject.name}</div>
                     <div className="tag-wrapper">
@@ -52,7 +52,7 @@ export default class GoodCourse extends Component {
                     <div className="author">
                         <i className="icon" style = {{
                             "background": "url(" + data.teacher.img_url + ") no-repeat",
-                            "background-size": "40px"
+                            "backgroundSize": "40px"
                         }}></i>
                         <span className="name">{data.teacher.name}</span>
                         <span className="purchase">{data.buyer_num}人最近购买</span>

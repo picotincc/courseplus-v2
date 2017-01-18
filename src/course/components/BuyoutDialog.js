@@ -109,7 +109,7 @@ class ShoppingList extends Component {
                                 }
                                 return (
                                     <div className="shopping-item" key={item.id}>
-                                        {prefix}{item.name}]
+                                        {prefix}{item.name}
                                         {
                                             (show_price) ? (
                                                 <span className="price">￥{item.price}</span>

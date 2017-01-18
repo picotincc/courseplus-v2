@@ -63,38 +63,10 @@
                 border-top: 0;
                 border-radius: 0 0 4px 4px;
                 box-shadow: inset 0px 0px 10px 10px white;
-                padding: 0 10px;
+                padding: 6px 10px;
                 overflow-y: auto;
-                .danmaku-message {
-                    padding: 10px 5px;
-                    border-bottom: 1px solid @pinkish-grey;
-                    &:last-child {
-                        border-bottom: 0;
-                    }
-                    .message-title {
-                        * {
-                            height: 22px;
-                            line-height: 22px;
-                        }
-                        h4 {
-                            margin: 0;
-                            font-size: 14px;
-                            color: @cool-blue;
-                            font-weight: bold;
-                            display: block;
-                            float: left;
-                        }
-                        span {
-                            display: block;
-                            float: right;
-                            color: @pinkish-grey;
-                        }
-                        overflow: auto;
-                    }
-                    .message-body {
-                        color: @brownish-grey
-                    }
-                }
+                box-shadow: inset 0px 7px 7px -6px #666,
+                            inset 0px -7px 7px -8px #666;
             }
         }
         .launcher-wrapper {

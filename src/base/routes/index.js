@@ -57,7 +57,7 @@ const routes = (
 			<Route path='user' getComponent={user} />
 			<Route path='order' getComponent={order} />
 			<Route path='mycourse' getComponent={myCourse} />
-			<Route path='live' getComponent={live} />
+			<Route path='live/:liveId' getComponent={live} />
 		</Route>
     </div>
 );

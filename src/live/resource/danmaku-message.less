@@ -1,0 +1,29 @@
+.danmaku-message {
+    padding: 6px 5px;
+    &:last-child {
+        border-bottom: 0;
+    }
+    .message-title {
+        * {
+            height: 22px;
+            line-height: 22px;
+        }
+        h4 {
+            margin: 0;
+            font-size: 14px;
+            color: @cool-blue;
+            font-weight: bold;
+            display: block;
+            float: left;
+        }
+        span {
+            display: block;
+            float: right;
+            color: @pinkish-grey;
+        }
+        overflow: auto;
+    }
+    .message-body {
+        color: @brownish-grey
+    }
+}

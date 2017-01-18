@@ -16,10 +16,12 @@ class Modal extends Component {
 
     showModal(){
         this.refs.modal.show();
+        document.body.style.overflow = "hidden";
     }
 
     hideModal(){
         this.refs.modal.hide();
+        document.body.style.overflow = "auto";
     }
 
     backdropStyle = {

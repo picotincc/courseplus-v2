@@ -20,7 +20,8 @@ export default class ExclusiveResourcePrev extends Component {
     }
 
     state = {
-
+      page: 1,
+      pages: []
     }
 
     onDocumentComplete(pages) {
@@ -49,7 +50,7 @@ export default class ExclusiveResourcePrev extends Component {
         nextButton = <button className="next disabled"><i className="fa fa-arrow-right" style={{"color":"gray"}}>下一页</i></button>;
       }
       return (
-          <div className="cp-course-resourcePreview_bt">
+          <div className="cp-course-resourcePreview-bt">
             {previousButton}
             {nextButton}
           </div>
@@ -69,7 +70,7 @@ export default class ExclusiveResourcePrev extends Component {
       var pdfStyle = {
             "width": "480px",
             "height": "650px"
-        };
+          };
 
       let pagination = null;
           if (this.state.pages) {
@@ -77,7 +78,7 @@ export default class ExclusiveResourcePrev extends Component {
           }
           return (
             <div className="resourcePrev">
-               <PDF file={preview_url} scale={3} style={pdfStyle} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} />
+               <PDF file={preview_url} scale={4} style={pdfStyle} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} />
               {pagination}
             </div>
       )

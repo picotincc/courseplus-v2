@@ -1,11 +1,10 @@
-import React, {Component, PropTypes} from 'react';
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, message } from 'antd';
+import React, { Component } from 'react';
+import { Form, Input, Icon, Row, Col, Button, message } from 'antd';
 const FormItem = Form.Item;
 
 import FormatUtil from 'base/util/FormatUtil';
 import UserService from 'base/service/UserService';
 import VerifyCode from './VerifyCode';
-import Message from './Message';
 
 export default class RegisterDialog extends Component {
 
@@ -23,6 +22,11 @@ export default class RegisterDialog extends Component {
 
     state = {
         errorMessage: ""
+    }
+
+    componentDidMount()
+    {
+
     }
 
     handleCodeSend(phone)
@@ -68,9 +72,10 @@ export default class RegisterDialog extends Component {
             nickname: values.nickname
         };
         UserService.register(paras).then(res => {
-            //登录成功的提示
-
-            this.props.onLoginClick();
+            message.success("注册成功，稍后跳转", 2);
+            setTimeout(() => {
+                this.props.onLoginClick();
+            }, 2000);
         }).catch(err => {
             this.handleError(err);
         });
@@ -78,7 +83,19 @@ export default class RegisterDialog extends Component {
 
     reset(values)
     {
-
+        const paras = {
+            account: values.phone,
+            newPassword: values.password,
+            verifyCode: values.code
+        };
+        UserService.resetPassword(paras).then(res => {
+            message.success("重置成功，稍后跳转", 2);
+            setTimeout(() => {
+                this.props.onLoginClick();
+            }, 2000);
+        }).catch(err => {
+            this.handleError(err);
+        });
     }
 
     cleanError()

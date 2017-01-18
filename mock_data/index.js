@@ -10,8 +10,8 @@ const mockData = Object.assign({},
     requireModule('./courseDetail'),
     requireModule('./exclusiveDocuments'),
     requireModule('./courseDetail'),
-    requireModule('./User')
-
+    requireModule('./User'),
+    requireModule('./shoppingList')
 );
 
 module.exports = mockData;

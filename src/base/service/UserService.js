@@ -9,6 +9,14 @@ export default {
         query: paras
     }),
 
+    login: (paras) => fetch(`${version}/user/login`, {
+        method: "POST",
+        body: {
+            account: paras.account,
+            password: paras.password
+        }
+    }),
+
     register: (paras) => fetch(`${version}/user/register`, {
         method: "POST",
         body: {
@@ -16,6 +24,15 @@ export default {
             password: paras.password,
             verify_code: paras.verifyCode,
             nickname: paras.nickname
+        }
+    }),
+
+    resetPassword: (paras) => fetch(`${version}/user/resetPassword`, {
+        method: "POST",
+        body: {
+            account: paras.account,
+            new_password: paras.newPassword,
+            verify_code: paras.verifyCode
         }
     })
 }

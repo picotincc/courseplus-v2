@@ -20,32 +20,145 @@
         }
     }
 
-    > .login-btn
+    > .btn-groups
     {
-        flex: 0 0 68px;
-        height: 28px;
-        margin-right: 20px;
-        line-height: 28px;
-        text-align: center;
-        cursor: pointer;
+        flex: 0 0 auto;
+        display: flex;
 
-        &:hover
+        > .login-btn
         {
-            color: @cool-blue;
+            flex: 0 0 68px;
+            width: 68px;
+            height: 28px;
+            margin-right: 20px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover
+            {
+                color: @cool-blue;
+            }
+        }
+
+        > .register-btn
+        {
+            flex: 0 0 68px;
+            width: 68px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover
+            {
+                color: @cool-blue;
+            }
         }
     }
 
-    > .register-btn
+    > .user-info
     {
-        flex: 0 0 68px;
-        height: 28px;
-        line-height: 28px;
-        text-align: center;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        position: relative;
 
-        &:hover
+        > .mycourse
         {
-            color: @cool-blue;
+            color: @brownish-grey;
+            font-size: 16px;
+            margin-right: 20px;
+            cursor: pointer;
+
+            &:hover
+            {
+                color: @cool-blue;
+            }
+        }
+
+        img
+        {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right: 14px;
+        }
+
+        > .user-dropdown
+        {
+            position: absolute;
+            top: 47px;
+            right: 0;
+            min-width: 150px;
+            border-radius: 4px;
+            width: 180px;
+            background: #FFFFFF;
+            padding: 0;
+            margin: 0;
+            z-index: 40;
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+            > .triangle
+            {
+                top: -12px;
+                left: 116px;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-width: 7px;
+                border-style: solid dashed dashed dashed;
+                border-color: transparent transparent @white transparent;
+            }
+
+            > .user-menu
+            {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                color: @brownish-grey;
+
+                a
+                {
+                    color: @brownish-grey;
+
+                    &:hover
+                    {
+                        color: white;
+                    }
+                }
+
+                > li
+                {
+                    cursor: pointer;
+
+                    &:hover
+                    {
+                        background-color: @cool-blue;
+                        color: white;
+                    }
+
+                    > .item
+                    {
+                        font-size: 16px;
+                        margin: 16px 0px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+
+                    }
+
+                    > .line
+                    {
+                        width: 160px;
+                        margin: 0 10px;
+                        border: 1px solid @pinkish-grey;
+                    }
+                }
+            }
         }
     }
+
+
 }

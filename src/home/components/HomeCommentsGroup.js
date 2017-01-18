@@ -33,6 +33,7 @@ class HomeComment extends Component {
     render () {
         let { comment } = this.props;
         let course = comment.course;
+        let user = comment.user;
         let teacher = course.teacher;
         let major = course.major
         let tag = major.school.name + "  " + course.code + course.name;
@@ -56,7 +57,7 @@ class HomeComment extends Component {
                     <div className="bottom-part">
 
                         <div className="content"> {comment.content} </div>
-                        <div className="owner">——{comment.user_name}</div>
+                        <div className="owner">——{user.nickname}</div>
                     </div>
                 </div>
         )     

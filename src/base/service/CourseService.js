@@ -9,5 +9,6 @@ export default {
     search: (paras) => fetch(`${version}/course/search`, { query: paras }),
     getGoodCourses: () => fetch(`${version}/course/search`),
     getCourse: (course_id) => fetch(`${version}/course/courseDetail`, { query: { course_id } }),
-    getQualityComments: () => fetch(`${version}/course/qualityComment`)
+    getQualityComments: () => fetch(`${version}/course/qualityComment`),
+    getShoppingList: (course_id) => fetch(`${version}/course/shopping_list`, { query: { course_id } }),
 }

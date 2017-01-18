@@ -1,45 +1,14 @@
-import HomeService from 'base/service/HomeService';
-
-
-const REQUEST_GOOD_COURSES = "REQUEST_GOOD_COURSES";
-const RECEIVE_GOOD_COURSES = "RECEIVE_GOOD_COURSES";
-const USER_LOGIN = "USER_LOGIN";
+const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 
 export {
-    USER_LOGIN,
-    REQUEST_GOOD_COURSES,
-    RECEIVE_GOOD_COURSES
+    UPDATE_USER_INFO
 };
 
-const requestData = (type, data) => ({
-    type: type,
-    data
-});
-
-const receiveData = (type, data, res) => ({
-    type: type,
-    data,
-    res: res,
-    receivedAt: Date.now()
-});
-
-export function login(userId)
+export function updateUserInfo(info)
 {
-    const id = userId;
+    const userInfo = info;
     return {
-        type: USER_LOGIN,
-        userId: id
+        type: UPDATE_USER_INFO,
+        userInfo
     };
-}
-
-export function getHomeGoodCourses()
-{
-    const getDatas = () => (dispatch) => {
-        dispatch(requestData(REQUEST_GOOD_COURSES, {}));
-        return HomeService.getInstance().getGoodCourses()
-        .then(res => {
-            dispatch(receiveData(RECEIVE_GOOD_COURSES, {}, res));
-        });
-    };
-    return getDatas();
 }

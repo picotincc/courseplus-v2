@@ -1,3 +1,4 @@
+"use strict";
 const data = {
     "/v1/course/search": {
         GET: (req, res) => {

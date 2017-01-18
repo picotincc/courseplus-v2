@@ -58,6 +58,7 @@ class CourseContainer extends Component {
                 curClass: "state3"
             });
         }
+        this.sidebar.style.height = 0;
         this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
     }
 

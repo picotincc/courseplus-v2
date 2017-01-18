@@ -9,12 +9,11 @@ class LoginDialog extends Component {
                 <div className="logo">
                     <img src="/imgs/logo.png" />
                 </div>
-                <LoginForm forgetPasswordHandler={this.props.handleForgetPasswordClick} className="login-form"/>
+                <LoginForm forgetPasswordHandler={this.props.onForgetPasswordClick} className="login-form"/>
                 <div className="seperate-line"> </div>
-                <div className="register-row"> 
+                <div className="register-row">
                     <span className="tip"> 还没有course+账户？ </span>
-                    <a className="register-button" onClick={this.props.handleRegisterClick}>注册</a>
-
+                    <a className="register-button" onClick={this.props.onRegisterClick}>注册</a>
                 </div>
             </div>
         );
@@ -56,7 +55,7 @@ const LoginForm = Form.create()(React.createClass({
             <Checkbox>记住我</Checkbox>
           )}
           <a className="login-form-forgot" onClick={this.props.forgetPasswordHandler}>忘记密码？</a>
-          
+
         </FormItem>
         <Button type="primary" htmlType="submit" className="login-form-button">
             登录

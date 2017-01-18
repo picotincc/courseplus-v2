@@ -47,14 +47,14 @@ export default class SearchBar extends Component {
 
     componentWillReceiveProps(nextProps)
     {
-        if (nextProps.schoolId)
+        if (nextProps.schoolId !== null && nextProps.schoolId !== undefined)
         {
             const schoolId = parseInt(nextProps.schoolId);
             const selectedSchool = this.state.schools.find(school => school.id === schoolId);
             SchoolService.getMajors(schoolId).then(res => {
                 const majors = _formatMajors(res);
                 let selectedMajor = null;
-                if (nextProps.majorId)
+                if (nextProps.majorId !== null && nextProps.majorId !== undefined)
                 {
                     const majorId = parseInt(nextProps.majorId);
                     selectedMajor = res.find(item => item.id === majorId);
@@ -66,7 +66,11 @@ export default class SearchBar extends Component {
                     selectedMajor
                 });
             }).catch(err => {
-                console.log(err);
+                this.setState({
+                    selectedSchool,
+                    majors: [],
+                    selectedMajor: null
+                });
             })
         }
     }
@@ -78,7 +82,8 @@ export default class SearchBar extends Component {
         {
             this.setState({
                 selectedSchool: null,
-                majors: []
+                majors: [],
+                selectedMajor: null
             });
         }
         else
@@ -88,18 +93,20 @@ export default class SearchBar extends Component {
             {
                 if (selectedSchool === null || selectedSchool.id !== school.id)
                 {
-                    //请求相应学校的所有专业，转换数据结构
                     SchoolService.getMajors(school.id).then(res => {
                         const majors = _formatMajors(res);
                         this.setState({
                             selectedSchool: school,
-                            majors: majors
+                            majors: majors,
+                            selectedMajor: null
                         });
                     }).catch(err => {
-                        console.log(err);
+                        this.setState({
+                            selectedSchool: school,
+                            majors: [],
+                            selectedMajor: null
+                        });
                     })
-
-
                 }
             }
             else
@@ -107,7 +114,8 @@ export default class SearchBar extends Component {
                 this.setState({
                     warning: true,
                     selectedSchool: null,
-                    majors: []
+                    majors: [],
+                    selectedMajor: null
                 });
             }
         }

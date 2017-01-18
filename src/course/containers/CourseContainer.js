@@ -7,12 +7,18 @@ import { getCourse } from 'base/actions/CourseAction';
 import TitleBar from '../components/TitleBar';
 import Sidebar from '../components/Sidebar';
 import DetailContainer from './DetailContainer';
+import Modal from 'base/components/Modal';
+import BuyoutDialog from '../components/BuyoutDialog';
+
 
 class CourseContainer extends Component {
 
     constructor (props) {
         super(props);
         this._scroll_event = this._scroll_event.bind(this);
+        this.onBuyoutClick = this.onBuyoutClick.bind(this)
+        this.cancelBuyoutModal = this.cancelBuyoutModal.bind(this)
+        this.buyout = this.buyout.bind(this)
     }
 
     static defaultProps = {
@@ -62,6 +68,21 @@ class CourseContainer extends Component {
         this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
     }
 
+
+    onBuyoutClick(){
+        this.refs.buyoutModal.showModal();
+    }
+
+    cancelBuyoutModal(){
+        this.refs.buyoutModal.hideModal();
+
+    }
+
+    buyout(){
+        console.log("点击买断了")
+    }
+
+
     render()
     {
         const courseId = this.props.params.courseId;
@@ -72,12 +93,16 @@ class CourseContainer extends Component {
                 </div>
                 <div className="center-container" >
                     <div ref="sidebar" className="sidebar" >
-                        <Sidebar curClass={this.state.curClass} course={this.props.course}/>
+                        <Sidebar buyClickHandler={this.onBuyoutClick} curClass={this.state.curClass} course={this.props.course}/>
                     </div>
                     <div ref="detail" className="detail">
                         <DetailContainer courseId={courseId}/>
                     </div>
                 </div>
+
+                <Modal width="720px" ref="buyoutModal"  >
+                    <BuyoutDialog course={this.props.course} cancelClickHandler={this.cancelBuyoutModal} okClickHandler={this.buyout}/>
+                </Modal>
             </div>
         );
     }

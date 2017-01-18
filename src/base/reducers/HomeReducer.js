@@ -1,37 +1,19 @@
 import {
-    USER_LOGIN,
-    REQUEST_GOOD_COURSES,
-    RECEIVE_GOOD_COURSES
+    UPDATE_USER_INFO
 } from 'base/actions/HomeAction';
 
-function login(state= "cc", action)
+function getUserInfo(state = null, action)
 {
     switch(action.type)
     {
-        case USER_LOGIN:
-            return action.userId;
+        case UPDATE_USER_INFO:
+            return action.userInfo;
         default:
             return state;
     }
 }
-//demo
-function getGoodCourses(state = [], action)
-{
-    switch (action.type)
-    {
-        case REQUEST_GOOD_COURSES:
-            return state;
-        case RECEIVE_GOOD_COURSES:
-            let nextState = action.res;
-            return nextState;
-        default:
-            return state;
-    }
-}
-
 
 
 export const HomeReducer = {
-    userId: login,
-    goodCourses: getGoodCourses,
+    userInfo: getUserInfo
 };

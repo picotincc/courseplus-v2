@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-
 import { Menu, Dropdown, Icon } from 'antd';
+
 
 export default class Header extends Component {
 
@@ -40,6 +40,7 @@ export default class Header extends Component {
     handleLogout()
     {
         this.props.updateUserInfo(null);
+        //删除session,cookie
     }
 
     render()

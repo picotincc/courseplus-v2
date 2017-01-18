@@ -1,5 +1,6 @@
 import {
-    UPDATE_USER_INFO
+    UPDATE_USER_INFO,
+    TOGGLE_LOGIN
 } from 'base/actions/HomeAction';
 
 function getUserInfo(state = null, action)
@@ -13,7 +14,19 @@ function getUserInfo(state = null, action)
     }
 }
 
+function toggleLogin(state = false, action)
+{
+    switch(action.type)
+    {
+        case TOGGLE_LOGIN:
+            return action.isToggleLogin;
+        default:
+            return state;
+    }
+}
+
 
 export const HomeReducer = {
-    userInfo: getUserInfo
+    userInfo: getUserInfo,
+    isToggleLogin: toggleLogin
 };

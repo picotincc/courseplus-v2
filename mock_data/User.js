@@ -16,6 +16,20 @@ const data = {
         }
     },
 
+    "/v1/user/login": {
+        POST: (req, res) => {
+
+            const result = {
+                "id": 1,
+                "account": "yangxuejie",
+                "img_url": "http://p1.bpimg.com/573251/31ee2adcba8dbb2d.png",
+                "name": "杨学姐",
+                "gender": 2
+            }
+            res.send({ "data": result });
+        }
+    },
+
     "/v1/user/register": {
         POST: (req, res) => {
             if (req.body.nickname)
@@ -27,6 +41,23 @@ const data = {
             {
                 const result = {
                     message: "发送验证码出错了"
+                };
+                res.send({ "error": result });
+            }
+        }
+    },
+
+    "/v1/user/resetPassword": {
+        POST: (req, res) => {
+            if (req.body.new_password)
+            {
+                const result = "success";
+                res.send({ "data": result });
+            }
+            else
+            {
+                const result = {
+                    message: "重置失败"
                 };
                 res.send({ "error": result });
             }

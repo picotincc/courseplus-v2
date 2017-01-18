@@ -3,41 +3,82 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import Tag from 'base/components/Tag';
 import Player from "base/components/Player";
+import DanmakuClient from 'base/util/DanmakuClient';
+import DanmakuMessage from '../components/DanmakuMessage';
 
 import "live/resource/index.less";
 
 
 class LiveContainer extends Component {
+    danmakuClient = null;
 
     constructor (props) {
         super(props);
-    }
-
-    static defaultProps = {
-
-    }
-
-    static propTypes = {
-
+        
     }
 
     state = {
-        message: ''
+        message: '',
+        messages: []
     }
+
+    componentWillMount() {
+        let liveId = this.props.params.liveId;
+        let userId = '1';
+        let danmakuToken = '26eb313220f53856584c1d92f743c56cfe6a73af2f06e514940ebd64a4b3b69a';
+        this.danmakuClient = new DanmakuClient(liveId, userId, danmakuToken, {
+            showNotify: this.showNotify.bind(this),
+            showMessage: this.showMessage.bind(this)
+        })
+    }
+
+    componentDidUpdate (prevProps, prevState) {
+        let messagePanelBody = this.refs.messagePanelBody;
+        messagePanelBody.scrollTop = messagePanelBody.scrollHeight;
+    }
+    
 
     componentDidMount() {
 
     }
 
+    showMessage(from, content, time) {
+        this.state.messages.push({
+            type: 'MESSAGE',
+            from, content, time
+        });
+        this.setState({
+            messages: this.state.messages
+        });
+    }
+
+    showNotify(content, level) {
+        this.state.messages.push({
+            type: 'NOTIFY',
+            content, level
+        });
+        this.setState({
+            messages: this.state.messages
+        });
+    }
+
     handleSendMessage() {
         let { message } = this.state;
         console.log('[send message]', message);
-        this.setState({ message: '' });
+        this.danmakuClient.sendMessage(message);
+        this.setState({
+            message: ''
+        })
     }
 
-    render()
-    {
-        let tmp = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    render() {
+        let tagData = {
+            schoolId: 1,
+            majorId: 1,
+            schoolName: '南京大学',
+            majorName: '0803001环境化学'
+        }
+        let { messages } = this.state;
         return (
             <div className="cp-live-container">
                 <Row>
@@ -45,7 +86,7 @@ class LiveContainer extends Component {
                         <div className="live-main-wrapper">
                             <div className="live-title-wrapper">
                                 <h1 className="live-title">808环境化学</h1>
-                                <Tag school={"南京大学"} discipline={"0803001环境化学"}/>
+                                <Tag tagData={tagData} />
                                 <h2 className="live-sub-title">课时一：环境化学专业课复习建议策略</h2>
                             </div>
                             <div className="live-player-wrapper">
@@ -58,18 +99,10 @@ class LiveContainer extends Component {
                             <div className="message-panel">
                                 <div className="panel-heading">直播弹幕讨论区
                                 </div>
-                                <div className="panel-body">
+                                <div className="panel-body" ref="messagePanelBody">
                                     {
-                                        tmp.map((a, i) => (
-                                            <div className="danmaku-message" key={i}>
-                                                <div className="message-title">
-                                                    <h4>XWang1024:</h4>
-                                                    <span>20:01:01</span>
-                                                </div>
-                                                <div className="message-body">
-                                                请问第二题的x^2是怎么得到的？我为什么得不到，是题目的问题吗？请问第二题的x^2是怎么得到的？我为什么得不到，是题目的问题吗？请问第二题的x^2是怎么得到的？我为什么得不到，是题目的问题吗？
-                                                </div>
-                                            </div>
+                                        messages.map((a, i) => (
+                                            <DanmakuMessage key={i} data={a}/>
                                         ))
                                     }
                                 </div>
@@ -90,7 +123,7 @@ class LiveContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-      
+    //   userInfo: state.userInfo
   };
 }
 

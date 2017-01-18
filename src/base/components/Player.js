@@ -20,7 +20,7 @@ class Player extends Component {
         let { player } = this.refs;
         var dp = new DPlayer({
             element: player,                                                   // Optional, player element
-            autoplay: true,                                                    // Optional, autoplay video, not supported by mobile browsers
+            autoplay: false,                                                    // Optional, autoplay video, not supported by mobile browsers
             theme: '#60cdc9',                                                  // Optional, theme color, default: #b7daff
             loop: false,                                                       // Optional, loop play music, default: true
             lang: 'zh',                                                        // Optional, language, `zh` for Chinese, `en` for English, default: Navigator language

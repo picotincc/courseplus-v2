@@ -33,6 +33,14 @@ class App extends Component {
 
     }
 
+    componentWillReceiveProps(nextProprs)
+    {
+        if (!nextProprs.userInfo && nextProprs.isToggleLogin)
+        {
+            this.refs.loginModal.showModal();
+        }
+    }
+
     autoLogin()
     {
         const user = WebStorageUtil.getUserStorage();
@@ -79,7 +87,9 @@ class App extends Component {
                         onLoginClick={this.showLoginModal}
                         onRegisterClick={this.showRegisterModal}
                         userInfo={this.props.userInfo}
-                    /></header>
+                        updateUserInfo={this.updateUserInfo}
+                    />
+                </header>
 
                 <div className="cp-container">
                     {this.props.children}
@@ -110,7 +120,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-      userInfo: state.userInfo
+      userInfo: state.userInfo,
+      isToggleLogin: state.isToggleLogin
   };
 }
 

@@ -43,7 +43,7 @@ class ContributorsContainer extends Component {
 
     render(){
       const {contributorsData} = this.state;
-      var groupedContributors = []
+      let groupedContributors = []
       while (contributorsData.length > 0) {
         groupedContributors.push(contributorsData.splice(0,Math.min(4,contributorsData.length)))
       }

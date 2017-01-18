@@ -31,7 +31,6 @@ class PeriodLine extends Component {
         let { PeriodLineElem } = this.refs;
 
         if(!this._scrolled && PeriodLineElem) {
-            console.log(123)
             let scrollLeft = this._locatorIndex * PeriodLine.ITEM_WIDTH - PeriodLineElem.offsetWidth/2;
             (scrollLeft < 0) && (scrollLeft = 0);
             PeriodLineElem.scrollLeft = scrollLeft;

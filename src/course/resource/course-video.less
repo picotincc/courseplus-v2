@@ -1,0 +1,67 @@
+@button-hover: #62b7c7;
+@button-active: #3A92A2;
+@button-disabled: #bbb;
+
+.course-video-wrapper{
+    margin: 20px 0 50px;
+}
+
+.course-video{
+    .video-window{
+        height: 600px;
+        width: 100%;
+        border: none;
+        background-color: #999;
+    }
+    .intro-window{
+        height: 600px;
+        width: 100%;
+        margin: 20px 0;
+        border: none;
+        background-color: #999;
+    }
+    .status-bar{
+
+        .period-price{
+            color: @cool-blue;
+            float: left;
+            font-size:16px;
+            text-align: center;
+            margin-left: 150px;
+
+            .buy-hint {
+                font-size:12px;
+                color: @brownish-grey;
+            }
+        }
+        .status-button{
+            width: 160px;
+            height: 40px;
+            line-height: 40px;
+            color: white;
+            background-color: @cool-blue;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 16px;
+            margin: auto;
+            cursor: pointer;
+
+            &:hover {
+                background-color:@button-hover;
+            }
+            &:active {
+                background-color:@button-active;
+            }
+            &.disabled {
+                cursor: default;
+                background-color:@button-disabled;
+            }
+            &.live {
+                background-color: @coral-pink;
+            }
+            &.live:hover {
+                background-color: @light-red;
+            }
+        }
+    }
+}

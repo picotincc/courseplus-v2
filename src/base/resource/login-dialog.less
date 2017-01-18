@@ -1,0 +1,87 @@
+.login-dialog {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    >.logo {
+        width: 165px;
+        height: 30px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        img {
+            width: 100%;
+
+        }
+    }
+
+    .login-form {
+        width: 280px;
+        .password-row {
+            margin-bottom: 10px;
+        }
+
+        .remember-row {
+            margin-bottom: 15px;    
+        }
+        .ant-input-group-addon {
+            width: 50px;
+            > i {
+                font-size: 20px;
+                color: @brownish-grey;
+                top: 10px;
+                right: 14px;
+            }
+        }
+
+        .ant-input-group .ant-input {
+            height: 40px;
+        }
+        .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner {
+            background-color: white;
+            border-color: @warm-grey;
+        }
+        .ant-checkbox-checked .ant-checkbox-inner:after {
+            border-color: @warm-grey;
+        }
+        .login-form-forgot {
+            color: @brownish-grey;
+            position: absolute;
+            right: 0px;
+        }
+
+        .login-form-button {
+            width: 100%;
+            background: @cool-blue;
+            border-color: @cool-blue;
+            height: 40px; 
+        }
+
+        
+    }
+    .seperate-line {
+        width: 380px;
+        height: 1px;
+        margin-top: 30px;
+        background-color: @pinkish-grey;
+    }
+
+    .register-row {
+        margin-top: 20px;
+        width: 280px;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        >.tip {
+            font-size: 14px;
+        }
+
+        >.register-button {
+            margin-right: 5px;
+            font-size: 16px;
+            color: @cool-blue;
+        }
+    }
+}
+

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import FormatUtil from 'base/util/FormatUtil';
 import SchoolService from 'base/service/SchoolService';
 
 import SchoolSearchInput from './SchoolSearchInput';
@@ -14,6 +15,7 @@ export default class SearchBar extends Component {
         this.removeWarning = this.removeWarning.bind(this);
         this.addWarning = this.addWarning.bind(this);
         this.handleMajorSelect = this.handleMajorSelect.bind(this);
+        this.handleSearchClick = this.handleSearchClick.bind(this);
     }
 
     static defaultProps = {
@@ -43,6 +45,36 @@ export default class SearchBar extends Component {
         });
     }
 
+    componentWillReceiveProps(nextProps)
+    {
+        if (nextProps.schoolId !== null && nextProps.schoolId !== undefined)
+        {
+            const schoolId = parseInt(nextProps.schoolId);
+            const selectedSchool = this.state.schools.find(school => school.id === schoolId);
+            SchoolService.getMajors(schoolId).then(res => {
+                const majors = _formatMajors(res);
+                let selectedMajor = null;
+                if (nextProps.majorId !== null && nextProps.majorId !== undefined)
+                {
+                    const majorId = parseInt(nextProps.majorId);
+                    selectedMajor = res.find(item => item.id === majorId);
+                    selectedMajor.name = selectedMajor.code + selectedMajor.name;
+                }
+                this.setState({
+                    selectedSchool,
+                    majors,
+                    selectedMajor
+                });
+            }).catch(err => {
+                this.setState({
+                    selectedSchool,
+                    majors: [],
+                    selectedMajor: null
+                });
+            })
+        }
+    }
+
     handleSchoolSelect(sname)
     {
         const selectedSchool = this.state.selectedSchool;
@@ -50,7 +82,8 @@ export default class SearchBar extends Component {
         {
             this.setState({
                 selectedSchool: null,
-                majors: []
+                majors: [],
+                selectedMajor: null
             });
         }
         else
@@ -60,18 +93,20 @@ export default class SearchBar extends Component {
             {
                 if (selectedSchool === null || selectedSchool.id !== school.id)
                 {
-                    //请求相应学校的所有专业，转换数据结构
                     SchoolService.getMajors(school.id).then(res => {
                         const majors = _formatMajors(res);
                         this.setState({
                             selectedSchool: school,
-                            majors: majors
+                            majors: majors,
+                            selectedMajor: null
                         });
                     }).catch(err => {
-                        console.log(err);
+                        this.setState({
+                            selectedSchool: school,
+                            majors: [],
+                            selectedMajor: null
+                        });
                     })
-
-
                 }
             }
             else
@@ -79,7 +114,8 @@ export default class SearchBar extends Component {
                 this.setState({
                     warning: true,
                     selectedSchool: null,
-                    majors: []
+                    majors: [],
+                    selectedMajor: null
                 });
             }
         }
@@ -116,6 +152,30 @@ export default class SearchBar extends Component {
         });
     }
 
+    handleSearchClick()
+    {
+        const school = this.state.selectedSchool;
+        const major = this.state.selectedMajor;
+        const isInSearchPage = location.href.includes("search");
+        let path = "/search";
+        if (school)
+        {
+            path = path + "/" + school.id;
+            if (major)
+            {
+                path = path + "/" + major.id;
+            }
+        }
+        if (isInSearchPage)
+        {
+            this.props.onSearch(school, major, path);
+        }
+        else
+        {
+            FormatUtil.openNewTab(path);
+        }
+    }
+
     render()
     {
         const warning = this.state.warning ? "warning" : "";
@@ -128,6 +188,7 @@ export default class SearchBar extends Component {
                 <div className={"school " + warning}>
                     <SchoolSearchInput
                         schools={this.state.schools}
+                        selectedSchool={this.state.selectedSchool}
                         onSchoolSelect={this.handleSchoolSelect}
                         removeWarning={this.removeWarning}
                     />
@@ -142,7 +203,7 @@ export default class SearchBar extends Component {
                     />
                 </div>
                 <div className="search-btn">
-                    <div className="btn">
+                    <div className="btn" onClick={this.handleSearchClick}>
                         <span>搜索</span>
                     </div>
                 </div>

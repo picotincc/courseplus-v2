@@ -9,6 +9,7 @@ export default class MajorSearchInput extends Component {
         this.handleInputBlur = this.handleInputBlur.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.handleIconClick = this.handleIconClick.bind(this);
     }
 
     static defaultProps = {
@@ -29,7 +30,6 @@ export default class MajorSearchInput extends Component {
         this.majorSearch = this.refs["major-search"];
         this.icon = this.refs["icon"];
         this.suggestion = this.refs["suggestion"];
-        this.majorInput = this.refs["major-input"];
     }
 
     componentWillReceiveProps(nextProps)
@@ -60,14 +60,17 @@ export default class MajorSearchInput extends Component {
         {
             this.props.addWarning();
         }
-        this._toggleDropdown();
+        else
+        {
+            this._addDropdown();
+        }
     }
 
     handleInputBlur()
     {
         const input = this.state.inputValue;
         this.props.onMajorSelect(input);
-        this._toggleDropdown();
+        this._removeDropdown();
     }
 
     handleInputChange()
@@ -88,11 +91,32 @@ export default class MajorSearchInput extends Component {
         });
     }
 
-    _toggleDropdown()
+    handleIconClick(e)
     {
-        this.majorSearch.classList.toggle("focus");
-        this.icon.classList.toggle("dropdown");
-        this.suggestion.classList.toggle("show");
+        const isDropdown = this.icon.classList.contains("dropdown");
+        if (isDropdown)
+        {
+            this.majorInput.blur();
+        }
+        else
+        {
+            this.majorInput.focus();
+        }
+        e.preventDefault();
+    }
+
+    _addDropdown()
+    {
+        this.majorSearch.classList.add("focus");
+        this.icon.classList.add("dropdown");
+        this.suggestion.classList.add("show");
+    }
+
+    _removeDropdown()
+    {
+        this.majorSearch.classList.remove("focus");
+        this.icon.classList.remove("dropdown");
+        this.suggestion.classList.remove("show");
     }
 
     render()
@@ -102,13 +126,13 @@ export default class MajorSearchInput extends Component {
 
         return (
             <div ref="major-search" className="cp-major-search">
-                <input ref="major-input" type="text" placeholder="请选择专业"
+                <input ref={(input) => { this.majorInput = input; }} type="text" placeholder="请选择专业"
                     value={selectedMajor}
                     onFocus={this.handleInputFocus}
                     onBlur={this.handleInputBlur}
                     onChange={this.handleInputChange}
                 />
-                <span ref="icon" className="icon iconfont icon-dropdown"></span>
+                <span ref="icon" className="icon iconfont icon-dropdown" onMouseDown={this.handleIconClick}></span>
                 <div ref="suggestion" className="suggestion">
                     <i className="triangle"></i>
                     <ul className="major-list">

@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { Affix } from 'antd';
 
 import 'course/resource/index.less';
-
+import { getCourse } from 'base/actions/CourseAction';
 import TitleBar from '../components/TitleBar';
 import Sidebar from '../components/Sidebar';
 import DetailContainer from './DetailContainer';
-
 
 class CourseContainer extends Component {
 
@@ -30,9 +29,14 @@ class CourseContainer extends Component {
 
     componentDidMount()
     {
+        //设置sidebar高度
         this.sidebar = this.refs["sidebar"];
         window.onscroll = this._scroll_event;
         this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
+        //获取数据
+        let courseId = this.props.params.courseId;
+        let { dispatch } = this.props;
+        dispatch(getCourse(courseId));
 
     }
 
@@ -44,8 +48,8 @@ class CourseContainer extends Component {
             this.setState({
                 curClass: "state1"
             });
-        }else if (scrollTop >= 172 && scrollTop < this.refs['detail'].offsetHeight-719+172) {
-            //172:header+titleBar;719:sidebar
+        }else if (scrollTop >= 172 && scrollTop < this.refs['detail'].offsetHeight-720+172) {
+            //172:header+titleBar;720:sidebar
             this.setState({
                 curClass: "state2"
             });
@@ -54,22 +58,24 @@ class CourseContainer extends Component {
                 curClass: "state3"
             });
         }
-
+        this.sidebar.style.height = 0;
+        this.sidebar.style.height = this.refs['detail'].offsetHeight + 'px';
     }
 
     render()
     {
+        const courseId = this.props.params.courseId;
         return (
             <div className="cp-course-container">
                 <div className="titleBar">
-                    <TitleBar />
+                    <TitleBar course={this.props.course}/>
                 </div>
                 <div className="center-container" >
-                    <div ref="sidebar" className="sidebar">
-                        <Sidebar curClass={this.state.curClass}/>
+                    <div ref="sidebar" className="sidebar" >
+                        <Sidebar curClass={this.state.curClass} course={this.props.course}/>
                     </div>
                     <div ref="detail" className="detail">
-                        <DetailContainer />
+                        <DetailContainer courseId={courseId}/>
                     </div>
                 </div>
             </div>
@@ -79,7 +85,7 @@ class CourseContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-      goodCourses: state.goodCourses
+      course: state.course
   };
 }
 

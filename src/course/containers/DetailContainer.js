@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Affix, Tabs } from 'antd';
 import PeriodLineContainer from '../containers/PeriodLineContainer';
+import ExclusiveResourceContainer from '../containers/ExclusiveResourceContainer';
 import CourseVideoContainer from '../containers/CourseVideoContainer';
 import CommentContainer from '../containers/CommentContainer';
 
@@ -52,9 +53,8 @@ export default class DetailContainer extends Component {
                     </Tabs>
                 </Affix>
                 <ul>
-
                     <li className="tab-content"><PeriodLineContainer courseId={courseId}/><CourseVideoContainer/></li>
-                    <li className="tab-content" hidden>2</li>
+                    <li className="tab-content" hidden><ExclusiveResourceContainer /></li>
                     <li className="tab-content" hidden>3</li>
                     <li className="tab-content" hidden><CommentContainer courseId={courseId}/></li>
                 </ul>

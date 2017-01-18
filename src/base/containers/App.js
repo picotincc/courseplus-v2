@@ -79,6 +79,7 @@ class App extends Component {
                         onLoginClick={this.showLoginModal}
                         onRegisterClick={this.showRegisterModal}
                         userInfo={this.props.userInfo}
+                        updateUserInfo={this.updateUserInfo}
                     /></header>
 
                 <div className="cp-container">

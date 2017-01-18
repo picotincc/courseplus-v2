@@ -7,23 +7,39 @@ export default class Header extends Component {
 
     constructor (props) {
         super(props);
+
+        this.showUserMenu = this.showUserMenu.bind(this);
+        this.hideUserMenu = this.hideUserMenu.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     static defaultProps = {
 
     }
 
-    static propTypes = {
-
-    }
-
-    state = {
-
-    }
-
     componentDidMount()
     {
+        document.body.addEventListener("mouseover", () => {
+            this.hideUserMenu();
+        });
+    }
 
+    showUserMenu()
+    {
+        this.refs["user-menu"].classList.add("show");
+    }
+
+    hideUserMenu()
+    {
+        if (this.props.userInfo)
+        {
+            this.refs["user-menu"].classList.remove("show");
+        }
+    }
+
+    handleLogout()
+    {
+        this.props.updateUserInfo(null);
     }
 
     render()
@@ -35,10 +51,12 @@ export default class Header extends Component {
             userShow = (
                 <div className="user-info">
                     <span className="mycourse">我的考研课程</span>
-                    <img src={userInfo.img_url} />
-                    <div className="user-dropdown">
+                    <div className="img-wrapper" onMouseOver={this.showUserMenu}>
+                        <img src={userInfo.img_url}   />
+                    </div>
+                    <div className="user-dropdown" ref="user-menu" onMouseOver={this.showUserMenu}>
                         <i className="triangle"></i>
-                        <ul ref="user-dropdown" className="user-menu">
+                        <ul className="user-menu">
                             <li>
                                 <div className="item">
                                     <Link href="/order">我的订单</Link>
@@ -51,7 +69,7 @@ export default class Header extends Component {
                             </li>
                             <li><div className="line" ></div></li>
                             <li>
-                                <div className="item logout">
+                                <div className="item logout" onClick={this.handleLogout}>
                                     <span>退出登录</span>
                                 </div>
                             </li>

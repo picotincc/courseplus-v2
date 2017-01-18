@@ -67,13 +67,18 @@
         {
             color: @brownish-grey;
             font-size: 16px;
-            margin-right: 20px;
             cursor: pointer;
 
             &:hover
             {
                 color: @cool-blue;
             }
+        }
+
+        > .img-wrapper
+        {
+            padding-left: 20px;
+            height: 100%;
         }
 
         img
@@ -98,6 +103,12 @@
             margin: 0;
             z-index: 40;
             box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+            display: none;
+
+            &.show
+            {
+                display: block;
+            }
 
             > .triangle
             {
@@ -153,7 +164,7 @@
                     {
                         width: 160px;
                         margin: 0 10px;
-                        border: 1px solid @pinkish-grey;
+                        border-top: 1px solid @pinkish-grey;
                     }
                 }
             }

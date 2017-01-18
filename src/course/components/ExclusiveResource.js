@@ -37,7 +37,7 @@ export default class ExclusiveResource extends Component {
 
       return (
         <div className="cp-course-exclusiveResourceItem">
-          <img className="cover_path" onClick={() => {this.props.exclusiveResourceItemClick()}} src={cover_path}/>
+          <img className="cover_path" onClick={() => {this.props.exclusiveResourceItemClick(id)}} src={cover_path}/>
           <div className="exclusiveResourceItem-footer">
             <p className="name">{name}</p>
             {
@@ -48,8 +48,6 @@ export default class ExclusiveResource extends Component {
                 <p className="free">米盒限时赠送</p>
               )
             }
-
-
 
           </div>
       </div>

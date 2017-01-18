@@ -37,8 +37,8 @@ class Modal extends Component {
         backgroundColor: this.props.backgroundColor
     };
 
-  
-    
+
+
     render() {
         return (
             <BoronModel ref="modal" contentStyle={this.contentStyle} modalStyle={this.modalStyle} backdropStyle={this.backdropStyle}>

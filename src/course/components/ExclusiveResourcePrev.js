@@ -23,40 +23,38 @@ export default class ExclusiveResourcePrev extends Component {
 
     }
 
-onDocumentComplete(pages) {
-  this.setState({ page: 1, pages });
- }
+    onDocumentComplete(pages) {
+      this.setState({ page: 1, pages });
+     }
 
-onPageComplete(page) {
-  this.setState({ page });
-}
+    onPageComplete(page) {
+      this.setState({ page });
+    }
 
-handlePrevious() {
-  this.setState({ page: this.state.page - 1 });
-}
+    handlePrevious() {
+      this.setState({ page: this.state.page - 1 });
+    }
 
-handleNext() {
-  this.setState({ page: this.state.page + 1 });
-}
+    handleNext() {
+      this.setState({ page: this.state.page + 1 });
+    }
 
-renderPagination(page, pages) {
-  let previousButton = <li className="previous" onClick={this.handlePrevious}><a href="#"><i className="fa fa-arrow-left"></i> Previous</a></li>;
-  if (page === 1) {
-    previousButton = <li className="previous disabled"><a href="#"><i className="fa fa-arrow-left"></i> Previous</a></li>;
-  }
-  let nextButton = <li className="next" onClick={this.handleNext}><a href="#">Next <i className="fa fa-arrow-right"></i></a></li>;
-  if (page === pages) {
-    nextButton = <li className="next disabled"><a href="#">Next <i className="fa fa-arrow-right"></i></a></li>;
-  }
-  return (
-    <nav>
-      <ul className="pager">
-        {previousButton}
-        {nextButton}
-      </ul>
-    </nav>
-    );
-}
+    renderPagination(page, pages) {
+      let previousButton = <button className="previous" onClick={this.handlePrevious}><i className="fa fa-arrow-left">上一页</i></button>;
+      if (page === 1) {
+        previousButton = <button className="previous disabled" ><i className="fa fa-arrow-left" style={{"color":"gray"}}>上一页</i></button>;
+      }
+      let nextButton = <button className="next" onClick={this.handleNext}><i className="fa fa-arrow-right">下一页</i></button>;
+      if (page === pages) {
+        nextButton = <button className="next disabled"><i className="fa fa-arrow-right" style={{"color":"gray"}}>下一页</i></button>;
+      }
+      return (
+          <div className="cp-course-resourcePreview_bt">
+            {previousButton}
+            {nextButton}
+          </div>
+        );
+    }
 
     componentDidMount()
     {
@@ -65,25 +63,23 @@ renderPagination(page, pages) {
 
     render()
     {
-      let { exclusiveResourceData } = this.props;
-      // let preview_url = exclusiveResourceData.preview_url;
-      let preview_url = "http://sources.ikeepstudying.com/jquery.media/pdf.php";
-
+      let { exclusiveDocumentsData } = this.props;
+      let preview_url = exclusiveDocumentsData[0].preview_url;
+      console.log(exclusiveDocumentsData);
+      var pdfStyle = {
+            "width": "480px",
+            "height": "650px"
+        };
 
       let pagination = null;
           if (this.state.pages) {
             pagination = this.renderPagination(this.state.page, this.state.pages);
           }
-          //http://www.51purse.com/pdf/web/viewer.html?name=b.pdf
-          //http://ofcmexmic.bkt.clouddn.com/icse15_work_practices_and_challenges_in_pull-based_development-_the_integrator_s_perspective.pdf
           return (
             <div className="resourcePrev">
-               <PDF file="http://ofcmexmic.bkt.clouddn.com/icse15_work_practices_and_challenges_in_pull-based_development-_the_integrator_s_perspective.pdf" onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} />
+               <PDF file={preview_url} scale={3} style={pdfStyle} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} />
               {pagination}
-
             </div>
-
       )
-
     }
 }

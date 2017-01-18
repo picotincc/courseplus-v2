@@ -61,25 +61,24 @@
     }
 
     > .price{
-    width: 135px;
-    height: 24px;
-    margin-top: 11px;
-    font-family: PingFangSC;
-    font-size: 20px;
-    font-weight: 600;
-    color: @cool-blue;
+          width: 135px;
+          height: 24px;
+          margin-top: 11px;
+          font-family: PingFangSC;
+          font-size: 20px;
+          font-weight: 600;
+          color: @cool-blue;
 
-    > .buy_count{
-    height: 14px;
-    font-family: PingFangSC;
-    font-size: 12px;
-    float: right;
-    line-height: 3.0;
-    margin-right: 0;
-    color: @warm-grey;
+          > .buy_count{
+          height: 14px;
+          font-family: PingFangSC;
+          font-size: 12px;
+          float: right;
+          line-height: 3.0;
+          margin-right: 0;
+          color: @warm-grey;
+          }
     }
-    }
-
     > .free{
       width: 135px;
       height: 20px;
@@ -88,13 +87,78 @@
       color: @squash;
       margin-top: 15px;
     }
+  }
+}
+
+.cp-course-resourcePreview_box{
+  display:flex;
+  flex-direction: row;
+
+  > .preview_left{
+    float: left;
+    margin-left: 100px;
+    width: 500px;
 
   }
 
+  > .preview_right{
+    float: left;
+    display: block;
+    margin-left: 70px;
+    margin-top: 150px;
+    > .preview_name{
+      width: 200px;
+      height: 50px;
+      padding-left: 5px;
+      padding-right: 5px;
+      font-size: 20px;
+      align-content: center;
+      color: white;
+    }
+    .preview_price{
+      width: 200px;
+      align-content: center;
+      color: @cool-blue;
+      margin-top: 55px;
+      margin-left: 50px;
+      font-size: 30px;
+    }
+   .preview_buy{
+      width: 150px;
+      height: 40px;
+      font-size: 20px;
+      margin-top: 55px;
+      margin-left: 20px;
+      border-radius: 4px;
+      background-color: @cool-blue;
+      color: white;
+    }
+  }
 }
 
-.resourcePrev{
-  width: 100%;
-  height: 100%;
-  background-color: clear;
+.cp-course-resourcePreview_bt{
+  
+
+  > .previous{
+    cursor: pointer;
+    margin-left: 180px;
+    margin-right: 20px;
+    width: 50px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: @cool-blue !important;
+    color: white !important;
+    border: none !important;
+    font-size: 14px !important;
+  }
+  > .next{
+    cursor: pointer;
+    width: 50px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: @cool-blue !important;
+    color: white !important;
+    border: none !important;
+    font-size: 14px !important;
+  }
 }

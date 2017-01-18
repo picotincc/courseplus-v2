@@ -100,7 +100,7 @@ export default class SearchContainer extends Component {
                 // limit: res.limit,
                 count: res.count,
                 courses: res.list
-            })
+            });
         }).catch(err => {
             console.log(err);
         });

@@ -6,30 +6,56 @@ import Header from 'base/components/Header';
 import Footer from 'base/components/footer';
 import LoginDialog from 'base/components/LoginDialog';
 import RegisterDialog from 'base/components/RegisterDialog';
-import { login } from 'base/actions/HomeAction';
+import { updateUserInfo } from 'base/actions/HomeAction';
+import WebStorageUtil from 'base/util/WebStorageUtil';
+import UserService from 'base/service/UserService';
+
+
 
 class App extends Component {
 
     constructor (props) {
         super(props);
         this.showLoginModal = this.showLoginModal.bind(this);
-        this.showRegisterModal = this.showRegisterModal.bind(this)
-        this.showForgetPasswordModal = this.showForgetPasswordModal.bind(this)
-    }
-
-    static defaultProps = {
-
-    }
-
-    static propTypes = {
-
+        this.hideLoginModal = this.hideLoginModal.bind(this);
+        this.showRegisterModal = this.showRegisterModal.bind(this);
+        this.showForgetPasswordModal = this.showForgetPasswordModal.bind(this);
+        this.updateUserInfo = this.updateUserInfo.bind(this);
+        this.autoLogin();
     }
 
     state = {
 
     }
 
+    componentDidMount()
+    {
+
+    }
+
+    autoLogin()
+    {
+        const user = WebStorageUtil.getUserStorage();
+        if (user)
+        {
+            UserService.login(user).then(res => {
+                this.updateUserInfo(res);
+            });
+        }
+    }
+
+    updateUserInfo(info)
+    {
+        const { dispatch } = this.props;
+        dispatch(updateUserInfo(info));
+    }
+
+    hideLoginModal(){
+        this.refs.loginModal.hideModal();
+    }
+
     showLoginModal(){
+        this.refs.forgetPasswordModal.hideModal();
         this.refs.registerModal.hideModal();
         this.refs.loginModal.showModal();
     }
@@ -44,18 +70,16 @@ class App extends Component {
         this.refs.forgetPasswordModal.showModal();
     }
 
-
-
-    componentDidMount()
-    {
-
-    }
-
     render()
     {
         return (
             <div className="cp-app">
-                <header className="flex-center"><Header onLoginClick={this.showLoginModal} onRegisterClick={this.showRegisterModal} userId={this.props.userId} /></header>
+                <header className="flex-center">
+                    <Header
+                        onLoginClick={this.showLoginModal}
+                        onRegisterClick={this.showRegisterModal}
+                        userInfo={this.props.userInfo}
+                    /></header>
 
                 <div className="cp-container">
                     {this.props.children}
@@ -64,15 +88,20 @@ class App extends Component {
                 <footer className="flex-center"><Footer /></footer>
 
                 <Modal width="400px" ref="loginModal" >
-                    <LoginDialog onForgetPasswordClick={this.showForgetPasswordModal} onRegisterClick={this.showRegisterModal}/>
+                    <LoginDialog
+                        onForgetPasswordClick={this.showForgetPasswordModal}
+                        onRegisterClick={this.showRegisterModal}
+                        updateUserInfo={this.updateUserInfo}
+                        hideLoginModal={this.hideLoginModal}
+                    />
                 </Modal>
 
                 <Modal width="400px" ref="forgetPasswordModal"  >
-                    <RegisterDialog isRegister={false} />
+                    <RegisterDialog isRegister={false} onLoginClick={this.showLoginModal} />
                 </Modal>
 
                 <Modal width="400px" ref="registerModal"  >
-                    <RegisterDialog isRegister={true} onLoginClick={this.showLoginModal}/>
+                    <RegisterDialog isRegister={true} onLoginClick={this.showLoginModal} />
                 </Modal>
             </div>
         );
@@ -81,7 +110,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-      userId: state.userId
+      userInfo: state.userInfo
   };
 }
 

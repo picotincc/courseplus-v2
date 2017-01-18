@@ -61,7 +61,7 @@ class HomeContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-      goodCourses: state.goodCourses
+      userInfo: state.userInfo
   };
 }
 

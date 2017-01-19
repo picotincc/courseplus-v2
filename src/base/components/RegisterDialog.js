@@ -31,11 +31,11 @@ export default class RegisterDialog extends Component {
 
     handleCodeSend(phone)
     {
-        const useType = this.props.isRegister ? 0 : 1;
+        const usePage = this.props.isRegister ? 0 : 1;
         return new Promise((resolve, reject) => {
             if (FormatUtil.isPhoneNumber(phone))
             {
-                UserService.sendVerifyCode({ phone, use_page: useType }).then(res => {
+                UserService.sendVerifyCode({ phone, usePage }).then(res => {
                     this.cleanError();
                     resolve(true);
                 }).catch(err => {

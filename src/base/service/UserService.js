@@ -1,4 +1,3 @@
-
 import fetch from './FetchWrapper';
 
 const version = '/v1';
@@ -6,7 +5,10 @@ const version = '/v1';
 export default {
 
     sendVerifyCode: (paras) => fetch(`${version}/user/sendVerifyCode`, {
-        query: paras
+        query: {
+            phone: paras.phone,
+            use_page: paras.usePage
+        }
     }),
 
     login: (paras) => fetch(`${version}/user/login`, {
@@ -33,6 +35,14 @@ export default {
             account: paras.account,
             new_password: paras.newPassword,
             verify_code: paras.verifyCode
+        }
+    }),
+
+    changePassword: (paras) => fetch(`${version}/user/changePassword`, {
+        method: "POST",
+        body: {
+            old_password: paras.oldPassword,
+            new_password: paras.newPassword
         }
     })
 }

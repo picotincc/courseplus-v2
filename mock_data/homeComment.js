@@ -5,15 +5,18 @@ const data = {
             {
                 id:1,
                 course: {
+                    id:1,
                     name: "环境化学",
                     teacher: {
                         "name": "徐伟",
                         "img_url": "http://cdn.micourse.org/o_1b13d2g4715l3tv01ll9rb01kllk.jpg?imageMogr2/auto-orient/strip/quality/100/crop/!593x593a0a72.88902147971356/format/png|imageMogr2/thumbnail/64x64/quality/100/format/png",
                     },
                 major: {
+                    id: 1,
                     code: "808",
                     name: "环境化学",
                     school: {
+                        id: 1,
                         name: "南京大学",
                     },
                 },
@@ -27,15 +30,18 @@ const data = {
                         {
                 id:2,
                 course: {
+                    id:2,
                     name: "环境化学",
                     teacher: {
                         "name": "徐伟",
                         "img_url": "http://cdn.micourse.org/o_1b13d2g4715l3tv01ll9rb01kllk.jpg?imageMogr2/auto-orient/strip/quality/100/crop/!593x593a0a72.88902147971356/format/png|imageMogr2/thumbnail/64x64/quality/100/format/png",
                     },
                 major: {
+                    id: 1,
                     code: "808",
                     name: "环境化学",
                     school: {
+                        id: 1,
                         name: "南京大学",
                     },
                 },
@@ -49,15 +55,18 @@ const data = {
                         {
                 id:3,
                 course: {
+                    id:3,
                     name: "环境化学",
                     teacher: {
                         "name": "徐伟",
                         "img_url": "http://cdn.micourse.org/o_1b13d2g4715l3tv01ll9rb01kllk.jpg?imageMogr2/auto-orient/strip/quality/100/crop/!593x593a0a72.88902147971356/format/png|imageMogr2/thumbnail/64x64/quality/100/format/png",
                     },
                 major: {
+                    id: 1,
                     code: "808",
                     name: "环境化学",
                     school: {
+                        id: 1,
                         name: "南京大学",
                     },
                 },
@@ -71,15 +80,18 @@ const data = {
             {
                 id:4,
                 course: {
+                    id:4,
                     name: "环境化学",
                     teacher: {
                         "name": "徐伟",
                         "img_url": "http://cdn.micourse.org/o_1b13d2g4715l3tv01ll9rb01kllk.jpg?imageMogr2/auto-orient/strip/quality/100/crop/!593x593a0a72.88902147971356/format/png|imageMogr2/thumbnail/64x64/quality/100/format/png",
                     },
                 major: {
+                    id: 1,
                     code: "808",
                     name: "环境化学",
                     school: {
+                        id: 1,
                         name: "南京大学",
                     },
                 },

@@ -35,7 +35,7 @@ class LoginDialog extends Component {
             this.props.updateUserInfo(res);
             setTimeout(() => {
                 this.props.hideLoginModal();
-            }, 1000)
+            }, 500)
         }).catch(err => {
             this.handleError(err);
         });

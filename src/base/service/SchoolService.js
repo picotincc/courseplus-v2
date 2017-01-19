@@ -1,4 +1,3 @@
-
 import fetch from './FetchWrapper';
 
 const version = '/v1';
@@ -6,9 +5,9 @@ const version = '/v1';
 export default {
     getSchools: () => fetch(`${version}/school`),
 
-    getMajors: (school_id) => fetch(`${version}/school/major`, {
+    getMajors: (schoolId) => fetch(`${version}/school/major`, {
         query: {
-            school_id
+            school_id: schoolId
         }
     })
 }

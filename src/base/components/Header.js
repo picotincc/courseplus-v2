@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Menu, Dropdown, Icon } from 'antd';
 
+import WebStorageUtil from 'base/util/WebStorageUtil';
+
 
 export default class Header extends Component {
 
@@ -41,6 +43,7 @@ export default class Header extends Component {
     {
         this.props.updateUserInfo(null);
         //删除session,cookie
+        WebStorageUtil.removeUserStorage();
     }
 
     render()

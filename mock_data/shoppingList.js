@@ -1,5 +1,5 @@
 const data = {
-    "/v1/course/shopping_list": {
+    "/v1/course/shoppingList": {
         GET: {
             "data": {
                  "period_list": [

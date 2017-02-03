@@ -69,7 +69,7 @@ class HomeComment extends Component {
                 <div className="bottom-part">
 
                     <div className="content"> {comment.content} </div>
-                    <div className="owner">——{user.nickname}</div>
+                    <div className="owner">——{user.name}</div>
                 </div>
             </div>
         )     

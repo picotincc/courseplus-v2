@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
 import ContributorsItem from '../components/ContributorsItem';
-import ContributorsService from 'base/service/ContributorsService';
+import TeacherService from 'base/service/TeacherService' ;
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -33,7 +33,7 @@ class ContributorsContainer extends Component {
 
     componentDidMount()
     {
-        ContributorsService.getList().then((data) => {
+        TeacherService.getQualityTeacher().then((data) => {
           console.log(data);
           (data && data.length) && (this.setState({ contributorsData: data}));
         }).catch((err) => {

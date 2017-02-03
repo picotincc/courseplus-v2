@@ -5,7 +5,7 @@ import n2c from 'n2c'
 
 class BuyoutDialog extends Component {
     componentDidMount() {
-        CourseService.getShoppingList(1).then((data) => {
+        CourseService.getShoppingList(this.props.course.id).then((data) => {
             (data) && (this.setState({ shopping_list: data }));
             console.log(data)
         }).catch((err) => {
@@ -34,6 +34,7 @@ class BuyoutDialog extends Component {
                 if (period.is_buy != 1) {
                     origin_price += period.price / 100.0
                 }
+                console.log(origin_price)
             }
 
             return (

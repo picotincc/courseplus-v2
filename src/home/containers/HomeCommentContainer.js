@@ -22,11 +22,11 @@ export default class HomeCommentContainer extends Component {
     }
     
     handleListItemClick(id){
-        FormatUtil.openNewTab("/course");
+        FormatUtil.openNewTab("/course/"+id);
     }
 
     handleTagClick(school, discipline){
-        FormatUtil.openNewTab("/search");
+        FormatUtil.openNewTab("/search/"+school+"/"+discipline);
     }
 
     state = {

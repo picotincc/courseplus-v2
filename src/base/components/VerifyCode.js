@@ -28,6 +28,11 @@ export default class VerifyCode extends Component {
         this.sendCodeBtn = this.refs["sendCodeBtn"];
     }
 
+    componentWillUnmount()
+    {
+        clearInterval(this.tm);
+    }
+
     handleClick()
     {
         const disabled = this.state.disabled;
@@ -40,26 +45,26 @@ export default class VerifyCode extends Component {
                     this.sendCodeBtn.classList.add("disabled");
                     this.setState({
                         disabled: true,
-                        text:"重新发送(" + 59 + ")",
-                        timer:59
+                        text: "重新发送(" + 59 + ")",
+                        timer: 59
                     });
                     var self = this;
-                    var tm = setInterval(() => {
+                    this.tm = setInterval(() => {
                         var tt = self.state.timer - 1;
                         if(tt<=0)
                         {
                             self.setState({
                                 disabled: false,
                                 text: "发送验证码",
-                                timer:60
+                                timer: 60
                             });
                             this.sendCodeBtn.classList.remove("disabled");
-                            clearInterval(tm);
+                            clearInterval(this.tm);
                             return;
                         }
                         self.setState({
-                            text:"重新发送(" + tt + ")",
-                            timer:tt
+                            text: "重新发送(" + tt + ")",
+                            timer: tt
                         });
                     }, 1000);
                 }

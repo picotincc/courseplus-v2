@@ -1,7 +1,7 @@
 
 const mockData = Object.assign({},
     requireModule('./carousel'),
-    requireModule('./contributors'),
+    requireModule('./teacher'),
     requireModule('./homeComment'),
     requireModule('./Course'),
     requireModule('./school'),

@@ -1,6 +1,6 @@
 /**
  * 对fetch的封装类
- * 
+ *
  * @author xwang1024@126.com, 逗皇
  */
 
@@ -9,6 +9,7 @@ import UrlUtil from '../util/UrlUtil';
 
 // 后台api地址，不需要以"/"结尾
 const HOST_URL = "http://127.0.0.1:8080";
+// const HOST_URL = "http://api.mebox.top:8080";
 
 export default function(...args) {
     let [ url, config ] = args;
@@ -29,7 +30,7 @@ export default function(...args) {
             config.body = JSON.stringify(config.body);
         }
     }
-    
+
 args[1] = Object.assign({}, { 'credentials': 'include', 'headers': {'Content-Type': 'application/json'}}, args[1] || {});
     return new Promise((resolve, reject) => {
         self.fetch.apply(self, args).then((res) => {

@@ -20,15 +20,25 @@ export default class HomeCommentsGroup extends Component {
 class HomeComment extends Component {
 
     handleMouseDown(e){
-      this.mouseDownX = e.clientX;
+        this.mouseDownX = e.clientX;
     }
 
     handleMouseUp(id,e){
-      if(Math.abs(e.clientX - this.mouseDownX) < 5) {
-          this.props.listItemClick && this.props.listItemClick();
-      }
-      this.mouseDownX = null;
+        var evtTarget = e.target || e.srcElement;
+        if (evtTarget.className == "tag") {
+            this.mouseDownX = null;
+            return;
+        }
+        if(Math.abs(e.clientX - this.mouseDownX) < 5) {
+            this.props.listItemClick && this.props.listItemClick(id);
+        }
+        this.mouseDownX = null;
     }
+
+    handleTagClick(school_id,major_id,e){
+        this.props.tagClick(school_id,major_id);
+    }
+
 
     render () {
         let { comment } = this.props;
@@ -38,28 +48,30 @@ class HomeComment extends Component {
         let major = course.major
         let tag = major.school.name + "  " + course.code + course.name;
         let majorName = major.code + major.name;
+
+
         return (
-                <div className="home-comment" onMouseDown={this.handleMouseDown.bind(this)}
-              onMouseUp={this.handleMouseUp.bind(this, comment.id)}>
-                    <div className="top-part">
-                        <div className="userInfo">
-                            <img src={teacher.img_url} />
-                            <div className="teacherName">
-                            {teacher.name}
-                            </div>
-                        </div>
-                        <div className="courseInfo">
-                            <div className="title"> {majorName} </div>
-                                <span className="tag">  {tag}</span>
+            <div className="home-comment" onMouseDown={this.handleMouseDown.bind(this)}
+            onMouseUp={this.handleMouseUp.bind(this, course.id)}>
+                <div className="top-part">
+                    <div className="userInfo">
+                        <img src={teacher.img_url} />
+                        <div className="teacherName">
+                        {teacher.name}
                         </div>
                     </div>
-                    <div className="divider"> </div>
-                    <div className="bottom-part">
-
-                        <div className="content"> {comment.content} </div>
-                        <div className="owner">——{user.nickname}</div>
+                    <div className="courseInfo">
+                        <div className="title"> {majorName} </div>
+                            <span className="tag" onClick={this.handleTagClick.bind(this,major.school.id,major.id)}>  {tag} </span>
                     </div>
                 </div>
+                <div className="divider"> </div>
+                <div className="bottom-part">
+
+                    <div className="content"> {comment.content} </div>
+                    <div className="owner">——{user.name}</div>
+                </div>
+            </div>
         )     
     }
 }

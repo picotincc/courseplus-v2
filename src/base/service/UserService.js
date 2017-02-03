@@ -5,7 +5,8 @@ const version = '/v1';
 export default {
 
     sendVerifyCode: (paras) => fetch(`${version}/user/sendVerifyCode`, {
-        query: {
+        method: "POST",
+        body: {
             phone: paras.phone,
             use_page: paras.usePage
         }

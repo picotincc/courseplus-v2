@@ -45,7 +45,7 @@ export default class TitleBar extends Component {
             }
             return(
                 <div className="cp-course-title-bar">
-                    <span className="title">{course.subject.code}{course.subject.major.name}</span>
+                    <span className="title">{course.subject.code}{course.major.name}</span>
                     <Tag tagData={tagData} tagClick={this.handleTagClick} />
                 </div>
             );

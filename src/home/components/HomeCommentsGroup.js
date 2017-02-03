@@ -20,14 +20,19 @@ export default class HomeCommentsGroup extends Component {
 class HomeComment extends Component {
 
     handleMouseDown(e){
-      this.mouseDownX = e.clientX;
+        this.mouseDownX = e.clientX;
     }
 
     handleMouseUp(id,e){
-      if(Math.abs(e.clientX - this.mouseDownX) < 5) {
-          this.props.listItemClick && this.props.listItemClick(id);
-      }
-      this.mouseDownX = null;
+        var evtTarget = e.target || e.srcElement;
+        if (evtTarget.className == "tag") {
+            this.mouseDownX = null;
+            return;
+        }
+        if(Math.abs(e.clientX - this.mouseDownX) < 5) {
+            this.props.listItemClick && this.props.listItemClick(id);
+        }
+        this.mouseDownX = null;
     }
 
     handleTagClick(school_id,major_id,e){

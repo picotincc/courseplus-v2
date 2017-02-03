@@ -6,6 +6,7 @@ import Player from "base/components/Player";
 import DanmakuClient from 'base/util/DanmakuClient';
 import DanmakuMessage from '../components/DanmakuMessage';
 import CourseService from 'base/service/CourseService';
+import FormatUtil from 'base/util/FormatUtil';
 
 import "live/resource/index.less";
 
@@ -110,6 +111,10 @@ class LiveContainer extends Component {
         })
     }
 
+    handleTagClick(school, discipline){
+        FormatUtil.openNewTab("/search/"+school+"/"+discipline);
+    }
+
     render() {
         let { liveDetail, tag, options, messages } = this.state;
         let { userInfo } = this.props;
@@ -121,7 +126,7 @@ class LiveContainer extends Component {
                         <div className="live-main-wrapper">
                             <div className="live-title-wrapper">
                                 <h1 className="live-title">{liveDetail && (liveDetail.course.code + liveDetail.course.name)}</h1>
-                                <Tag tagData={tag} />
+                                <Tag tagData={tag} tagClick={this.handleTagClick}/>
                                 <h2 className="live-sub-title">{liveDetail && liveDetail.live.period.name}</h2>
                             </div>
                             <div className="live-player-wrapper">

@@ -1,5 +1,5 @@
 const data = {
-    "/v1/contributors": {
+    "/v1/teacher/qualityTeacher": {
         GET: {
               "data":[
                       {

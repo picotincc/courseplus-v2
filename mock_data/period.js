@@ -5,11 +5,13 @@ const data = {
                 {
                     "id": 0,
                     "course_id": 1,
+                    "number": 0,
                     "name": "课程导览",
                     "price": 0
                 }, {
                     "id": 1,
                     "course_id": 1,
+                    "number": 1,
                     "name": "环境化学专业课复习建议策略",
                     "date": "2016-10-01",
                     "price": 10,
@@ -17,6 +19,7 @@ const data = {
                 }, {
                     "id": 2,
                     "course_id": 1,
+                    "number": 2,
                     "name": "水环境化学重点知识点提炼",
                     "date": "2016-10-03",
                     "price": 20,
@@ -24,6 +27,7 @@ const data = {
                 }, {
                     "id": 3,
                     "course_id": 1,
+                    "number": 3,
                     "name": "大气环境化学重点知识点提炼",
                     "date": "2016-10-05",
                     "price": 30,
@@ -31,6 +35,7 @@ const data = {
                 }, {
                     "id": 4,
                     "course_id": 1,
+                    "number": 4,
                     "name": "土壤环境化学重点知识点提炼",
                     "date": "2016-10-07",
                     "price": 40,
@@ -38,6 +43,7 @@ const data = {
                 }, {
                     "id": 5,
                     "course_id": 1,
+                    "number": 5,
                     "name": "生物效应知识点提炼以及答题技巧",
                     "date": "2016-10-09",
                     "price": 50,
@@ -45,6 +51,7 @@ const data = {
                 }, {
                     "id": 6,
                     "course_id": 1,
+                    "number": 6,
                     "name": "课程答疑",
                     "date": "2017-01-11",
                     "price": 60,

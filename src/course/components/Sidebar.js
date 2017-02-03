@@ -40,11 +40,11 @@ export default class Sidebar extends Component {
                     <div className="buy-btn" onClick={buyClickHandler}>
                         <div className="text">买断课程</div>
                         <div className="price">
-                            <span className="origin">¥{course.origin_price}</span>&nbsp;<span className="current">¥{course.currentPrice}</span>
+                            <span className="origin">¥{course.origin_price}</span>&nbsp;<span className="current">¥{course.current_price}</span>
                         </div>
                     </div>
 
-                  
+
                 </div>
             )
         )

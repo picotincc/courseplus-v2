@@ -1,5 +1,5 @@
 const data = {
-    "/v1/course/exclusiveResource": {
+    "/v1/course/documents": {
         GET: {
             "data": [
                 {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import PDF from 'react-pdf-js';
 
 export default class ExclusiveResourcePrev extends Component {
 
@@ -69,7 +68,10 @@ export default class ExclusiveResourcePrev extends Component {
       console.log(exclusiveDocumentsData);
       var pdfStyle = {
             "width": "480px",
-            "height": "650px"
+            "height": "650px",
+            "border": "solid 1px #bbbbbb",
+            "margin": "0.1px",
+            "padding": "0.1px"
           };
 
       let pagination = null;
@@ -78,8 +80,7 @@ export default class ExclusiveResourcePrev extends Component {
           }
           return (
             <div className="resourcePrev">
-               <PDF file={preview_url} scale={4} style={pdfStyle} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} />
-              {pagination}
+               {pagination}
             </div>
       )
     }

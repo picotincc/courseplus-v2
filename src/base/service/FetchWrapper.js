@@ -8,8 +8,8 @@ import QueryUtil from '../util/QueryUtil';
 import UrlUtil from '../util/UrlUtil';
 
 // 后台api地址，不需要以"/"结尾
-const HOST_URL = "http://127.0.0.1:8080";
-// const HOST_URL = "http://api.mebox.top:8080";
+// const HOST_URL = "http://127.0.0.1:8080";
+const HOST_URL = "http://mebox.top:8080";
 
 export default function(...args) {
     let [ url, config ] = args;

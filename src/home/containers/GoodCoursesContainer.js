@@ -27,7 +27,6 @@ export default class GoodCoursesContainer extends Component {
 
     componentDidMount(){
         CourseService.getGoodCourses().then((data) => {
-            console.log(data);
             (data) && (this.setState({ goodCourses: data }));
         }).catch((err) => {
             console.log(err);

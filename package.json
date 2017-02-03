@@ -67,5 +67,8 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
     "whatwg-fetch": "^2.0.1"
+  },
+  "dependencies": {
+    "flv.js": "^1.1.0"
   }
 }

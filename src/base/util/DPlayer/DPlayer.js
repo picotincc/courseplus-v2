@@ -60,7 +60,7 @@ class DPlayer {
         }
 
         const tranZH = {
-            'Live not start': '主播未上线，请稍后刷新重试',
+            'Live not start': '主播还没来，请稍后刷新重试',
             'Danmaku is loading': '弹幕加载中',
             'Top': '顶部',
             'Bottom': '底部',
@@ -303,6 +303,7 @@ class DPlayer {
             flvPlayer.on('error', (err) => {
                 this.liveNotStartHint.setAttribute('style', 'display: block;');
                 this.playButton.setAttribute('disabled', 'disabled');
+                this.element.getElementsByClassName('diplayer-loading-icon')[0].style.display = 'none';
                 console.log(err);
             })
         }

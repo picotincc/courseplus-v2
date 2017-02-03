@@ -29,6 +29,13 @@ class BuyoutDialog extends Component {
             const period_list = shopping_list.period_list;
             const document_list =  shopping_list.document_list;
             const tag = course.major.school.name+" "+course.subject.code+course.subject.name;
+            var origin_price = 0;
+            for (let period of period_list) {
+                if (period.is_buy != 1) {
+                    origin_price += period.price / 100.0
+                }
+            }
+
             return (
                 <div className="buyout-dialog">
                     <div className="title">
@@ -54,8 +61,8 @@ class BuyoutDialog extends Component {
 
                     <div className="total-price">
                     <span className="total-price-label">总计</span>
-                    <span className="total-price-current">￥270</span>
-                    <span className="total-price-origin">￥397</span>
+            <span className="total-price-current">￥{(shopping_list.price / 100.0).toFixed(2)}</span>
+                    <span className="total-price-origin">￥{origin_price.toFixed(2)}</span>
                     </div>
 
                     <Checkbox className="check-box" onChange={this.onChange}>同意买断细则</Checkbox>

@@ -59,5 +59,9 @@ export default {
         query: {
             document_id: documentId
         }
-    })
+    }),
+
+    getLiveDetail: (live_id) => fetch(`${version}/course/liveDetail`,
+        { query: { live_id } }
+    )
 }

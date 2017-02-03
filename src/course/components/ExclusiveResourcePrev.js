@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import PDF from 'react-pdf-js';
 
 export default class ExclusiveResourcePrev extends Component {
 
@@ -81,8 +80,7 @@ export default class ExclusiveResourcePrev extends Component {
           }
           return (
             <div className="resourcePrev">
-               <PDF file={preview_url} scale={4} style={pdfStyle} onDocumentComplete={this.onDocumentComplete} onPageComplete={this.onPageComplete} page={this.state.page} />
-              {pagination}
+               {pagination}
             </div>
       )
     }

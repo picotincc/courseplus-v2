@@ -5,6 +5,8 @@ import Tag from 'base/components/Tag';
 import Player from "base/components/Player";
 import DanmakuClient from 'base/util/DanmakuClient';
 import DanmakuMessage from '../components/DanmakuMessage';
+import CourseService from 'base/service/CourseService';
+import FormatUtil from 'base/util/FormatUtil';
 
 import "live/resource/index.less";
 
@@ -18,28 +20,61 @@ class LiveContainer extends Component {
     }
 
     state = {
+        liveDetail: '',
+        tag: {},
         message: '',
-        messages: []
+        messages: [],
+        options: null
     }
 
     componentWillMount() {
+        
+        
+    }
+
+    componentWillReceiveProps(nextProps) {
         let liveId = this.props.params.liveId;
-        let userId = '1';
-        let danmakuToken = '26eb313220f53856584c1d92f743c56cfe6a73af2f06e514940ebd64a4b3b69a';
+        let userId = nextProps.userInfo.id;
+        let danmakuToken = nextProps.userInfo.danmaku_token;
         this.danmakuClient = new DanmakuClient(liveId, userId, danmakuToken, {
             showNotify: this.showNotify.bind(this),
             showMessage: this.showMessage.bind(this)
-        })
+        });
+        CourseService.getLiveDetail(liveId).then((liveDetail) => {
+            this.setState({
+                liveDetail,
+                tag: {
+                    schoolId: liveDetail.course.major.school.id,
+                    majorId: liveDetail.course.major.id,
+                    schoolName: liveDetail.course.major.school.name,
+                    majorName: liveDetail.course.major.code + liveDetail.course.major.name
+                },
+                options: {
+                    screenshot: true,
+                    comment: false,
+                    live: true,
+                    video: {
+                        url: liveDetail.live.live_url
+                    },
+                    danmaku: {
+                        id: nextProps.params.liveId,
+                        token: nextProps.userInfo.danmaku_token,
+                        maximum: 1000,
+                    }
+                }
+            });
+        });
     }
 
-    componentDidUpdate (prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
         let messagePanelBody = this.refs.messagePanelBody;
-        messagePanelBody.scrollTop = messagePanelBody.scrollHeight;
+        if(messagePanelBody) {
+            messagePanelBody.scrollTop = messagePanelBody.scrollHeight;
+        }
     }
     
 
     componentDidMount() {
-
     }
 
     showMessage(from, content, time) {
@@ -47,6 +82,8 @@ class LiveContainer extends Component {
             type: 'MESSAGE',
             from, content, time
         });
+        console.log(content);
+        this.refs.player.launchDanmaku(content);
         this.setState({
             messages: this.state.messages
         });
@@ -62,7 +99,10 @@ class LiveContainer extends Component {
         });
     }
 
-    handleSendMessage() {
+    handleSendMessage(e) {
+        if(e.type == 'keyup' && e.key != 'Enter') {
+            return;
+        }
         let { message } = this.state;
         console.log('[send message]', message);
         this.danmakuClient.sendMessage(message);
@@ -71,26 +111,26 @@ class LiveContainer extends Component {
         })
     }
 
+    handleTagClick(school, discipline){
+        FormatUtil.openNewTab("/search/"+school+"/"+discipline);
+    }
+
     render() {
-        let tagData = {
-            schoolId: 1,
-            majorId: 1,
-            schoolName: '南京大学',
-            majorName: '0803001环境化学'
-        }
-        let { messages } = this.state;
+        let { liveDetail, tag, options, messages } = this.state;
+        let { userInfo } = this.props;
+        
         return (
             <div className="cp-live-container">
                 <Row>
                     <Col span={18}>
                         <div className="live-main-wrapper">
                             <div className="live-title-wrapper">
-                                <h1 className="live-title">808环境化学</h1>
-                                <Tag tagData={tagData} />
-                                <h2 className="live-sub-title">课时一：环境化学专业课复习建议策略</h2>
+                                <h1 className="live-title">{liveDetail && (liveDetail.course.code + liveDetail.course.name)}</h1>
+                                <Tag tagData={tag} tagClick={this.handleTagClick}/>
+                                <h2 className="live-sub-title">{liveDetail && liveDetail.live.period.name}</h2>
                             </div>
                             <div className="live-player-wrapper">
-                                <Player />
+                                <Player options={options} ref='player'/>
                             </div>
                         </div>
                     </Col>
@@ -108,7 +148,10 @@ class LiveContainer extends Component {
                                 </div>
                             </div>
                             <div className="launcher-wrapper">
-                                <textarea placeholder="有疑问？赶快和老师讨论吧" value={this.state.message} onChange={(e) => {this.setState({message: e.target.value})}}></textarea>
+                                <textarea placeholder="有疑问？赶快和老师讨论吧" 
+                                          value={this.state.message} 
+                                          onChange={(e) => {this.setState({message: e.target.value})}} 
+                                          onKeyUp={this.handleSendMessage.bind(this)}></textarea>
                                 <button onClick={this.handleSendMessage.bind(this)}>发送</button>
                             </div>
                         </div>
@@ -123,7 +166,7 @@ class LiveContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    //   userInfo: state.userInfo
+      userInfo: state.userInfo
   };
 }
 

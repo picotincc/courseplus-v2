@@ -34,7 +34,6 @@ class ContributorsContainer extends Component {
     componentDidMount()
     {
         TeacherService.getQualityTeacher().then((data) => {
-          console.log(data);
           (data && data.length) && (this.setState({ contributorsData: data}));
         }).catch((err) => {
           console.log(err);

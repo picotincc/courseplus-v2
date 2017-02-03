@@ -25,7 +25,7 @@ export default {
 
     getQualityComments: () => fetch(`${version}/course/qualityComment`),
 
-    getShoppingList: (course_id) => fetch(`${version}/course/shopping_list`,
+    getShoppingList: (course_id) => fetch(`${version}/course/shoppingList`,
         { query: { course_id } }
     ),
 

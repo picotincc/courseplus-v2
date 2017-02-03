@@ -32,9 +32,11 @@ class LiveContainer extends Component {
         })
     }
 
-    componentDidUpdate (prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
         let messagePanelBody = this.refs.messagePanelBody;
-        messagePanelBody.scrollTop = messagePanelBody.scrollHeight;
+        if(messagePanelBody) {
+            messagePanelBody.scrollTop = messagePanelBody.scrollHeight;
+        }
     }
     
 
@@ -47,6 +49,8 @@ class LiveContainer extends Component {
             type: 'MESSAGE',
             from, content, time
         });
+        console.log(content);
+        this.refs.player.launchDanmaku(content);
         this.setState({
             messages: this.state.messages
         });
@@ -62,7 +66,10 @@ class LiveContainer extends Component {
         });
     }
 
-    handleSendMessage() {
+    handleSendMessage(e) {
+        if(e.key != 'Enter') {
+            return;
+        }
         let { message } = this.state;
         console.log('[send message]', message);
         this.danmakuClient.sendMessage(message);
@@ -78,6 +85,19 @@ class LiveContainer extends Component {
             schoolName: '南京大学',
             majorName: '0803001环境化学'
         }
+        let options = {
+            screenshot: true,
+            comment: false,
+            live: true,
+            video: {
+                url: 'http://6416.liveplay.myqcloud.com/live/6416_364a6098dd.flv'
+            },
+            danmaku: {
+                id: this.props.params.liveId,
+                token: 'tokendemo',
+                maximum: 1000,
+            }
+        }
         let { messages } = this.state;
         return (
             <div className="cp-live-container">
@@ -90,7 +110,7 @@ class LiveContainer extends Component {
                                 <h2 className="live-sub-title">课时一：环境化学专业课复习建议策略</h2>
                             </div>
                             <div className="live-player-wrapper">
-                                <Player />
+                                <Player options={options}/>
                             </div>
                         </div>
                     </Col>
@@ -108,7 +128,10 @@ class LiveContainer extends Component {
                                 </div>
                             </div>
                             <div className="launcher-wrapper">
-                                <textarea placeholder="有疑问？赶快和老师讨论吧" value={this.state.message} onChange={(e) => {this.setState({message: e.target.value})}}></textarea>
+                                <textarea placeholder="有疑问？赶快和老师讨论吧" 
+                                          value={this.state.message} 
+                                          onChange={(e) => {this.setState({message: e.target.value})}} 
+                                          onKeyUp={this.handleSendMessage.bind(this)}></textarea>
                                 <button onClick={this.handleSendMessage.bind(this)}>发送</button>
                             </div>
                         </div>

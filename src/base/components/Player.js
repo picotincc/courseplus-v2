@@ -3,30 +3,33 @@ import { Icon } from 'antd';
 import DPlayer from 'base/util/DPlayer/DPlayer';
 
 class Player extends Component {
+    inited = false;
+
     constructor (props) {
         super(props)
 
     }
 
     state = {
-        images: []
     }
 
     componentWillMount () {
         
     }
 
-    componentDidMount () {
+    componentDidUpdate() {
         let options = this.props.options;
-        options.element = this.refs.player;
-        if(options.live) {
-            options.autoplay = true;
-        }
+        if(!options) return;
+        options.element = this.refs.player;;
         this.player = new DPlayer(options);
     }
 
-    componentWillUnmount () {
-
+    shouldComponentUpdate(nextProps, nextState) {
+        if(!this.inited && nextProps.options) {
+            this.inited = true;
+            return true;
+        } 
+        return false;
     }
 
     launchDanmaku(danmaku) {

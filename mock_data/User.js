@@ -23,6 +23,7 @@ const data = {
                 "id": 1,
                 "account": "yangxuejie",
                 "img_url": "http://p1.bpimg.com/573251/31ee2adcba8dbb2d.png",
+                "danmaku_token": "26eb313220f53856584c1d92f743c56cfe6a73af2f06e514940ebd64a4b3b69a",
                 "name": "杨学姐",
                 "gender": 2
             }

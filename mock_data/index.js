@@ -11,7 +11,8 @@ const mockData = Object.assign({},
     requireModule('./exclusiveDocuments'),
     requireModule('./courseDetail'),
     requireModule('./User'),
-    requireModule('./shoppingList')
+    requireModule('./shoppingList'),
+    requireModule('./liveDetail')
 );
 
 module.exports = mockData;

@@ -965,6 +965,7 @@ class DPlayer {
                 this.danIndex = 0;
                 this.dan = [];
                 this.element.getElementsByClassName('dplayer-danloading')[0].style.display = 'none';
+                !isMobile && this.play();
             }
         }
         else {

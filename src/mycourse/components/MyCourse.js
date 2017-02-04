@@ -34,6 +34,10 @@ export default class MyCourse extends Component {
             majorId: data.major.id,
             majorName: data.major.code + data.major.name
         }
+        const chineseNum = FormatUtil.NumberToChinese(5);
+        const nodeContent = "考试答题技巧、出题规律总结、计算题复习策略";
+        const date = "11.5";
+        const time = "20:00";
 
         return(
             <li key={data.id}>
@@ -49,15 +53,15 @@ export default class MyCourse extends Component {
                     </div>
                     <div className="node-info">
                         <div className="introduction">
-                            <p>课时一：</p>
-                            <p>考试答题技巧、出题规律总结、计算题复习策略</p>
-                            <p className="start-time">
-                                11.5&nbsp;20:00直播
+                            <p>课时{chineseNum}：</p>
+                            <p>{nodeContent}</p>
+                            <p className="start-time" style={{display:data.id%2 ? "none" : "block"}}>
+                                {date}&nbsp;{time}直播
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className="score-button">去评分</div>
+                <div className="score-button" style={{visibility:data.id%2 ? "visible" : "hidden"}}>去评分</div>
             </li>
         )
     }

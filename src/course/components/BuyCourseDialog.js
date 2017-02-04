@@ -29,8 +29,7 @@ class BuyCourseDialog extends Component {
     render()
     {
         const {course, cancelClickHandler, onClickHandler} = this.props;
-        var chineseNum = FormatUtil.NumberToChinese(course.number);
-        console.log(chineseNum);
+        const chineseNum = FormatUtil.NumberToChinese(course.number);
 
         return(
             <div className="buycourse-dialog">

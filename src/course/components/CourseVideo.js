@@ -40,8 +40,8 @@ class CourseVideo extends Component {
                 <div className="video-window" style={{display:videoShow}}>
                     此处应有视频
                 </div>
-                <iframe className="intro-window" src={introContent}>
-                </iframe>
+                <div className="intro-window" dangerouslySetInnerHTML={{__html: introContent}}>
+                </div>
                 <div className="status-bar" style={{display:barShow}}>
                     <div className="period-price" style={{display:isBuy ? "none" : "block"}}>
                         <div>¥{parseFloat(price).toFixed(2)}</div>

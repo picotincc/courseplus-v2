@@ -23,25 +23,17 @@ class CourseVideo extends Component {
 
     }
 
-    handleClick(period, detail) {
-        let id = period.id;
-        if(!period.is_buy){
-            console.log("去购买！" + id);
-        }else if (detail.live.state=="ING") {
-            console.log("去直播！" + detail.live.live_url);
-        }
-    }
-
     render()
     {
-        let { period, detail } = this.props;
-        let state = detail ? detail.live.state : null;
-        let isBuy = period.is_buy;
+        const { period, detail, buyClickHandler } = this.props;
+        const state = detail ? detail.live.state : null;
+        const isBuy = detail ? detail.is_buy : null;
+        const price = period.price ? period.price : (detail ? detail.price : 0);
 
-        let videoShow = (state=="CODED"||state=="CODING") ? "block" : "none";
-        let introContent = detail ? detail.content : "";
-        let barShow = isBuy==0 || (isBuy && (state=="ING"||state=="BEFORE")) ? "block" : "none";
-        let statusBtn = isBuy ? (state=="BEFORE" ? "status-button disabled" : "status-button live") : "status-button";
+        const videoShow = (state=="CODED"||state=="CODING") ? "block" : "none";
+        const introContent = detail ? detail.content : "";
+        const barShow = isBuy==0 || (isBuy && (state=="ING"||state=="BEFORE")) ? "block" : "none";
+        const statusBtn = isBuy ? (state=="BEFORE" ? "status-button disabled" : "status-button live") : "status-button";
 
         return(
             <div className="course-video">
@@ -52,10 +44,16 @@ class CourseVideo extends Component {
                 </iframe>
                 <div className="status-bar" style={{display:barShow}}>
                     <div className="period-price" style={{display:isBuy ? "none" : "block"}}>
-                        <div>¥{parseFloat(period.price).toFixed(2)}</div>
+                        <div>¥{parseFloat(price).toFixed(2)}</div>
                         <div className="buy-hint">买断购买更划算！</div>
                     </div>
-                    <div className={statusBtn} onClick={this.handleClick.bind(this, period, detail)}>{isBuy ? "进入直播间" : "单课购买"}</div>
+                    {
+                        isBuy ? (
+                            <div className={statusBtn} >进入直播间</div>
+                        ) : (
+                            <div className={statusBtn} onClick={buyClickHandler}>单课购买</div>
+                        )
+                    }
                 </div>
             </div>
         );

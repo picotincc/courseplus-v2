@@ -44,6 +44,12 @@ const live = (location, callback) => {
 	}, 'live');
 };
 
+const notFound = (location, callback) => {
+	require.ensure(['base/containers/NotFoundContainer.js'], require => {
+		callback(null, require('base/containers/NotFoundContainer.js').default);
+	}, '404');
+};
+
 
 const routes = (
     <div>
@@ -58,6 +64,7 @@ const routes = (
 			<Route path='order' getComponent={order} />
 			<Route path='mycourse' getComponent={myCourse} />
 			<Route path='live/:liveId' getComponent={live} />
+			<Route path='404' getComponent={notFound} />
 		</Route>
     </div>
 );

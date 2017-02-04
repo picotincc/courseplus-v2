@@ -54,7 +54,7 @@ export default class Header extends Component {
         {
             userShow = (
                 <div className="user-info">
-                    <span className="mycourse">我的考研课程</span>
+                    <Link className="mycourse" href="/myCourse">我的考研课程</Link>
                     <div className="img-wrapper" onMouseOver={this.showUserMenu}>
                         <img src={userInfo.img_url}   />
                     </div>

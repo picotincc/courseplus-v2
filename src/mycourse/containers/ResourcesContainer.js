@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import "mycourse/resource/index.less";
-import TopTabs from '../components/TopTabs';
-
-class MyCourseContainer extends Component {
+class ResourcesContainer extends Component {
 
     constructor (props) {
         super(props);
@@ -29,10 +26,9 @@ class MyCourseContainer extends Component {
 
     render()
     {
-        return (
-            <div className="cp-mycourse-container">
-                {/* 我的考研课程 */}
-                <TopTabs />
+        return(
+            <div>
+                我的资料
             </div>
         );
     }
@@ -40,9 +36,8 @@ class MyCourseContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-      goodCourses: state.goodCourses
   };
 }
 
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-export default connect(mapStateToProps)(MyCourseContainer);
+export default connect(mapStateToProps)(ResourcesContainer);

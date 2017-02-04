@@ -9,8 +9,8 @@ export default {
         { query: { course_id } }
     ),
 
-    getPeriodDetail: (id) => fetch(`${version}/course/periodDetail`,
-        { query: { id } }
+    getPeriodDetail: (period_id) => fetch(`${version}/course/periodDetail`,
+        { query: { period_id } }
     ),
 
     search: (paras) => fetch(`${version}/course/search`,
